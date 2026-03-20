@@ -4,24 +4,16 @@ import { isBypassEnabled } from '@/lib/bypass';
 export const runtime = 'nodejs';
 
 /**
- * POST /api/check-bypass
- * Body: { email: string }
+ * GET /api/check-bypass
  *
  * Returns { bypassed: boolean } — never reveals the mechanism or config.
  * In production without REVEALR_DEV_BYPASS this always returns { bypassed: false }.
  */
-export async function POST(req: NextRequest) {
+export async function GET() {
   try {
-    const { email } = await req.json() as { email?: string };
-
-    if (!email || typeof email !== 'string') {
-      return NextResponse.json({ bypassed: false });
-    }
-
-    const bypassed = isBypassEnabled(email);
+    const bypassed = isBypassEnabled();
     return NextResponse.json({ bypassed });
   } catch {
-    // Never expose errors — just return false
     return NextResponse.json({ bypassed: false });
   }
 }

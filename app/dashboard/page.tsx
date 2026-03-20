@@ -101,13 +101,9 @@ function DashboardInner() {
         setResult(analysisResult);
 
         // ── Server-side bypass check ──────────────────────────────────────
-        // The server decides — client only receives true/false, no config details.
+        // GET — no email needed, server decides based on env vars only.
         try {
-          const bypassRes = await fetch('/api/check-bypass', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: emailInput || email }),
-          });
+          const bypassRes = await fetch('/api/check-bypass');
           if (bypassRes.ok) {
             const { bypassed } = await bypassRes.json();
             if (bypassed === true) {
