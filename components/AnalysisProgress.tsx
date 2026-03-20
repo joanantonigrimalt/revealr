@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import type { ProgressStep } from '@/types';
 
 const STEPS: ProgressStep[] = [
-  { id: 'verify', label: 'Verifying payment', sublabel: 'Confirming your Stripe session' },
+  { id: 'verify', label: 'Opening the document', sublabel: 'Preparing your lease for analysis' },
   { id: 'read', label: 'Reading document', sublabel: 'Extracting text from your lease' },
   { id: 'analyze', label: 'Analyzing clauses', sublabel: 'Identifying risks with AI' },
   { id: 'score', label: 'Calculating risk score', sublabel: 'Scoring 0–100 across all flags' },
