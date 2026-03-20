@@ -193,138 +193,183 @@ function DashboardInner() {
     );
   }
 
-  // ── Locked — blurred preview + paywall overlay ────────────────────────────
+  // ── Locked — professional blurred preview + sidebar paywall ──────────────
   if (status === 'locked' || cancelled) {
-    // Fake placeholder flags to show blurred behind the paywall
-    const fakeSeverities = [
-      { label: 'CRITICAL', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-100', title: 'Early Termination Penalty', body: 'Clause requires tenant to pay up to 3 months rent as penalty...' },
-      { label: 'WARNING',  color: 'text-amber-600', bg: 'bg-amber-50', border: 'border-amber-100', title: 'Automatic Rent Increase', body: 'Annual rent increase tied to CPI index without tenant consent...' },
-      { label: 'WARNING',  color: 'text-amber-600', bg: 'bg-amber-50', border: 'border-amber-100', title: 'Unlimited Landlord Entry', body: 'Landlord may enter premises at any time without prior notice...' },
-      { label: 'INFO',     color: 'text-blue-600',  bg: 'bg-blue-50',  border: 'border-blue-100',  title: 'Subletting Restriction', body: 'Tenant may not sublet or assign lease without written consent...' },
+    const fakeFlags = [
+      { sev: 'CRITICAL', sevColor: 'text-red-600', sevBg: 'bg-red-100/80', bg: 'bg-red-50', border: 'border-red-100', section: '§14.2', title: 'Extreme Early Termination Penalty', body: 'Tenant must pay up to 3 times the monthly rent plus documented damages for early termination, even with proper written notice. This penalty may exceed actual landlord losses and could be legally unenforceable in several states.' },
+      { sev: 'CRITICAL', sevColor: 'text-red-600', sevBg: 'bg-red-100/80', bg: 'bg-red-50', border: 'border-red-100', section: '§6.1', title: 'Landlord Retains Tenant Property Rights', body: 'Broad clause grants landlord right to access, move, or dispose of tenant personal property stored on premises without prior notice or consent under certain undefined conditions.' },
+      { sev: 'WARNING',  sevColor: 'text-amber-600', sevBg: 'bg-amber-100/80', bg: 'bg-amber-50', border: 'border-amber-100', section: '§9.3', title: 'Automatic Annual Rent Increase', body: 'Rent increases automatically each year by CPI + 2% without requiring a separate notice. Over a 3-year tenancy this could amount to a 15–20% cumulative increase.' },
+      { sev: 'WARNING',  sevColor: 'text-amber-600', sevBg: 'bg-amber-100/80', bg: 'bg-amber-50', border: 'border-amber-100', section: '§11.4', title: 'Maintenance Responsibility Shifted to Tenant', body: 'Clause requires tenant to maintain HVAC filters, pest control, and minor repairs under $250 at their own expense — costs that are typically the landlord\'s responsibility.' },
     ];
 
     return (
       <Shell>
         <div className="container-app py-8">
-          <div className="mb-6">
-            <p className="text-[#9c9590] text-sm mb-1">Analysis complete for</p>
-            <h1 className="font-serif font-bold text-2xl text-[#1a1814] truncate">{fileName}</h1>
+
+          {/* Header */}
+          <div className="flex items-start justify-between mb-8 gap-4">
+            <div>
+              <div className="flex items-center gap-2 mb-2">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#fdf0eb] border border-[#f0cfc0] text-[#e8572a] text-xs font-semibold">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#e8572a]" />
+                  Analysis complete
+                </span>
+              </div>
+              <h1 className="font-serif font-bold text-2xl text-[#1a1814] truncate max-w-lg">{fileName}</h1>
+              <p className="text-sm text-[#9c9590] mt-1">Your lease has been reviewed. Unlock to access the full report.</p>
+            </div>
           </div>
 
-          <div className="flex flex-col lg:flex-row gap-6">
-            {/* Main content — blurred behind paywall */}
-            <div className="flex-1 min-w-0">
+          <div className="flex flex-col lg:flex-row gap-6 items-start">
+            {/* Left — blurred preview */}
+            <div className="flex-1 min-w-0 space-y-4">
 
-              {/* Risk score placeholder */}
-              <div className="bg-white border border-[#e8e4df] rounded-2xl p-6 shadow-sm mb-5">
-                <div className="flex flex-col sm:flex-row sm:items-center gap-6">
-                  {/* Gauge placeholder */}
-                  <div className="flex-shrink-0 flex flex-col items-center">
-                    <div className="relative w-32 h-20 overflow-hidden">
-                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-32 rounded-full border-8 border-[#f0ece8]" />
-                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-20 h-10 rounded-t-full bg-[#faf9f7] border-t-4 border-x-4 border-[#f0ece8]" />
+              {/* Risk score card — blurred */}
+              <div className="bg-white border border-[#e8e4df] rounded-2xl shadow-sm overflow-hidden select-none" aria-hidden>
+                <div className="p-6">
+                  <div className="flex flex-col sm:flex-row items-center gap-8">
+
+                    {/* SVG gauge */}
+                    <div className="flex-shrink-0 flex flex-col items-center filter blur-[3px]">
+                      <svg width="140" height="80" viewBox="0 0 140 80">
+                        {/* Track */}
+                        <path d="M 10 75 A 60 60 0 0 1 130 75" fill="none" stroke="#f0ece8" strokeWidth="10" strokeLinecap="round"/>
+                        {/* Fill — red-orange to indicate high risk */}
+                        <path d="M 10 75 A 60 60 0 0 1 100 22" fill="none" stroke="#e8572a" strokeWidth="10" strokeLinecap="round"/>
+                        {/* Center number */}
+                        <text x="70" y="72" textAnchor="middle" fontSize="28" fontWeight="700" fill="#1a1814" fontFamily="serif">74</text>
+                      </svg>
+                      <span className="text-xs text-[#9c9590] -mt-1">out of 100</span>
                     </div>
-                    <div className="mt-1 text-center">
-                      <div className="text-4xl font-bold text-[#d0ccc8] blur-sm select-none">??</div>
-                      <div className="text-xs text-[#9c9590]">out of 100</div>
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <div className="h-5 bg-[#f0ece8] rounded-full w-32 mb-2 animate-pulse" />
-                    <div className="h-3 bg-[#f5f3f1] rounded-full w-full mb-1.5" />
-                    <div className="h-3 bg-[#f5f3f1] rounded-full w-3/4 mb-4" />
-                    <div className="flex gap-3">
-                      {[['3', 'Critical', 'bg-red-100 text-red-600'], ['5', 'Warnings', 'bg-amber-100 text-amber-600'], ['2', 'Info', 'bg-blue-100 text-blue-600']].map(([n, l, cls]) => (
-                        <div key={l} className={`px-3 py-1.5 rounded-lg text-center blur-sm select-none ${cls}`}>
-                          <div className="text-lg font-bold">{n}</div>
-                          <div className="text-xs font-medium">{l}</div>
-                        </div>
-                      ))}
+
+                    {/* Right info */}
+                    <div className="flex-1 filter blur-[3px]">
+                      <div className="inline-block px-2.5 py-1 rounded-full bg-red-100 text-red-700 text-xs font-bold uppercase tracking-wide mb-2">High Risk</div>
+                      <p className="text-sm text-[#6b6560] mb-4 leading-relaxed">This lease contains multiple clauses that are unfavorable to the tenant, including excessive penalties and broad landlord rights.</p>
+                      <div className="flex gap-3">
+                        {[['2', 'Critical', 'bg-red-50 text-red-600 border border-red-100'], ['4', 'Warnings', 'bg-amber-50 text-amber-600 border border-amber-100'], ['2', 'Info', 'bg-blue-50 text-blue-600 border border-blue-100']].map(([n, l, cls]) => (
+                          <div key={l} className={`px-3 py-2 rounded-xl text-center ${cls}`}>
+                            <div className="text-xl font-bold">{n}</div>
+                            <div className="text-xs font-semibold">{l}</div>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Flags — blurred with paywall overlay */}
-              <div className="relative">
-                <h2 className="font-serif font-bold text-lg text-[#1a1814] mb-3">Issues Found</h2>
-
-                {/* Blurred fake flags */}
-                <div className="space-y-3 select-none pointer-events-none" aria-hidden>
-                  {fakeSeverities.map((f, i) => (
-                    <div key={i} className={`p-4 ${f.bg} border ${f.border} rounded-xl ${i >= 1 ? 'blur-sm opacity-70' : 'blur-[2px] opacity-80'}`}>
-                      <div className="flex items-center gap-2 mb-1.5">
-                        <span className={`text-xs font-bold uppercase tracking-wide ${f.color}`}>{f.label}</span>
-                        <span className="text-xs text-[#9c9590] font-mono">§{i + 3}.{i + 1}</span>
+              {/* Flag cards — progressively more blurred */}
+              <div className="space-y-3 select-none pointer-events-none" aria-hidden>
+                {fakeFlags.map((f, i) => (
+                  <div
+                    key={i}
+                    className={`${f.bg} border ${f.border} rounded-xl p-5 transition-all`}
+                    style={{ filter: `blur(${i === 0 ? 2 : i === 1 ? 4 : 6}px)`, opacity: i === 0 ? 0.85 : i === 1 ? 0.7 : 0.5 }}
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center gap-2">
+                        <span className={`text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full ${f.sevBg} ${f.sevColor}`}>{f.sev}</span>
+                        <span className="text-xs text-[#9c9590] font-mono">{f.section}</span>
                       </div>
-                      <p className="font-semibold text-[#1a1814] text-sm mb-1">{f.title}</p>
-                      <p className="text-xs text-[#6b6560]">{f.body}</p>
                     </div>
-                  ))}
-                </div>
+                    <p className="font-semibold text-[#1a1814] text-sm mb-1.5">{f.title}</p>
+                    <p className="text-xs text-[#6b6560] leading-relaxed">{f.body}</p>
+                  </div>
+                ))}
+              </div>
 
-                {/* Paywall overlay */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-b from-transparent via-white/85 to-white rounded-2xl px-4 pt-20 pb-6">
-                  <div className="w-full max-w-sm text-center">
-                    <div className="w-12 h-12 rounded-2xl bg-[#1a1814] flex items-center justify-center mx-auto mb-3">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              {/* Fade-out gradient at bottom */}
+              <div className="h-16 bg-gradient-to-b from-transparent to-[#faf9f7] -mt-2 rounded-b-xl pointer-events-none" />
+            </div>
+
+            {/* Right — paywall sidebar (sticky) */}
+            <div className="w-full lg:w-80 flex-shrink-0">
+              <div className="lg:sticky lg:top-20">
+
+                {/* Paywall card */}
+                <div className="bg-white border border-[#e8e4df] rounded-2xl shadow-lg overflow-hidden">
+                  {/* Top bar */}
+                  <div className="bg-[#1a1814] px-6 py-5">
+                    <div className="flex items-center gap-2 mb-1">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e8572a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                         <rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" />
                       </svg>
+                      <span className="text-xs font-semibold text-[#e8572a] uppercase tracking-wider">Full Report</span>
                     </div>
-                    <h3 className="font-serif font-bold text-xl text-[#1a1814] mb-1">Your report is ready</h3>
-                    <p className="text-[#6b6560] text-sm mb-5">Unlock to see all issues, risk score, plain-English explanations and your full action plan.</p>
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-4xl font-bold text-white" style={{ fontFamily: "'Playfair Display', serif" }}>$19</span>
+                      <span className="text-sm text-white/50">one-time</span>
+                    </div>
+                    <p className="text-xs text-white/40 mt-0.5">No subscription · Instant access</p>
+                  </div>
 
+                  {/* Feature list */}
+                  <div className="px-6 py-4 border-b border-[#f0ece8]">
+                    <ul className="space-y-2">
+                      {[
+                        'Risk score with severity breakdown',
+                        'All flagged clauses with explanations',
+                        'Specific action per issue',
+                        'Full prioritized action plan',
+                        'PDF download + email delivery',
+                      ].map(item => (
+                        <li key={item} className="flex items-start gap-2 text-xs text-[#6b6560]">
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e8572a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0 mt-0.5">
+                            <polyline points="20 6 9 17 4 12" />
+                          </svg>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Email + CTA */}
+                  <div className="px-6 py-5">
+                    <label className="block text-xs font-semibold text-[#1a1814] mb-1.5">
+                      Email — report delivered here
+                    </label>
                     <input
                       type="email"
                       value={emailInput}
                       onChange={(e) => { setEmailInput(e.target.value); setEmailError(''); }}
                       onKeyDown={(e) => e.key === 'Enter' && handleUnlock()}
-                      placeholder="your@email.com"
+                      placeholder="you@example.com"
                       autoComplete="email"
                       className={[
-                        'w-full px-4 py-3 rounded-xl border text-sm mb-1 focus:outline-none focus:ring-2 focus:ring-[#e8572a]/20 focus:border-[#e8572a]/60 transition-all',
+                        'w-full px-4 py-2.5 rounded-xl border text-sm mb-1 focus:outline-none focus:ring-2 focus:ring-[#e8572a]/20 focus:border-[#e8572a]/60 transition-all',
                         emailError ? 'border-red-400' : 'border-[#e8e4df]',
                       ].join(' ')}
                     />
-                    {emailError && <p className="text-xs text-red-500 mb-1 text-left">{emailError}</p>}
+                    {emailError && <p className="text-xs text-red-500 mb-2">{emailError}</p>}
 
                     <button
                       onClick={handleUnlock}
                       disabled={payLoading}
-                      className="w-full mt-2 flex items-center justify-center gap-2 bg-[#e8572a] hover:bg-[#c94820] text-white font-bold py-3.5 rounded-xl transition-all shadow-lg shadow-[#e8572a]/20 disabled:opacity-60"
+                      className="w-full mt-3 flex items-center justify-center gap-2 bg-[#e8572a] hover:bg-[#c94820] text-white font-bold py-3.5 rounded-xl transition-all shadow-md shadow-[#e8572a]/25 disabled:opacity-60 text-sm"
                     >
-                      {payLoading ? <><Spinner /> Redirecting…</> : <>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                        </svg>
-                        Unlock Full Report — $19
-                      </>}
+                      {payLoading
+                        ? <><Spinner /> Redirecting to checkout…</>
+                        : <>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                              <rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                            </svg>
+                            Unlock Full Report — $19
+                          </>
+                      }
                     </button>
-                    <p className="text-xs text-[#9c9590] mt-2">One-time · No subscription · Secure via Stripe</p>
+
+                    <div className="flex items-center justify-center gap-2 mt-3 text-[10px] text-[#9c9590]">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                      <span>Secured by Stripe · Results in ~60 sec</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
 
-            {/* Sidebar */}
-            <div className="w-full lg:w-72 flex-shrink-0">
-              <div className="lg:sticky lg:top-20 space-y-4">
-                <div className="bg-white border border-[#e8e4df] rounded-xl p-4 shadow-sm">
-                  <div className="text-xs font-semibold text-[#9c9590] uppercase tracking-wider mb-2">Document</div>
-                  <p className="text-sm font-medium text-[#1a1814] truncate">{fileName}</p>
-                </div>
-                <div className="bg-[#1a1814] rounded-xl p-5 text-white">
-                  <div className="text-sm font-bold mb-1">Full Report</div>
-                  <div className="text-[#9c9590] text-xs mb-3">All flags · Action plan · PDF · Email</div>
-                  <div className="text-3xl font-bold mb-1">$19</div>
-                  <div className="text-xs text-[#6b6560] mb-4">one-time · no subscription</div>
-                  <button
-                    onClick={handleUnlock}
-                    disabled={payLoading}
-                    className="w-full bg-[#e8572a] hover:bg-[#c94820] text-white font-bold py-2.5 rounded-lg transition-colors text-sm disabled:opacity-60"
-                  >
-                    {payLoading ? 'Redirecting…' : 'Unlock Now →'}
-                  </button>
+                {/* Document info */}
+                <div className="mt-3 px-4 py-3 bg-white border border-[#e8e4df] rounded-xl">
+                  <p className="text-[10px] text-[#9c9590] uppercase tracking-wider mb-1">Document</p>
+                  <p className="text-xs font-medium text-[#1a1814] truncate">{fileName}</p>
                 </div>
               </div>
             </div>
