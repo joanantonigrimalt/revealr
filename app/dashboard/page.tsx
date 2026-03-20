@@ -31,19 +31,20 @@ function DashboardInner() {
   // Params from Stripe success (unlock flow)
   const unlocked   = params.get('unlocked') === '1';
   const resultKey  = decodeURIComponent(params.get('result') ?? '');
-  const sessionId  = params.get('session_id') ?? '';
   const cancelled  = params.get('cancelled') === '1';
 
   type Status = 'analyzing' | 'preview' | 'unlocking' | 'success' | 'error';
-  const [status, setStatus]         = useState<Status>('analyzing');
-  const [progressStep, setProgress] = useState(0);
-  const [result, setResult]         = useState<LeaseAnalysisResult | null>(null);
-  const [error, setError]           = useState('');
-  const [emailInput, setEmailInput] = useState(email);
-  const [emailError, setEmailError] = useState('');
-  const [emailSent, setEmailSent]   = useState(false);
+  const [status, setStatus]             = useState<Status>('analyzing');
+  const [progressStep, setProgress]     = useState(0);
+  const [result, setResult]             = useState<LeaseAnalysisResult | null>(null);
+  const [error, setError]               = useState('');
+  const [emailInput, setEmailInput]     = useState(email);
+  const [emailError, setEmailError]     = useState('');
+  const [emailSent, setEmailSent]       = useState(false);
   const [emailSending, setEmailSending] = useState(false);
-  const [payLoading, setPayLoading] = useState(false);
+  const [payLoading, setPayLoading]     = useState(false);
+  // devBypass is set server-side — client only knows the boolean result
+  const [devBypass, setDevBypass]       = useState(false);
 
   const ran = useRef(false);
 
@@ -71,7 +72,7 @@ function DashboardInner() {
     load();
   }, [unlocked, resultKey]);
 
-  // ── B: Fresh upload — run analysis, show preview ──────────────────────────
+  // ── B: Fresh upload — run analysis, then check bypass ────────────────────
   useEffect(() => {
     if (unlocked || !fileKey || ran.current) return;
     ran.current = true;
@@ -98,6 +99,27 @@ function DashboardInner() {
         setProgress(4); await delay(STEP_MS * 0.6);
 
         setResult(analysisResult);
+
+        // ── Server-side bypass check ──────────────────────────────────────
+        // The server decides — client only receives true/false, no config details.
+        try {
+          const bypassRes = await fetch('/api/check-bypass', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: emailInput || email }),
+          });
+          if (bypassRes.ok) {
+            const { bypassed } = await bypassRes.json();
+            if (bypassed === true) {
+              setDevBypass(true);
+              setStatus('success');
+              return;
+            }
+          }
+        } catch {
+          // Bypass check failure is non-fatal — just show paywall
+        }
+
         setStatus('preview'); // locked — not paid yet
       } catch (err) {
         setError(err instanceof Error ? err.message : 'An unexpected error occurred.');
@@ -159,7 +181,9 @@ function DashboardInner() {
     }
   }, [fileName]);
 
-  const handleResend = () => { if (result && emailInput) { setEmailSent(false); sendEmail(result, emailInput); } };
+  const handleResend = () => {
+    if (result && emailInput) { setEmailSent(false); sendEmail(result, emailInput); }
+  };
 
   // ── Missing params ───────────────────────────────────────────────────────
   if (!fileKey && !unlocked) {
@@ -212,7 +236,6 @@ function DashboardInner() {
               {/* Locked — blurred flags */}
               {result.flags.length > 1 && (
                 <div className="relative">
-                  {/* Blurred preview of remaining flags */}
                   <div className="space-y-3 blur-sm pointer-events-none select-none opacity-60" aria-hidden>
                     {result.flags.slice(1, 4).map((flag, i) => (
                       <FlagCard key={i} flag={flag} index={i + 1} />
@@ -239,7 +262,6 @@ function DashboardInner() {
                       </p>
                       <p className="text-[#9c9590] text-xs mb-6">Unlock to see the full report, action plan, and PDF.</p>
 
-                      {/* Email input */}
                       <input
                         type="email"
                         value={emailInput}
@@ -275,7 +297,6 @@ function DashboardInner() {
                 </div>
               )}
 
-              {/* If there's only 1 flag, show paywall below */}
               {result.flags.length <= 1 && (
                 <PaywallCard
                   emailInput={emailInput}
@@ -315,7 +336,7 @@ function DashboardInner() {
     );
   }
 
-  // ── Full report — unlocked ─────────────────────────────────────────────────
+  // ── Full report — unlocked (paid or dev bypass) ────────────────────────────
   if (status === 'success' && result) {
     const flagOrder = [
       ...result.flags.filter(f => f.type === 'critical'),
@@ -328,13 +349,22 @@ function DashboardInner() {
         <div className="container-app py-8">
           <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 animate-fade-in">
             <div>
-              <div className="flex items-center gap-2 mb-1">
+              <div className="flex items-center gap-2 mb-1 flex-wrap">
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-green-50 border border-green-200 text-green-700 text-xs font-semibold">
                   <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                   Report Unlocked
                 </span>
+                {/* Dev bypass badge — only shown when bypass is active (server-confirmed) */}
+                {devBypass && (
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-50 border border-amber-300 text-amber-700 text-xs font-semibold">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                    </svg>
+                    Dev mode · Payment bypass active
+                  </span>
+                )}
               </div>
               <h1 className="font-serif font-bold text-2xl text-[#1a1814]">Lease Analysis Report</h1>
               <p className="text-[#6b6560] text-sm truncate max-w-sm">{fileName}</p>
