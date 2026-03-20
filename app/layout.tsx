@@ -7,22 +7,22 @@ const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://revealr-tawny.vercel
 export const metadata: Metadata = {
   metadataBase: new URL(APP_URL),
   title: {
-    default: 'Lease Agreement Analyzer — AI Lease Review for Tenants | Revealr',
+    default: 'Rental Lease Review — AI-Powered Lease Analysis for Tenants | Revealr',
     template: '%s | Revealr',
   },
   description:
-    'Upload your rental agreement and get an AI-powered analysis of every risky clause in under 60 seconds. Risk score, red flags, plain-English explanations, and a full action plan. $19 one-time.',
+    'Get an instant AI rental lease review. Upload your agreement and Revealr identifies every risky clause — risk score, plain-English flags, and a full action plan. $19 one-time, results in 60 seconds.',
   keywords: [
-    'lease agreement analyzer',
+    'rental lease review',
     'AI lease review',
-    'rental agreement checker',
-    'lease clause analyzer',
-    'tenant lease analysis',
+    'lease review before signing',
     'apartment lease review',
-    'lease red flags',
-    'review lease before signing',
+    'rental agreement checker',
+    'risky lease clauses',
+    'tenant lease analysis',
+    'lease risk checker',
+    'review my lease online',
     'unfair lease clauses',
-    'online lease review',
   ],
   authors: [{ name: 'Revealr' }],
   creator: 'Revealr',
@@ -32,23 +32,15 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: APP_URL,
     siteName: 'Revealr',
-    title: 'Lease Agreement Analyzer — AI Lease Review for Tenants | Revealr',
+    title: 'Rental Lease Review — AI-Powered Lease Analysis for Tenants | Revealr',
     description:
-      'Upload your lease and get an instant AI analysis of every risky clause. Risk score, red flags, and action plan for tenants. $19 one-time.',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Revealr — AI Lease Agreement Analyzer for Tenants',
-      },
-    ],
+      'Upload your rental agreement and get an instant AI review of every risky clause. Risk score, flagged terms, plain-English explanations, and action plan. $19 one-time.',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Revealr — AI Rental Lease Review for Tenants' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Lease Agreement Analyzer — AI Lease Review for Tenants',
-    description:
-      'Upload your lease. Get an instant AI risk analysis, flagged clauses, and action plan. $19, no subscription.',
+    title: 'Rental Lease Review — AI Analysis in 60 Seconds | Revealr',
+    description: 'Upload your lease. Our AI flags every risky clause with plain-English explanations and a full action plan. $19, no subscription.',
     images: ['/og-image.png'],
   },
   robots: {
@@ -64,24 +56,25 @@ const organizationSchema = {
   '@type': 'Organization',
   name: 'Revealr',
   url: APP_URL,
-  description: 'AI-powered lease agreement analyzer that helps tenants identify risky clauses before signing.',
+  description: 'AI-powered rental lease review tool that helps tenants identify risky clauses before signing.',
   sameAs: [],
 };
 
 const softwareSchema = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
-  name: 'Revealr — Lease Agreement Analyzer',
+  name: 'Revealr — Rental Lease Review',
   applicationCategory: 'LegalService',
   operatingSystem: 'Web',
+  url: APP_URL,
   description:
-    'Upload your rental agreement and receive an AI-powered analysis of every risky clause, including a risk score, flagged issues, plain-English explanations, and a step-by-step action plan.',
+    'Upload your rental agreement and receive an AI-powered review of every risky clause, including a risk score, flagged issues, plain-English explanations, and a step-by-step action plan.',
   offers: {
     '@type': 'Offer',
     price: '19',
     priceCurrency: 'USD',
-    priceValidUntil: '2026-12-31',
     availability: 'https://schema.org/InStock',
+    description: 'Full rental lease review report — risk score, all flagged clauses, action plan, PDF download, email delivery.',
   },
   aggregateRating: {
     '@type': 'AggregateRating',
@@ -108,9 +101,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Script
           id="schema-org"
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify([organizationSchema, softwareSchema]),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify([organizationSchema, softwareSchema]) }}
         />
         {children}
       </body>
