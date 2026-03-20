@@ -1,79 +1,36 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { verifyPayment } from '@/lib/stripe';
-import { getFile, deleteFile } from '@/lib/storage';
+import { getFile } from '@/lib/storage';
 import { extractContent } from '@/lib/pdf';
 import { analyzeLease } from '@/lib/anthropic';
 
 export const runtime = 'nodejs';
-export const maxDuration = 120; // Claude can take up to 2 minutes
+export const maxDuration = 120;
 
-// ─── GET /api/analyze?session_id=&file=&step=verify ──────────────────────────
-// Used by dashboard to verify payment and get email before POST analysis
-export async function GET(req: NextRequest) {
-  const { searchParams } = new URL(req.url);
-  const sessionId = searchParams.get('session_id') ?? '';
-  const step = searchParams.get('step');
-
-  if (!sessionId) {
-    return NextResponse.json({ error: 'Missing session_id.' }, { status: 400 });
-  }
-
-  try {
-    const { paid, email } = await verifyPayment(sessionId);
-
-    if (!paid) {
-      return NextResponse.json(
-        { error: 'Payment not completed. Please complete your purchase to access the report.' },
-        { status: 402 }
-      );
-    }
-
-    return NextResponse.json({ paid: true, email });
-  } catch (err) {
-    console.error('[analyze:GET]', err);
-    return NextResponse.json({ error: 'Could not verify payment. Please try again.' }, { status: 500 });
-  }
-}
-
-// ─── POST /api/analyze ────────────────────────────────────────────────────────
+// POST /api/analyze — runs analysis (no payment required, result returned to client)
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json();
-    const { sessionId, fileKey, fileName } = body as {
-      sessionId: string;
+    const { fileKey, fileName } = await req.json() as {
       fileKey: string;
       fileName: string;
     };
 
-    if (!sessionId || !fileKey) {
-      return NextResponse.json({ error: 'Missing sessionId or fileKey.' }, { status: 400 });
+    if (!fileKey || !fileName) {
+      return NextResponse.json({ error: 'Missing fileKey or fileName.' }, { status: 400 });
     }
 
-    // ── Verify payment ────────────────────────────────────────────────────────
-    const { paid, email } = await verifyPayment(sessionId);
-    if (!paid) {
-      return NextResponse.json(
-        { error: 'Payment not verified. Please complete your purchase.' },
-        { status: 402 }
-      );
-    }
-
-    // ── Read file from storage ────────────────────────────────────────────────
+    // Read file from storage
     let buffer: Buffer;
     try {
       buffer = await getFile(fileKey);
-    } catch (err) {
-      console.error('[analyze:POST] getFile error:', err);
+    } catch {
       return NextResponse.json(
-        { error: 'Could not retrieve your document. The session may have expired. Please upload again.' },
+        { error: 'Could not retrieve your document. The session may have expired — please upload again.' },
         { status: 404 }
       );
     }
 
-    // ── Extract text / image content ──────────────────────────────────────────
-    // Determine MIME type from fileKey or fileName
-    const name = fileName || fileKey;
-    const ext = name.split('.').pop()?.toLowerCase() ?? '';
+    // Extract text / image
+    const ext = fileName.split('.').pop()?.toLowerCase() ?? '';
     const mimeMap: Record<string, string> = {
       pdf: 'application/pdf',
       doc: 'application/msword',
@@ -86,28 +43,25 @@ export async function POST(req: NextRequest) {
 
     let extracted;
     try {
-      extracted = await extractContent(buffer, mimeType, name);
+      extracted = await extractContent(buffer, mimeType, fileName);
     } catch (err) {
       const msg = err instanceof Error ? err.message : 'Failed to read document.';
       return NextResponse.json({ error: msg }, { status: 422 });
     }
 
-    // ── Analyze with Claude ───────────────────────────────────────────────────
-    let analysisResult;
+    // Run Claude analysis
+    let result;
     try {
-      analysisResult = await analyzeLease(extracted);
+      result = await analyzeLease(extracted);
     } catch (err) {
-      console.error('[analyze:POST] Claude error:', err);
+      console.error('[analyze]', err);
       const msg = err instanceof Error ? err.message : 'AI analysis failed.';
       return NextResponse.json({ error: msg }, { status: 500 });
     }
 
-    // ── Clean up file (best-effort) ──────────────────────────────────────────
-    deleteFile(fileKey).catch((e) => console.warn('[analyze:POST] cleanup failed:', e));
-
-    return NextResponse.json(analysisResult);
+    return NextResponse.json(result);
   } catch (err) {
-    console.error('[analyze:POST]', err);
+    console.error('[analyze]', err);
     return NextResponse.json({ error: 'Internal server error.' }, { status: 500 });
   }
 }

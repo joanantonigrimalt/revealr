@@ -1,53 +1,53 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createCheckoutSession } from '@/lib/stripe';
-import { saveFile } from '@/lib/storage';
-import { validateFile } from '@/lib/validators';
+import { stripe, PRICE_CENTS, CURRENCY, PRODUCT_NAME } from '@/lib/stripe';
 
 export const runtime = 'nodejs';
-export const maxDuration = 30;
 
+// POST /api/create-checkout — creates Stripe session to unlock a completed analysis
 export async function POST(req: NextRequest) {
   try {
-    // Parse multipart form data
-    const formData = await req.formData();
-    const file = formData.get('file');
-    const email = (formData.get('email') as string | null)?.trim() ?? '';
+    const { resultKey, email, fileName } = await req.json() as {
+      resultKey: string;
+      email: string;
+      fileName: string;
+    };
 
-    // ── Validate inputs ──────────────────────────────────────────────────────
-
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      return NextResponse.json({ error: 'A valid email address is required.' }, { status: 400 });
+    if (!resultKey || !email || !fileName) {
+      return NextResponse.json({ error: 'Missing required fields.' }, { status: 400 });
     }
 
-    if (!file || !(file instanceof File)) {
-      return NextResponse.json({ error: 'No file uploaded.' }, { status: 400 });
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return NextResponse.json({ error: 'Invalid email address.' }, { status: 400 });
     }
-
-    const validation = validateFile(file.name, file.size, file.type);
-    if (!validation.valid) {
-      return NextResponse.json({ error: validation.error }, { status: 400 });
-    }
-
-    // ── Save file to storage ────────────────────────────────────────────────
-
-    const buffer = Buffer.from(await file.arrayBuffer());
-    const fileKey = await saveFile(buffer, file.name);
-
-    // ── Create Stripe Checkout session ──────────────────────────────────────
 
     const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000';
 
-    const session = await createCheckoutSession({
-      email,
-      fileKey,
-      fileName: file.name,
-      appUrl,
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      mode: 'payment',
+      customer_email: email,
+      line_items: [
+        {
+          price_data: {
+            currency: CURRENCY,
+            product_data: {
+              name: PRODUCT_NAME,
+              description: `Full lease analysis report for ${fileName}`,
+            },
+            unit_amount: PRICE_CENTS,
+          },
+          quantity: 1,
+        },
+      ],
+      metadata: { resultKey, email, fileName },
+      success_url: `${appUrl}/dashboard?unlocked=1&result=${encodeURIComponent(resultKey)}&email=${encodeURIComponent(email)}&name=${encodeURIComponent(fileName)}&session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${appUrl}/dashboard?cancelled=1&result=${encodeURIComponent(resultKey)}&email=${encodeURIComponent(email)}&name=${encodeURIComponent(fileName)}`,
     });
 
     return NextResponse.json({ url: session.url });
   } catch (err) {
     console.error('[create-checkout]', err);
-    const message = err instanceof Error ? err.message : 'Internal server error.';
-    return NextResponse.json({ error: message }, { status: 500 });
+    const msg = err instanceof Error ? err.message : 'Failed to create checkout session.';
+    return NextResponse.json({ error: msg }, { status: 500 });
   }
 }

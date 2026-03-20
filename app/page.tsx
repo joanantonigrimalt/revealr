@@ -30,7 +30,8 @@ export default function LandingPage() {
     if (f) handleFile(f);
   }, [handleFile]);
 
-  const handleCheckout = async () => {
+  // Upload file and go straight to dashboard — no payment yet
+  const handleStart = async () => {
     if (!validateEmail(email)) { setEmailError('Please enter a valid email address.'); return; }
     setEmailError('');
     setLoading(true);
@@ -38,10 +39,11 @@ export default function LandingPage() {
       const fd = new FormData();
       fd.append('file', file!);
       fd.append('email', email.trim());
-      const res = await fetch('/api/create-checkout', { method: 'POST', body: fd });
+      const res = await fetch('/api/upload', { method: 'POST', body: fd });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
-      window.location.href = data.url;
+      // Go straight to dashboard — analysis starts there
+      window.location.href = `/dashboard?file=${encodeURIComponent(data.fileKey)}&name=${encodeURIComponent(data.fileName)}&email=${encodeURIComponent(email.trim())}`;
     } catch (err) {
       setEmailError(err instanceof Error ? err.message : 'Something went wrong.');
       setLoading(false);
@@ -51,7 +53,7 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white flex flex-col" style={{ fontFamily: "'Epilogue', sans-serif" }}>
 
-      {/* ── Nav ─────────────────────────────────────────────────────────────── */}
+      {/* Nav */}
       <nav className="flex items-center justify-between px-8 sm:px-12 py-5 border-b border-[#f0ece8]">
         <span className="text-xl font-bold tracking-tight text-[#1a1814]">
           reveal<span className="text-[#e8572a]">r</span>
@@ -61,20 +63,20 @@ export default function LandingPage() {
           <a href="#pricing" className="hover:text-[#1a1814] transition-colors">Pricing</a>
         </div>
         <button
-          onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); inputRef.current?.click(); }}
+          onClick={() => inputRef.current?.click()}
           className="flex items-center gap-1.5 bg-[#1a1814] text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-black transition-colors"
         >
-          Analyze My Lease <span className="text-[#e8572a] text-base">→</span>
+          Analyze My Lease <span className="text-[#e8572a] text-base ml-0.5">→</span>
         </button>
       </nav>
 
-      {/* ── Hero — two columns ───────────────────────────────────────────────── */}
+      {/* Hero — two columns */}
       <main className="flex-1">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 py-12 lg:py-16">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
 
             {/* LEFT — upload card */}
-            <div className="w-full lg:w-[420px] flex-shrink-0 order-1 lg:order-none">
+            <div className="w-full lg:w-[420px] flex-shrink-0">
               <input
                 ref={inputRef}
                 type="file"
@@ -84,21 +86,19 @@ export default function LandingPage() {
               />
 
               {step === 'upload' ? (
-                /* Drop zone */
                 <div
                   onDrop={onDrop}
                   onDragOver={(e) => { e.preventDefault(); setIsDragOver(true); }}
                   onDragLeave={() => setIsDragOver(false)}
                   onClick={() => inputRef.current?.click()}
                   className={[
-                    'relative flex flex-col items-center justify-center rounded-2xl border-2 border-dashed cursor-pointer transition-all duration-200 p-10',
+                    'flex flex-col items-center justify-center rounded-2xl border-2 border-dashed cursor-pointer transition-all duration-200 p-10',
                     isDragOver
                       ? 'border-[#e8572a] bg-[#fdf0eb] scale-[1.01]'
                       : 'border-[#d5d0cb] bg-[#faf9f7] hover:border-[#e8572a] hover:bg-[#fdf9f8]',
                   ].join(' ')}
-                  style={{ minHeight: 380 }}
+                  style={{ minHeight: 360 }}
                 >
-                  {/* Icon */}
                   <div className={[
                     'w-16 h-16 rounded-2xl flex items-center justify-center mb-5 transition-colors',
                     isDragOver ? 'bg-[#e8572a]' : 'bg-white shadow-md',
@@ -110,14 +110,12 @@ export default function LandingPage() {
                       <line x1="12" y1="3" x2="12" y2="15" />
                     </svg>
                   </div>
-
                   <h3 className="font-bold text-xl text-[#1a1814] mb-1.5 text-center" style={{ fontFamily: "'Playfair Display', serif" }}>
                     {isDragOver ? 'Release to upload' : 'Drop your lease here'}
                   </h3>
                   <p className="text-sm text-[#9c9590] text-center mb-7 leading-relaxed">
-                    PDF, Word or image<br />Max 20MB · Encrypted & private
+                    PDF, Word or image · Max 20MB<br />Encrypted & private
                   </p>
-
                   <button
                     type="button"
                     onClick={(e) => { e.stopPropagation(); inputRef.current?.click(); }}
@@ -131,23 +129,17 @@ export default function LandingPage() {
                     Choose File
                   </button>
                   <span className="text-xs text-[#9c9590]">or drag & drop</span>
-
-                  {/* Accepted formats */}
-                  <div className="flex gap-2 mt-8">
+                  <div className="flex gap-2 mt-7 flex-wrap justify-center">
                     {['PDF', 'DOC', 'DOCX', 'JPG', 'PNG'].map((ext) => (
-                      <span key={ext} className="px-2 py-0.5 bg-white border border-[#e8e4df] rounded text-xs text-[#9c9590] font-medium">
-                        {ext}
-                      </span>
+                      <span key={ext} className="px-2 py-0.5 bg-white border border-[#e8e4df] rounded text-xs text-[#9c9590] font-medium">{ext}</span>
                     ))}
                   </div>
-
-                  {fileError && (
-                    <p className="mt-4 text-sm text-red-500 text-center">{fileError}</p>
-                  )}
+                  {fileError && <p className="mt-4 text-sm text-red-500 text-center">{fileError}</p>}
                 </div>
+
               ) : (
-                /* Email step */
-                <div className="bg-white border border-[#e8e4df] rounded-2xl p-7 shadow-xl" style={{ minHeight: 380 }}>
+                /* Step 2: email + start */
+                <div className="bg-white border border-[#e8e4df] rounded-2xl p-7 shadow-xl" style={{ minHeight: 360 }}>
                   {/* File confirmed */}
                   <div className="flex items-center gap-3 p-3 rounded-xl bg-[#f0fdf4] border border-green-100 mb-5">
                     <div className="w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center flex-shrink-0">
@@ -159,20 +151,21 @@ export default function LandingPage() {
                       <p className="text-sm font-semibold text-[#1a1814] truncate">{file?.name}</p>
                       <p className="text-xs text-[#6b6560]">{file ? formatFileSize(file.size) : ''}</p>
                     </div>
-                    <button onClick={() => { setFile(null); setStep('upload'); }}
+                    <button onClick={() => { setFile(null); setStep('upload'); setEmailError(''); }}
                       className="text-xs text-[#9c9590] hover:text-[#1a1814] underline flex-shrink-0 transition-colors">
                       Change
                     </button>
                   </div>
 
                   <label className="block text-sm font-semibold text-[#1a1814] mb-1.5">
-                    Where should we send your report?
+                    Your email address
                   </label>
+                  <p className="text-xs text-[#9c9590] mb-2">We'll send your report here after you unlock it.</p>
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => { setEmail(e.target.value); setEmailError(''); }}
-                    onKeyDown={(e) => e.key === 'Enter' && handleCheckout()}
+                    onKeyDown={(e) => e.key === 'Enter' && handleStart()}
                     placeholder="you@example.com"
                     autoFocus
                     className={[
@@ -181,71 +174,55 @@ export default function LandingPage() {
                       emailError ? 'border-red-400' : 'border-[#e8e4df]',
                     ].join(' ')}
                   />
-                  {emailError && <p className="text-xs text-red-500 mb-2">{emailError}</p>}
-                  <p className="text-xs text-[#9c9590] mb-5">Report sent instantly. No spam, ever.</p>
+                  {emailError && <p className="text-xs text-red-500 mb-1">{emailError}</p>}
 
                   <button
-                    onClick={handleCheckout}
+                    onClick={handleStart}
                     disabled={loading || !email}
-                    className="w-full flex items-center justify-center gap-2 bg-[#e8572a] hover:bg-[#c94820] text-white font-bold text-base py-3.5 rounded-xl transition-all disabled:opacity-50 shadow-lg shadow-[#e8572a]/20 mb-4"
+                    className="w-full mt-4 flex items-center justify-center gap-2 bg-[#1a1814] hover:bg-black text-white font-bold text-base py-3.5 rounded-xl transition-all disabled:opacity-50"
                   >
                     {loading ? (
                       <>
                         <svg className="animate-spin" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                           <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4" />
                         </svg>
-                        Redirecting…
+                        Uploading…
                       </>
                     ) : (
                       <>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                        </svg>
-                        Analyze My Lease — $19
+                        Analyze My Lease — Free Preview
+                        <span className="text-[#e8572a]">→</span>
                       </>
                     )}
                   </button>
 
-                  <div className="flex items-center justify-center gap-3 text-xs text-[#9c9590]">
-                    <span className="flex items-center gap-1">
-                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                      </svg>
-                      Secure · Stripe
-                    </span>
-                    <span>·</span>
-                    <span>Results in ~60s</span>
-                    <span>·</span>
-                    <span>PDF + Email</span>
-                  </div>
+                  <p className="text-center text-xs text-[#9c9590] mt-3">
+                    Analysis is free · Pay $19 only to unlock the full report
+                  </p>
                 </div>
               )}
             </div>
 
-            {/* RIGHT — headline + social proof */}
-            <div className="flex-1 text-center lg:text-left order-none lg:order-1">
-              {/* Badge */}
+            {/* RIGHT — headline */}
+            <div className="flex-1 text-center lg:text-left">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#fdf0eb] border border-[#f0cfc0] text-[#e8572a] text-xs font-semibold tracking-widest uppercase mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#e8572a] animate-pulse" />
-                AI-Powered · $19 One-Time
+                AI-Powered · Free Preview · $19 to Unlock
               </div>
 
-              {/* Headline */}
               <h1
                 className="font-bold text-[#1a1814] leading-tight mb-5"
                 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)' }}
               >
                 Your lease has{' '}
                 <em className="text-[#e8572a] not-italic">hidden traps.</em>
-                <br />
-                Drop it here to find them.
+                <br />Drop it here to find them.
               </h1>
 
               <p className="text-[#6b6560] text-lg leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">
-                Upload your rental agreement and our AI reveals every risky clause in under 2 minutes — before you sign or dispute.
+                Upload your lease and our AI reveals every risky clause in under 2 minutes. Preview free — pay $19 to unlock the full report.
               </p>
 
-              {/* What we catch */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-10 max-w-lg mx-auto lg:mx-0">
                 {[
                   'Automatic rent increases',
@@ -264,7 +241,6 @@ export default function LandingPage() {
                 ))}
               </div>
 
-              {/* Social proof */}
               <div className="flex items-center gap-3 justify-center lg:justify-start">
                 <div className="flex -space-x-2">
                   {['#e8572a', '#1a1814', '#6b6560', '#c94820'].map((c, i) => (
@@ -275,65 +251,55 @@ export default function LandingPage() {
                   ))}
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-[#1a1814]">
-                    2,400+ tenants protected
-                  </p>
+                  <p className="text-sm font-semibold text-[#1a1814]">2,400+ tenants protected</p>
                   <p className="text-xs text-[#9c9590]">★★★★★ 4.9/5 average rating</p>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
 
-        {/* ── How it works ─────────────────────────────────────────────────── */}
+        {/* How it works */}
         <section id="how" className="border-t border-[#f0ece8] bg-[#faf9f7] py-20 px-6">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="font-bold text-3xl text-[#1a1814] mb-12" style={{ fontFamily: "'Playfair Display', serif" }}>
               How it works
             </h2>
-            <div className="grid sm:grid-cols-3 gap-10">
+            <div className="grid sm:grid-cols-4 gap-8">
               {[
-                { n: '01', title: 'Upload your lease', body: 'PDF, Word doc, or a photo. Any format works.' },
-                { n: '02', title: 'Pay once — $19', body: 'Secure checkout via Stripe. No subscription ever.' },
-                { n: '03', title: 'Get your full report', body: 'Risk score, flagged clauses, and a step-by-step action plan.' },
+                { n: '01', title: 'Upload your lease', body: 'PDF, Word doc, or a photo. No account needed.' },
+                { n: '02', title: 'AI analyzes it', body: 'Our AI reads every clause and flags every risk.' },
+                { n: '03', title: 'See your risk score', body: 'Preview your score and summary — completely free.' },
+                { n: '04', title: 'Unlock for $19', body: 'Pay once to see all flags, actions, and download your PDF.' },
               ].map((s) => (
                 <div key={s.n} className="text-center">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white border border-[#e8e4df] font-bold text-lg text-[#e8572a] mb-4 shadow-sm"
+                  <div className="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-white border border-[#e8e4df] font-bold text-base text-[#e8572a] mb-3 shadow-sm"
                     style={{ fontFamily: "'Playfair Display', serif" }}>
                     {s.n}
                   </div>
-                  <h3 className="font-semibold text-[#1a1814] mb-2">{s.title}</h3>
-                  <p className="text-sm text-[#6b6560] leading-relaxed">{s.body}</p>
+                  <h3 className="font-semibold text-[#1a1814] mb-1.5 text-sm">{s.title}</h3>
+                  <p className="text-xs text-[#6b6560] leading-relaxed">{s.body}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ── Pricing ─────────────────────────────────────────────────────────── */}
+        {/* Pricing */}
         <section id="pricing" className="py-20 px-6">
           <div className="max-w-md mx-auto text-center">
             <h2 className="font-bold text-3xl text-[#1a1814] mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
               Simple pricing
             </h2>
-            <p className="text-[#6b6560] mb-8">One analysis. One price. No surprises.</p>
+            <p className="text-[#6b6560] mb-8">Preview free. Pay $19 to unlock everything.</p>
             <div className="bg-white border border-[#e8e4df] rounded-2xl p-8 shadow-lg text-left">
               <div className="flex items-baseline gap-1 mb-1">
                 <span className="text-5xl font-bold text-[#1a1814]" style={{ fontFamily: "'Playfair Display', serif" }}>$19</span>
                 <span className="text-[#9c9590] text-sm ml-1">one-time</span>
               </div>
-              <p className="text-[#6b6560] text-sm mb-6">Full lease analysis, PDF report, email delivery</p>
+              <p className="text-[#6b6560] text-sm mb-6">Full report unlock — all flags, action plan, PDF, email</p>
               <ul className="space-y-2.5 text-sm mb-8">
-                {[
-                  'AI analysis of every clause',
-                  'Risk score 0–100',
-                  'Critical flags & warnings',
-                  'Plain-English explanations',
-                  'Step-by-step action plan',
-                  'PDF report download',
-                  'Instant email delivery',
-                ].map((item) => (
+                {['Full clause-by-clause analysis', 'Risk score 0–100', 'All critical flags & warnings', 'Plain-English explanations', 'Step-by-step action plan', 'PDF report download', 'Instant email delivery'].map((item) => (
                   <li key={item} className="flex items-center gap-2.5 text-[#1a1814]">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e8572a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="20 6 9 17 4 12" />
@@ -344,16 +310,16 @@ export default function LandingPage() {
               </ul>
               <button
                 onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setTimeout(() => inputRef.current?.click(), 400); }}
-                className="w-full bg-[#e8572a] hover:bg-[#c94820] text-white font-bold py-3.5 rounded-xl transition-colors text-center"
+                className="w-full bg-[#e8572a] hover:bg-[#c94820] text-white font-bold py-3.5 rounded-xl transition-colors"
               >
-                Analyze My Lease — $19
+                Analyze My Lease — Free Preview
               </button>
             </div>
           </div>
         </section>
       </main>
 
-      {/* ── Footer ─────────────────────────────────────────────────────────────── */}
+      {/* Footer */}
       <footer className="border-t border-[#f0ece8] py-8 px-6">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <span className="font-bold text-[#1a1814]">reveal<span className="text-[#e8572a]">r</span></span>
