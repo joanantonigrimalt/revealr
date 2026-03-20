@@ -3,16 +3,16 @@ import { stripe, PRICE_CENTS, CURRENCY, PRODUCT_NAME } from '@/lib/stripe';
 
 export const runtime = 'nodejs';
 
-// POST /api/create-checkout — creates Stripe session to unlock a completed analysis
+// POST /api/create-checkout — creates Stripe session; analysis runs AFTER payment
 export async function POST(req: NextRequest) {
   try {
-    const { resultKey, email, fileName } = await req.json() as {
-      resultKey: string;
+    const { fileKey, email, fileName } = await req.json() as {
+      fileKey: string;
       email: string;
       fileName: string;
     };
 
-    if (!resultKey || !email || !fileName) {
+    if (!fileKey || !email || !fileName) {
       return NextResponse.json({ error: 'Missing required fields.' }, { status: 400 });
     }
 
@@ -39,9 +39,9 @@ export async function POST(req: NextRequest) {
           quantity: 1,
         },
       ],
-      metadata: { resultKey, email, fileName },
-      success_url: `${appUrl}/dashboard?unlocked=1&result=${encodeURIComponent(resultKey)}&email=${encodeURIComponent(email)}&name=${encodeURIComponent(fileName)}&session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${appUrl}/dashboard?cancelled=1&result=${encodeURIComponent(resultKey)}&email=${encodeURIComponent(email)}&name=${encodeURIComponent(fileName)}`,
+      metadata: { fileKey, email, fileName },
+      success_url: `${appUrl}/dashboard?unlocked=1&file=${encodeURIComponent(fileKey)}&email=${encodeURIComponent(email)}&name=${encodeURIComponent(fileName)}&session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${appUrl}/dashboard?cancelled=1&file=${encodeURIComponent(fileKey)}&email=${encodeURIComponent(email)}&name=${encodeURIComponent(fileName)}`,
     });
 
     return NextResponse.json({ url: session.url });
