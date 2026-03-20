@@ -5,16 +5,19 @@ import { validateFile } from '@/lib/validators';
 export const runtime = 'nodejs';
 export const maxDuration = 30;
 
-// POST /api/upload — saves file, returns fileKey (no payment required)
 export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData();
-    const file = formData.get('file');
+    const fileField = formData.get('file');
     const email = (formData.get('email') as string | null)?.trim() ?? '';
 
-    if (!file || !(file instanceof File)) {
+    // typeof string = it's a text field, not a file — safe check for Node 18
+    if (!fileField || typeof fileField === 'string') {
       return NextResponse.json({ error: 'No file uploaded.' }, { status: 400 });
     }
+
+    // Cast to Blob (File extends Blob, available in Node 18+)
+    const file = fileField as Blob & { name: string; type: string };
 
     const validation = validateFile(file.name, file.size, file.type);
     if (!validation.valid) {
@@ -27,6 +30,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ fileKey, fileName: file.name, email });
   } catch (err) {
     console.error('[upload]', err);
-    return NextResponse.json({ error: 'Upload failed.' }, { status: 500 });
+    const msg = err instanceof Error ? err.message : 'Upload failed.';
+    return NextResponse.json({ error: msg }, { status: 500 });
   }
 }

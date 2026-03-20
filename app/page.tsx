@@ -158,9 +158,19 @@ export default function LandingPage() {
       const fd = new FormData();
       fd.append('file', file!);
       fd.append('email', email.trim());
+
       const res = await fetch('/api/upload', { method: 'POST', body: fd });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error);
+
+      // Parse JSON safely — Vercel can return HTML on unhandled errors
+      let data: Record<string, string> = {};
+      try {
+        data = await res.json();
+      } catch {
+        throw new Error('Server error. Please try again in a moment.');
+      }
+
+      if (!res.ok) throw new Error(data.error ?? `Upload failed (${res.status}).`);
+
       window.location.href = `/dashboard?file=${encodeURIComponent(data.fileKey)}&name=${encodeURIComponent(data.fileName)}&email=${encodeURIComponent(email.trim())}`;
     } catch (err) {
       setEmailError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
