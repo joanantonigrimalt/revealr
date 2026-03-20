@@ -30,14 +30,14 @@ function DashboardInner() {
   const cancelled = params.get('cancelled') === '1';
 
   // Status machine:
-  //  'checking'  — checking bypass (brief, only for admin)
-  //  'locked'    — regular user, waiting for payment (no Claude called yet)
-  //  'analyzing' — Claude is running (bypass users OR after payment)
+  //  'loading'   — fake progress animation (no Claude, just UX)
+  //  'locked'    — regular user, waiting for payment
+  //  'analyzing' — Claude is running (bypass OR after payment)
   //  'success'   — full report visible
   //  'error'     — something failed
-  type Status = 'checking' | 'locked' | 'analyzing' | 'success' | 'error';
+  type Status = 'loading' | 'locked' | 'analyzing' | 'success' | 'error';
 
-  const [status, setStatus]             = useState<Status>('checking');
+  const [status, setStatus]             = useState<Status>('loading');
   const [progressStep, setProgress]     = useState(0);
   const [result, setResult]             = useState<LeaseAnalysisResult | null>(null);
   const [error, setError]               = useState('');
@@ -81,26 +81,35 @@ function DashboardInner() {
     }
   }, [fileKey, fileName]);
 
-  // ── A: Fresh upload — check bypass first, then decide ────────────────────
+  // ── A: Fresh upload — animate first, then bypass check or paywall ────────
   useEffect(() => {
     if (unlocked || !fileKey || ran.current) return;
     ran.current = true;
 
     const init = async () => {
+      // Play the progress animation (UX only — no Claude yet)
+      setStatus('loading');
+      setProgress(0); await delay(STEP_MS);
+      setProgress(1); await delay(STEP_MS);
+      setProgress(2); await delay(STEP_MS * 0.8);
+      setProgress(3); await delay(STEP_MS * 0.6);
+
+      // Now check bypass
       try {
         const bypassRes = await fetch('/api/check-bypass');
         if (bypassRes.ok) {
           const { bypassed } = await bypassRes.json();
           if (bypassed === true) {
             setDevBypass(true);
-            await runAnalysis(); // admin only — runs Claude immediately
+            await runAnalysis(); // runs Claude for real
             return;
           }
         }
       } catch {
-        // non-fatal — fall through to locked
+        // non-fatal
       }
-      // Regular user: show paywall immediately, no Claude call
+
+      // Regular user → show paywall
       setStatus('locked');
     };
     init();
@@ -173,19 +182,8 @@ function DashboardInner() {
   }
   if (status === 'error') return <ErrorScreen message={error} />;
 
-  // ── Checking / brief spinner before bypass result ─────────────────────────
-  if (status === 'checking') {
-    return (
-      <Shell>
-        <div className="flex-1 flex items-center justify-center">
-          <div className="w-8 h-8 border-2 border-[#e8572a] border-t-transparent rounded-full animate-spin" />
-        </div>
-      </Shell>
-    );
-  }
-
-  // ── Analyzing — Claude is running ─────────────────────────────────────────
-  if (status === 'analyzing') {
+  // ── Loading animation (UX) OR Claude analyzing ────────────────────────────
+  if (status === 'loading' || status === 'analyzing') {
     return (
       <Shell>
         <div className="flex-1 flex items-center justify-center px-4">
