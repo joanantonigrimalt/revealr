@@ -1,7 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { isBypassEnabled } from '@/lib/bypass';
 
 export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic'; // must read env vars at request time, not build time
 
 /**
  * GET /api/check-bypass

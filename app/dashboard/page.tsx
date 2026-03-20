@@ -193,125 +193,142 @@ function DashboardInner() {
     );
   }
 
-  // ── Locked — regular user, not paid yet ───────────────────────────────────
-  if ((status === 'locked' || cancelled) && !result) {
+  // ── Locked — blurred preview + paywall overlay ────────────────────────────
+  if (status === 'locked' || cancelled) {
+    // Fake placeholder flags to show blurred behind the paywall
+    const fakeSeverities = [
+      { label: 'CRITICAL', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-100', title: 'Early Termination Penalty', body: 'Clause requires tenant to pay up to 3 months rent as penalty...' },
+      { label: 'WARNING',  color: 'text-amber-600', bg: 'bg-amber-50', border: 'border-amber-100', title: 'Automatic Rent Increase', body: 'Annual rent increase tied to CPI index without tenant consent...' },
+      { label: 'WARNING',  color: 'text-amber-600', bg: 'bg-amber-50', border: 'border-amber-100', title: 'Unlimited Landlord Entry', body: 'Landlord may enter premises at any time without prior notice...' },
+      { label: 'INFO',     color: 'text-blue-600',  bg: 'bg-blue-50',  border: 'border-blue-100',  title: 'Subletting Restriction', body: 'Tenant may not sublet or assign lease without written consent...' },
+    ];
+
     return (
       <Shell>
-        <div className="container-app py-12 flex flex-col items-center">
-
-          {/* File badge */}
-          <div className="flex items-center gap-3 mb-10 px-5 py-3 bg-white border border-[#e8e4df] rounded-xl shadow-sm">
-            <div className="w-9 h-9 rounded-lg bg-[#fdf0eb] flex items-center justify-center flex-shrink-0">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e8572a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                <polyline points="14 2 14 8 20 8" />
-              </svg>
-            </div>
-            <div className="min-w-0">
-              <p className="text-xs text-[#9c9590]">Lease uploaded successfully</p>
-              <p className="text-sm font-semibold text-[#1a1814] truncate max-w-xs">{fileName}</p>
-            </div>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0">
-              <polyline points="20 6 9 17 4 12" />
-            </svg>
+        <div className="container-app py-8">
+          <div className="mb-6">
+            <p className="text-[#9c9590] text-sm mb-1">Analysis complete for</p>
+            <h1 className="font-serif font-bold text-2xl text-[#1a1814] truncate">{fileName}</h1>
           </div>
 
-          {/* Main card */}
-          <div className="w-full max-w-md bg-white border border-[#e8e4df] rounded-2xl shadow-xl overflow-hidden">
+          <div className="flex flex-col lg:flex-row gap-6">
+            {/* Main content — blurred behind paywall */}
+            <div className="flex-1 min-w-0">
 
-            {/* Header */}
-            <div className="bg-[#1a1814] px-8 py-6 text-center">
-              <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mx-auto mb-3">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
-                </svg>
-              </div>
-              <h1 className="font-bold text-white text-xl mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>
-                Your Lease Is Ready to Analyze
-              </h1>
-              <p className="text-white/60 text-sm">AI analysis runs immediately after payment</p>
-            </div>
-
-            {/* What you get */}
-            <div className="px-8 py-5 border-b border-[#f0ece8]">
-              <p className="text-xs font-semibold text-[#9c9590] uppercase tracking-wider mb-3">What you get</p>
-              <ul className="space-y-2">
-                {[
-                  'Risk score 0–100 with severity rating',
-                  'Every flagged clause (critical, warning, info)',
-                  'Plain-English explanation per issue',
-                  'Recommended action for each flag',
-                  'Full prioritized action plan',
-                  'PDF download + email delivery',
-                ].map((item) => (
-                  <li key={item} className="flex items-center gap-2.5 text-sm text-[#444]">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e8572a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0">
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Payment form */}
-            <div className="px-8 py-6">
-              <div className="flex items-baseline justify-between mb-4">
-                <span className="text-sm font-semibold text-[#1a1814]">Full Lease Analysis Report</span>
-                <div className="text-right">
-                  <span className="text-2xl font-bold text-[#1a1814]" style={{ fontFamily: "'Playfair Display', serif" }}>$19</span>
-                  <span className="text-xs text-[#9c9590] ml-1">one-time</span>
+              {/* Risk score placeholder */}
+              <div className="bg-white border border-[#e8e4df] rounded-2xl p-6 shadow-sm mb-5">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-6">
+                  {/* Gauge placeholder */}
+                  <div className="flex-shrink-0 flex flex-col items-center">
+                    <div className="relative w-32 h-20 overflow-hidden">
+                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-32 rounded-full border-8 border-[#f0ece8]" />
+                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-20 h-10 rounded-t-full bg-[#faf9f7] border-t-4 border-x-4 border-[#f0ece8]" />
+                    </div>
+                    <div className="mt-1 text-center">
+                      <div className="text-4xl font-bold text-[#d0ccc8] blur-sm select-none">??</div>
+                      <div className="text-xs text-[#9c9590]">out of 100</div>
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <div className="h-5 bg-[#f0ece8] rounded-full w-32 mb-2 animate-pulse" />
+                    <div className="h-3 bg-[#f5f3f1] rounded-full w-full mb-1.5" />
+                    <div className="h-3 bg-[#f5f3f1] rounded-full w-3/4 mb-4" />
+                    <div className="flex gap-3">
+                      {[['3', 'Critical', 'bg-red-100 text-red-600'], ['5', 'Warnings', 'bg-amber-100 text-amber-600'], ['2', 'Info', 'bg-blue-100 text-blue-600']].map(([n, l, cls]) => (
+                        <div key={l} className={`px-3 py-1.5 rounded-lg text-center blur-sm select-none ${cls}`}>
+                          <div className="text-lg font-bold">{n}</div>
+                          <div className="text-xs font-medium">{l}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              <label htmlFor="pay-email" className="block text-xs font-semibold text-[#1a1814] mb-1">
-                Email — report delivered here
-              </label>
-              <input
-                id="pay-email"
-                type="email"
-                value={emailInput}
-                onChange={(e) => { setEmailInput(e.target.value); setEmailError(''); }}
-                onKeyDown={(e) => e.key === 'Enter' && handleUnlock()}
-                placeholder="you@example.com"
-                autoComplete="email"
-                className={[
-                  'w-full px-4 py-3 rounded-xl border text-sm mb-1 focus:outline-none focus:ring-2 focus:ring-[#e8572a]/20 focus:border-[#e8572a]/60 transition-all',
-                  emailError ? 'border-red-400' : 'border-[#e8e4df]',
-                ].join(' ')}
-              />
-              {emailError && <p className="text-xs text-red-500 mb-2">{emailError}</p>}
+              {/* Flags — blurred with paywall overlay */}
+              <div className="relative">
+                <h2 className="font-serif font-bold text-lg text-[#1a1814] mb-3">Issues Found</h2>
 
-              <button
-                onClick={handleUnlock}
-                disabled={payLoading}
-                className="w-full mt-3 flex items-center justify-center gap-2 bg-[#e8572a] hover:bg-[#c94820] text-white font-bold py-3.5 rounded-xl transition-all shadow-lg shadow-[#e8572a]/20 disabled:opacity-60"
-              >
-                {payLoading ? (
-                  <><Spinner /> Redirecting to checkout…</>
-                ) : (
-                  <>
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                    </svg>
-                    Unlock Full Report — $19
-                  </>
-                )}
-              </button>
+                {/* Blurred fake flags */}
+                <div className="space-y-3 select-none pointer-events-none" aria-hidden>
+                  {fakeSeverities.map((f, i) => (
+                    <div key={i} className={`p-4 ${f.bg} border ${f.border} rounded-xl ${i >= 1 ? 'blur-sm opacity-70' : 'blur-[2px] opacity-80'}`}>
+                      <div className="flex items-center gap-2 mb-1.5">
+                        <span className={`text-xs font-bold uppercase tracking-wide ${f.color}`}>{f.label}</span>
+                        <span className="text-xs text-[#9c9590] font-mono">§{i + 3}.{i + 1}</span>
+                      </div>
+                      <p className="font-semibold text-[#1a1814] text-sm mb-1">{f.title}</p>
+                      <p className="text-xs text-[#6b6560]">{f.body}</p>
+                    </div>
+                  ))}
+                </div>
 
-              <div className="flex items-center justify-center gap-3 mt-3 text-xs text-[#9c9590]">
-                <span>🔒 Secure · Stripe</span>
-                <span>·</span>
-                <span>Results in ~60 sec</span>
-                <span>·</span>
-                <span>No subscription</span>
+                {/* Paywall overlay */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-b from-transparent via-white/85 to-white rounded-2xl px-4 pt-20 pb-6">
+                  <div className="w-full max-w-sm text-center">
+                    <div className="w-12 h-12 rounded-2xl bg-[#1a1814] flex items-center justify-center mx-auto mb-3">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                      </svg>
+                    </div>
+                    <h3 className="font-serif font-bold text-xl text-[#1a1814] mb-1">Your report is ready</h3>
+                    <p className="text-[#6b6560] text-sm mb-5">Unlock to see all issues, risk score, plain-English explanations and your full action plan.</p>
+
+                    <input
+                      type="email"
+                      value={emailInput}
+                      onChange={(e) => { setEmailInput(e.target.value); setEmailError(''); }}
+                      onKeyDown={(e) => e.key === 'Enter' && handleUnlock()}
+                      placeholder="your@email.com"
+                      autoComplete="email"
+                      className={[
+                        'w-full px-4 py-3 rounded-xl border text-sm mb-1 focus:outline-none focus:ring-2 focus:ring-[#e8572a]/20 focus:border-[#e8572a]/60 transition-all',
+                        emailError ? 'border-red-400' : 'border-[#e8e4df]',
+                      ].join(' ')}
+                    />
+                    {emailError && <p className="text-xs text-red-500 mb-1 text-left">{emailError}</p>}
+
+                    <button
+                      onClick={handleUnlock}
+                      disabled={payLoading}
+                      className="w-full mt-2 flex items-center justify-center gap-2 bg-[#e8572a] hover:bg-[#c94820] text-white font-bold py-3.5 rounded-xl transition-all shadow-lg shadow-[#e8572a]/20 disabled:opacity-60"
+                    >
+                      {payLoading ? <><Spinner /> Redirecting…</> : <>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                        </svg>
+                        Unlock Full Report — $19
+                      </>}
+                    </button>
+                    <p className="text-xs text-[#9c9590] mt-2">One-time · No subscription · Secure via Stripe</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Sidebar */}
+            <div className="w-full lg:w-72 flex-shrink-0">
+              <div className="lg:sticky lg:top-20 space-y-4">
+                <div className="bg-white border border-[#e8e4df] rounded-xl p-4 shadow-sm">
+                  <div className="text-xs font-semibold text-[#9c9590] uppercase tracking-wider mb-2">Document</div>
+                  <p className="text-sm font-medium text-[#1a1814] truncate">{fileName}</p>
+                </div>
+                <div className="bg-[#1a1814] rounded-xl p-5 text-white">
+                  <div className="text-sm font-bold mb-1">Full Report</div>
+                  <div className="text-[#9c9590] text-xs mb-3">All flags · Action plan · PDF · Email</div>
+                  <div className="text-3xl font-bold mb-1">$19</div>
+                  <div className="text-xs text-[#6b6560] mb-4">one-time · no subscription</div>
+                  <button
+                    onClick={handleUnlock}
+                    disabled={payLoading}
+                    className="w-full bg-[#e8572a] hover:bg-[#c94820] text-white font-bold py-2.5 rounded-lg transition-colors text-sm disabled:opacity-60"
+                  >
+                    {payLoading ? 'Redirecting…' : 'Unlock Now →'}
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-
-          <p className="text-xs text-[#9c9590] mt-6 text-center max-w-sm leading-relaxed">
-            Analysis starts immediately after payment. Your document is deleted from our servers once the report is generated.
-          </p>
         </div>
       </Shell>
     );
