@@ -77,10 +77,14 @@ export default function SiteFooter() {
           <div className="md:w-52 flex-shrink-0">
             <Link
               href="/"
-              className="font-bold text-[#1a1814] text-lg"
-              style={{ fontFamily: "var(--font-epilogue), system-ui, sans-serif" }}
+              className="flex items-center gap-1.5"
             >
-              reveal<span className="text-[#e8572a]">r</span>
+              <div className="w-6 h-6 rounded bg-[#1a1814] flex items-center justify-center flex-shrink-0">
+                <span className="text-[#e8572a] font-bold text-xs leading-none" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>r</span>
+              </div>
+              <span className="font-bold text-[#1a1814] text-lg" style={{ fontFamily: "var(--font-epilogue), system-ui, sans-serif" }}>
+                reveal<span className="text-[#e8572a]">r</span>
+              </span>
             </Link>
             <p className="text-xs text-[#9c9590] mt-3 leading-relaxed">
               AI-powered contract analysis for tenants, employees, and freelancers. Know what you're signing.

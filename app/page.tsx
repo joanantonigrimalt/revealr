@@ -130,6 +130,20 @@ const DOC_TYPES = [
     desc: 'Geographic scope, duration, enforceability, garden leave',
   },
   {
+    label: 'Purchase Agreements',
+    href: '/contract-risk-checker',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+        <line x1="9" y1="22" x2="9" y2="16" />
+        <line x1="15" y1="22" x2="15" y2="16" />
+        <line x1="9" y1="16" x2="15" y2="16" />
+        <line x1="12" y1="9" x2="12" y2="13" />
+      </svg>
+    ),
+    desc: 'Contingencies, earnest money, as-is clauses, closing terms',
+  },
+  {
     label: 'Any Contract',
     href: '/contract-risk-checker',
     icon: (
@@ -281,8 +295,13 @@ export default function HomePage() {
             aria-label="Main navigation"
             className="flex items-center justify-between px-6 sm:px-10 py-4 border-b border-[#f0ece8]"
           >
-            <Link href="/" aria-label="Revealr homepage" className="text-xl font-bold tracking-tight text-[#1a1814]">
-              reveal<span className="text-[#e8572a]">r</span>
+            <Link href="/" aria-label="Revealr homepage" className="flex items-center gap-1.5">
+              <div className="w-7 h-7 rounded-md bg-[#1a1814] flex items-center justify-center flex-shrink-0">
+                <span className="text-[#e8572a] font-bold text-sm leading-none" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>r</span>
+              </div>
+              <span className="text-[1.1rem] font-bold tracking-tight text-[#1a1814]">
+                reveal<span className="text-[#e8572a]">r</span>
+              </span>
             </Link>
             <div className="hidden sm:flex items-center gap-8 text-sm text-[#6b6560] font-medium">
               <Link href="/lease-agreement-analyzer" className="hover:text-[#1a1814] transition-colors">Leases</Link>
@@ -328,16 +347,16 @@ export default function HomePage() {
                 </h1>
 
                 <p className="text-[#6b6560] text-lg leading-relaxed mb-6 max-w-lg">
-                  Upload any contract — lease, employment agreement, NDA, freelance contract — and Revealr flags every risky clause, scores the document 0–100, and explains each risk in plain English. Know what to ask before you sign.
+                  Upload any contract — lease, employment agreement, NDA, freelance contract — and get an AI analysis that surfaces risk patterns, scores the document 0–100, and explains each issue in plain English. Understand what you're agreeing to before you sign.
                 </p>
 
                 <ul className="space-y-2.5 mb-8" aria-label="Key benefits">
                   {[
-                    { bold: 'Works on any contract type', rest: ' — leases, NDAs, employment, freelance, and more' },
-                    { bold: 'Plain-English explanations', rest: ' — no legal jargon, no law degree required' },
-                    { bold: 'Risk score 0–100', rest: ' — understand severity at a glance' },
-                    { bold: 'Specific action steps', rest: ' — exactly what to negotiate or push back on' },
-                    { bold: 'PDF + email delivery', rest: ' — share with the other party or an attorney' },
+                    { bold: 'Works on any contract type', rest: ' — leases, NDAs, employment, freelance, purchase agreements, and more' },
+                    { bold: 'Plain-English explanations', rest: ' — written for the person signing, not for lawyers' },
+                    { bold: 'Risk score 0–100', rest: ' — see severity at a glance, not buried in text' },
+                    { bold: 'Concrete action steps', rest: ' — specific language to request, not generic advice' },
+                    { bold: 'PDF + email delivery', rest: ' — review offline or share with an attorney' },
                   ].map(({ bold, rest }) => (
                     <li key={bold} className="flex items-start gap-2.5 text-sm text-[#444]">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e8572a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0 mt-0.5" aria-hidden="true">

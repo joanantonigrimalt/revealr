@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     siteName: 'Revealr',
     title: 'Revealr — AI Contract Analysis. Know What You\'re Signing.',
     description:
-      'Upload any contract and get an AI risk analysis in 60 seconds. Risk score, flagged clauses, plain-English explanations, and a full action plan. $19 one-time.',
+      'Upload any contract and get an AI risk analysis in 60 seconds. Risk score, identified risk patterns, plain-English explanations, and a full action plan. $19 one-time.',
   },
   twitter: {
     card: 'summary_large_image',

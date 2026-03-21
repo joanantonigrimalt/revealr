@@ -104,7 +104,7 @@ export const seoPages: SEOPage[] = [
     hubPage: '/lease-agreement-analyzer',
     title: 'Lease Agreement Analyzer — Review Any Lease with AI in 60 Seconds | Revealr',
     metaDescription:
-      'Upload your lease and get a full AI risk analysis in minutes. Revealr flags risky clauses, scores your lease 0–100, and explains every red flag in plain English. No lawyer needed.',
+      'Upload your lease and get a full AI risk analysis in minutes. Revealr identifies risky clauses, scores your lease 0–100, and explains each issue in plain English — so you know what to ask before signing.',
     h1: 'Lease Agreement Analyzer — Review Any Lease with AI in 60 Seconds',
     h2s: [
       'What Does a Lease Agreement Analyzer Actually Check?',
@@ -1204,7 +1204,7 @@ export const seoPages: SEOPage[] = [
       "How Revealr Protects Freelancers Before They Start Work",
     ],
     intro:
-      "Freelance contracts are written by clients — which means they are written to protect the client. IP ownership that strips you of your work, payment terms with no late fees, kill fees that leave you with nothing, and revision clauses with no limits are all standard in client-drafted agreements. Revealr reads your freelance contract and flags every clause that puts you at a disadvantage before you invest a single hour.",
+      "Freelance contracts are written by clients — which means they are written to protect the client. IP ownership that strips you of your work, payment terms with no late fees, kill fees that leave you with nothing, and revision clauses with no limits are all standard in client-drafted agreements. Revealr reads your freelance contract and surfaces the clauses that most commonly disadvantage the freelancer, so you can push back before you start the work.",
     checksTitle: 'What Revealr checks in freelance contracts',
     checks: [
       { title: 'IP ownership and work-for-hire', description: 'Who owns the work — including rejected concepts and preliminary drafts' },

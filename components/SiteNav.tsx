@@ -10,10 +10,15 @@ export default function SiteNav() {
         <Link
           href="/"
           aria-label="Revealr homepage"
-          className="text-xl font-bold tracking-tight text-[#1a1814]"
-          style={{ fontFamily: "var(--font-epilogue), system-ui, sans-serif" }}
+          className="flex items-center gap-1.5 group"
         >
-          reveal<span className="text-[#e8572a]">r</span>
+          {/* Lettermark badge */}
+          <div className="w-7 h-7 rounded-md bg-[#1a1814] flex items-center justify-center flex-shrink-0">
+            <span className="text-[#e8572a] font-bold text-sm leading-none" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>r</span>
+          </div>
+          <span className="text-[1.1rem] font-bold tracking-tight text-[#1a1814]" style={{ fontFamily: "var(--font-epilogue), system-ui, sans-serif" }}>
+            reveal<span className="text-[#e8572a]">r</span>
+          </span>
         </Link>
 
         <div className="hidden sm:flex items-center gap-7 text-sm text-[#6b6560] font-medium">
@@ -28,6 +33,9 @@ export default function SiteNav() {
           </Link>
           <Link href="/freelance-contract-review" className="hover:text-[#1a1814] transition-colors">
             Freelance
+          </Link>
+          <Link href="/how-it-works" className="hover:text-[#1a1814] transition-colors">
+            How It Works
           </Link>
           <Link href="/blog" className="hover:text-[#1a1814] transition-colors">
             Resources

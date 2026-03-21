@@ -128,10 +128,32 @@ export default function DashboardSidebar({
         </div>
       )}
 
+      {/* Confidence note when low/medium */}
+      {result.confidence && result.confidence !== 'high' && (
+        <div className={`rounded-xl border p-3 ${
+          result.confidence === 'low'
+            ? 'bg-amber-50 border-amber-200'
+            : 'bg-blue-50 border-blue-100'
+        }`}>
+          <div className={`text-xs font-semibold mb-1 ${
+            result.confidence === 'low' ? 'text-amber-700' : 'text-blue-700'
+          }`}>
+            {result.confidence === 'low' ? 'Limited analysis' : 'Partial analysis'}
+          </div>
+          <p className={`text-xs leading-relaxed ${
+            result.confidence === 'low' ? 'text-amber-600' : 'text-blue-600'
+          }`}>
+            {result.confidence === 'low'
+              ? 'The document had limited readable text. Results may be incomplete. Try re-uploading a clearer version.'
+              : 'The analysis is based on the text extracted. Some sections may not have been fully parsed.'}
+          </p>
+        </div>
+      )}
+
       {/* Disclaimer */}
       <div className="px-1">
         <p className="text-xs text-text-muted leading-relaxed">
-          AI analysis for informational purposes only. Not legal advice. Consult an attorney before signing.
+          AI analysis for informational purposes only. Not legal advice. For high-stakes agreements, always verify flagged clauses with a qualified attorney.
         </p>
       </div>
     </aside>
