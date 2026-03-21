@@ -12,10 +12,6 @@ const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://getrevealr.com';
 export function generateSEOMetadata(page: SEOPage): Metadata {
   const canonical = `${APP_URL}/${page.slug}`;
 
-  // Use the default OG image since per-page images don't exist yet.
-  // Swap to `${APP_URL}/og/${page.slug}.png` once you generate them.
-  const ogImage = `${APP_URL}/og-image.png`;
-
   return {
     title: { absolute: page.title },
     description: page.metaDescription,
@@ -31,13 +27,12 @@ export function generateSEOMetadata(page: SEOPage): Metadata {
       url: canonical,
       siteName: 'Revealr',
       type: 'website',
-      images: [{ url: ogImage, width: 1200, height: 630, alt: page.h1 }],
+      // No explicit images — file-based app/(marketing)/[slug]/opengraph-image.tsx handles it
     },
     twitter: {
       card: 'summary_large_image',
       title: page.title,
       description: page.metaDescription,
-      images: [ogImage],
     },
   };
 }
@@ -105,13 +100,6 @@ export function buildSoftwareAppSchema(): string {
       priceCurrency: 'USD',
       availability: 'https://schema.org/InStock',
     },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '2400',
-      bestRating: '5',
-      worstRating: '1',
-    },
   };
   return JSON.stringify(schema);
 }
@@ -146,7 +134,7 @@ export function buildArticleSchema(params: {
       url: APP_URL,
       logo: {
         '@type': 'ImageObject',
-        url: `${APP_URL}/og-image.png`,
+        url: `${APP_URL}/opengraph-image`,
       },
     },
     mainEntityOfPage: {
@@ -164,4 +152,5 @@ export const TOOL_PAGE_SLUGS = new Set([
   'employment-contract-review',
   'nda-review',
   'freelance-contract-review',
+  'purchase-agreement-review',
 ]);

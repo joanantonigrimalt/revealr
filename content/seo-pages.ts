@@ -18,7 +18,8 @@ export type Cluster =
   | 'employment-job'
   | 'nda-restrictive'
   | 'service-freelance'
-  | 'contract-review';
+  | 'contract-review'
+  | 'purchase-real-estate';
 export type SeverityLevel = 'CRITICAL' | 'WARNING' | 'INFO';
 
 export interface FAQ {
@@ -2055,6 +2056,108 @@ export const seoPages: SEOPage[] = [
     ctaMicrocopy: 'Any contract type · $19 · 0–100 risk score · 60 seconds',
     disclaimer:
       'Revealr provides AI-assisted document analysis for informational purposes only. A risk score is not legal advice. For high-stakes contracts, consult a licensed attorney.',
+  },
+
+  // ── 21 ─────────────────────────────────────────────────────────────────────
+  {
+    slug: 'purchase-agreement-review',
+    primaryKeyword: 'purchase agreement review',
+    secondaryKeywords: [
+      'review purchase agreement online',
+      'real estate contract review',
+      'buy sell agreement checker',
+      'purchase contract analysis',
+      'real estate purchase agreement clauses',
+      'ai purchase agreement review',
+      'home purchase contract review',
+    ],
+    intent: 'comercial',
+    difficulty: 'media',
+    monetization: 'alto',
+    priority: 'alta',
+    cluster: 'purchase-real-estate',
+    hubPage: '/purchase-agreement-review',
+    title: 'Purchase Agreement Review — Check Any Buy/Sell Contract Before Closing | Revealr',
+    metaDescription:
+      'Upload your purchase or sale agreement and get an AI analysis in minutes. Revealr identifies contingency risks, earnest money clauses, as-is disclaimers, and closing traps — in plain English.',
+    h1: 'Purchase Agreement Review — Understand What You\'re Signing Before Closing',
+    h2s: [
+      'The 6 Clauses in Every Purchase Agreement That Deserve Closer Attention',
+      'What Revealr Checks in Purchase and Sale Agreements',
+      'How to Use a Purchase Agreement Review to Negotiate Better Terms',
+    ],
+    intro:
+      'Purchase agreements are written by the selling party\'s attorney — which means the defaults favor the seller. Contingency windows that expire before you can act, earnest money terms that are hard to get back, and as-is disclaimers that eliminate recourse are standard in many agreements. Revealr reads your purchase contract and surfaces the clauses that most commonly create problems for buyers before closing day.',
+    checksTitle: 'What Revealr checks in purchase agreements',
+    checks: [
+      { title: 'Contingency clauses', description: 'Financing, inspection, and appraisal contingencies — and what happens if they are not met or expire' },
+      { title: 'Earnest money terms', description: 'Conditions under which your deposit is at risk or non-refundable' },
+      { title: 'As-is disclaimers', description: 'Seller disclosure limitations and what recourse you have after closing' },
+      { title: 'Closing date and delay penalties', description: 'How flexible the closing date is and what happens if either party needs more time' },
+      { title: 'Inclusions and exclusions', description: 'What fixtures, appliances, or items are (and are not) included in the sale' },
+      { title: 'Buyer and seller default remedies', description: 'What each party can do if the other fails to perform — and how asymmetric those remedies are' },
+    ],
+    sampleDocumentLabel: 'Residential Purchase Agreement',
+    sampleFlags: [
+      {
+        severity: 'CRITICAL',
+        section: '§6.2',
+        title: 'Earnest Money: Non-Refundable After 3 Days',
+        body: 'Earnest money becomes non-refundable 3 business days after signing, even if the financing contingency has not yet expired. This creates a window where you could lose your deposit while still working to secure a loan.',
+        action: 'Request that earnest money remain refundable through the financing contingency deadline, not on a separate shorter timeline.',
+      },
+      {
+        severity: 'WARNING',
+        section: '§4.1',
+        title: 'Inspection Contingency: 7-Day Window Only',
+        body: 'The inspection period is 7 calendar days from acceptance. This is a short window for scheduling inspections, reviewing reports, and negotiating repairs. Many markets allow 10–14 days.',
+        action: 'Request 10–14 days for the inspection contingency, or confirm you can schedule an inspector within 2–3 days of signing.',
+      },
+    ],
+    whoThisIsFor: [
+      { role: 'Homebuyers reviewing their purchase contract', description: 'You want to understand contingency deadlines, earnest money exposure, and default terms before you sign' },
+      { role: 'Real estate investors', description: 'You review purchase agreements regularly and want a fast first-pass tool to flag unusual or one-sided terms' },
+      { role: 'Anyone making their first property purchase', description: 'Real estate contracts are long and complex. A plain-English review helps you ask the right questions before closing' },
+    ],
+    whyReviewStat:
+      'Purchase agreements can be 20–40 pages with dozens of contingencies, deadlines, and default clauses. Missing a single deadline — like a financing contingency expiration — can put your earnest money at risk.',
+    faqs: [
+      {
+        question: 'What is a purchase agreement and why should I review it?',
+        answer:
+          'A purchase agreement (also called a buy-sell agreement or purchase and sale agreement) is the legally binding contract that governs a property transaction. It sets contingency deadlines, defines what is included in the sale, and specifies what happens if either party fails to perform. Reviewing it before signing helps you understand your rights and obligations before you are committed.',
+      },
+      {
+        question: 'What are the most important clauses to check in a purchase agreement?',
+        answer:
+          'The most consequential clauses are typically: (1) financing contingency — when it expires and what triggers it; (2) inspection contingency — how many days you have and what "unsatisfactory" means; (3) earnest money terms — when it becomes non-refundable and under what conditions it is returned; (4) as-is language — what seller disclosures are excluded; (5) default remedies — what each party can recover if the other backs out.',
+      },
+      {
+        question: 'Can Revealr analyze any real estate purchase agreement?',
+        answer:
+          'Yes. Revealr is designed to work with standard residential and commercial purchase agreements. Upload the document in PDF or Word format and the AI will identify the key risk patterns. For jurisdiction-specific nuances or complex commercial transactions, we recommend reviewing the Revealr output with a real estate attorney.',
+      },
+      {
+        question: 'Is this a substitute for a real estate attorney?',
+        answer:
+          'No. Revealr provides an AI-assisted first-pass analysis to help you understand the key terms and identify clauses worth questioning. For high-value transactions, we strongly recommend working with a licensed real estate attorney who can advise on your specific jurisdiction and circumstances.',
+      },
+      {
+        question: 'What is the earnest money clause and why does it matter?',
+        answer:
+          'The earnest money clause defines the deposit you put down to demonstrate serious intent to purchase. It specifies when the deposit is refundable (usually tied to contingency deadlines) and what happens if you or the seller backs out. Getting this wrong can mean losing your deposit even if the deal falls through for a legitimate reason.',
+      },
+    ],
+    relatedPages: [
+      { href: '/contract-risk-checker', anchor: 'check any contract for risk' },
+      { href: '/review-contract-before-signing', anchor: 'what to look for in any contract before signing' },
+      { href: '/lease-agreement-analyzer', anchor: 'review a rental lease instead' },
+    ],
+    ctaPrimary: 'Review My Purchase Agreement',
+    ctaSecondary: 'See a Sample Report',
+    ctaMicrocopy: 'Any purchase agreement · $19 · plain-English analysis · 60 seconds',
+    disclaimer:
+      'Revealr provides AI-assisted document analysis for informational purposes only. It is not a substitute for advice from a licensed real estate attorney. Always consult a qualified professional before signing a purchase agreement.',
   },
 ];
 
