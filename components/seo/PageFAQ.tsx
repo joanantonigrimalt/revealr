@@ -12,35 +12,44 @@ export default function PageFAQ({ h2, faqs }: Props) {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section className="py-14 px-4 bg-bg-card border-y border-border-base">
+    <section className="py-14 px-6 bg-white border-y border-[#e8e4df]">
       <div className="max-w-3xl mx-auto">
-        <h2 className="font-serif text-2xl sm:text-3xl font-bold text-text-primary mb-8">{h2}</h2>
+        <h2
+          className="text-2xl sm:text-3xl font-bold text-[#1a1814] mb-8"
+          style={{ fontFamily: "'Playfair Display', serif", letterSpacing: '-0.02em' }}
+        >
+          {h2}
+        </h2>
         <div className="space-y-2">
           {faqs.map((faq, i) => (
-            <div key={i} className="rounded-xl border border-border-base bg-white overflow-hidden">
+            <div
+              key={i}
+              className="rounded-xl border border-[#e8e4df] bg-[#faf9f7] overflow-hidden"
+            >
               <button
-                className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left hover:bg-bg-base transition-colors"
+                className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left hover:bg-[#f5f3f0] transition-colors"
                 onClick={() => setOpen(open === i ? null : i)}
                 aria-expanded={open === i}
               >
-                <span className="text-sm font-semibold text-text-primary">{faq.question}</span>
+                <span className="text-sm font-semibold text-[#1a1814]">{faq.question}</span>
                 <svg
                   width="16"
                   height="16"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke="currentColor"
+                  stroke="#9c9590"
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className={`flex-shrink-0 text-text-muted transition-transform duration-200 ${open === i ? 'rotate-180' : ''}`}
+                  className={`flex-shrink-0 transition-transform duration-200 ${open === i ? 'rotate-180' : ''}`}
+                  aria-hidden="true"
                 >
                   <polyline points="6 9 12 15 18 9" />
                 </svg>
               </button>
               {open === i && (
-                <div className="px-5 pb-4">
-                  <p className="text-sm text-text-secondary leading-relaxed">{faq.answer}</p>
+                <div className="px-5 pb-5 bg-white border-t border-[#f0ece8]">
+                  <p className="text-sm text-[#6b6560] leading-relaxed pt-4">{faq.answer}</p>
                 </div>
               )}
             </div>

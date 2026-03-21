@@ -4,6 +4,7 @@ import { useState, useCallback, useRef } from 'react';
 import Script from 'next/script';
 import { validateFile, validateEmail } from '@/lib/validators';
 import { formatFileSize } from '@/lib/utils';
+import SiteFooter from '@/components/SiteFooter';
 
 type Step = 'upload' | 'email' | 'loading';
 
@@ -932,32 +933,7 @@ export default function LandingPage() {
 
         </main>
 
-        {/* ── Footer ──────────────────────────────────────────────────────────── */}
-        <footer role="contentinfo" className="border-t border-[#f0ece8] py-10 px-6 bg-white">
-          <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-start justify-between gap-8">
-            <div>
-              <a href="/" className="font-bold text-[#1a1814] text-lg" style={{ fontFamily: "'Epilogue', sans-serif" }}>
-                reveal<span className="text-[#e8572a]">r</span>
-              </a>
-              <p className="text-xs text-[#9c9590] mt-2 max-w-xs leading-relaxed">
-                AI-powered rental lease review for tenants. Identify every risky clause before you sign.
-              </p>
-            </div>
-            <nav aria-label="Footer navigation" className="flex flex-wrap gap-x-8 gap-y-2 text-sm text-[#6b6560]">
-              <a href="#why-review" className="hover:text-[#1a1814] transition-colors">Why review</a>
-              <a href="#how-it-works" className="hover:text-[#1a1814] transition-colors">How it works</a>
-              <a href="#what-we-analyze" className="hover:text-[#1a1814] transition-colors">What we analyze</a>
-              <a href="#pricing" className="hover:text-[#1a1814] transition-colors">Pricing</a>
-              <a href="#faq" className="hover:text-[#1a1814] transition-colors">FAQ</a>
-            </nav>
-          </div>
-          <div className="max-w-5xl mx-auto mt-8 pt-6 border-t border-[#e8e4df]">
-            <p className="text-xs text-[#9c9590] leading-relaxed">
-              <strong>Disclaimer:</strong> Revealr is an AI-powered tool designed to help tenants identify potential issues in rental lease agreements before signing. It does not constitute legal advice and is not a substitute for consultation with a licensed attorney in your jurisdiction. Results may vary depending on document quality, format, and applicable local law. Always verify flagged clauses against your state and city regulations.
-            </p>
-            <p className="text-xs text-[#9c9590] mt-2">© {new Date().getFullYear()} Revealr. All rights reserved.</p>
-          </div>
-        </footer>
+        <SiteFooter />
 
       </div>
     </>
