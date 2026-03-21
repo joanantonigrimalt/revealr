@@ -664,6 +664,624 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+
+  // ── 11 ─────────────────────────────────────────────────────────────────────
+  {
+    slug: 'non-compete-clause-explained',
+    title: 'Non-Compete Clause Explained: What It Restricts and What You Can Push Back On',
+    metaDescription:
+      'Non-compete clauses can follow you for years after leaving a job. Here\'s what they actually restrict, when they\'re enforceable, and how to negotiate them.',
+    h1: 'Non-Compete Clause Explained: What It Restricts and How to Push Back',
+    category: 'employment',
+    publishedAt: '2025-03-05',
+    excerpt:
+      'Non-competes range from unenforceable boilerplate to career-defining restrictions. Here\'s how to tell the difference — and what to do about it.',
+    readingTime: 7,
+    relatedLanding: { href: '/non-compete-agreement-review', anchor: 'Non-Compete Agreement Review Tool' },
+    relatedPosts: [
+      { href: '/blog/what-to-check-in-an-employment-contract', anchor: 'What to Check in an Employment Contract' },
+      { href: '/blog/ip-assignment-agreement-what-to-know', anchor: 'IP Assignment Agreement Explained' },
+      { href: '/blog/common-nda-red-flags', anchor: 'Common NDA Red Flags' },
+    ],
+    sections: [
+      {
+        h2: 'What a Non-Compete Clause Actually Says',
+        paragraphs: [
+          'A non-compete agreement (or non-competition clause) restricts where you can work after leaving your current employer. Specifically, it prevents you from joining a competitor, starting a competing business, or sometimes working in the same industry, for a defined period and within a defined geography.',
+          'Non-competes appear in employment contracts, offer letters, and sometimes in standalone agreements that get signed separately at onboarding. They often sit near non-solicitation and NDA provisions — a cluster of post-employment restrictions that many employees sign without reading carefully.',
+        ],
+      },
+      {
+        h2: 'How Enforceable Are Non-Compete Agreements?',
+        paragraphs: [
+          'This depends almost entirely on your state. The enforceability landscape in the U.S. varies dramatically:',
+        ],
+        h3s: [
+          {
+            heading: 'States that do not enforce non-competes at all',
+            body: 'California, Minnesota, Oklahoma, and North Dakota effectively refuse to enforce employee non-competes. If you\'re employed in one of these states — and sometimes if you just live there, depending on the contract\'s governing law — a non-compete may be worthless.',
+          },
+          {
+            heading: 'States with significant restrictions',
+            body: 'Illinois, Massachusetts, and several others limit non-competes to higher-income employees, cap their duration, require additional consideration, or limit their geographic scope. Even in these states, courts scrutinize non-competes carefully.',
+          },
+          {
+            heading: 'States that generally enforce reasonable non-competes',
+            body: 'Most U.S. states will enforce a non-compete that is "reasonable" — typically meaning limited in duration (6–24 months), geography (the area where you actually worked), and scope (actual competitors, not entire industries). What\'s "reasonable" is litigated constantly.',
+          },
+        ],
+      },
+      {
+        h2: 'What Makes a Non-Compete Overbroad',
+        paragraphs: [
+          'Even in states that enforce non-competes, courts sometimes decline to enforce provisions that go too far. Common overreach includes: industry-wide restrictions rather than just direct competitors, unlimited geography ("worldwide"), durations exceeding 2 years for most employees, restrictions on roles unrelated to the employee\'s actual job, and non-competes imposed on low-wage workers.',
+          'Some courts will "blue pencil" an overbroad non-compete — rewriting it to be reasonable rather than voiding it entirely. Others void any non-compete that isn\'t already reasonable as written. Know your state\'s approach.',
+        ],
+      },
+      {
+        h2: 'How to Negotiate a Non-Compete Before Signing',
+        paragraphs: [
+          'Non-competes are more negotiable than most employees realize. Before signing: (1) Ask for the geographic restriction to match where you actually work, not a national or international scope. (2) Push for a shorter duration — 6–12 months is more defensible than 2 years for most roles. (3) Ask for a carve-out for your current clients, projects, or skills predating the employment. (4) Request a "garden leave" provision — salary continuation during the restricted period, making the restriction fairer to enforce. (5) Ask what happens to the non-compete if you\'re laid off (many states limit enforcement if you\'re terminated without cause).',
+          'Employers expect negotiation on non-competes from candidates who have experience. The moment to negotiate is before you sign — not after you\'ve started or after you\'ve resigned.',
+        ],
+      },
+      {
+        h2: 'How Revealr Helps With Non-Compete Review',
+        paragraphs: [
+          'When you upload an employment contract or non-compete agreement to Revealr, the AI specifically identifies the scope of the restriction (geographic, industry, duration), flags language that is broader than typical, and suggests what to negotiate. This gives you a clear starting point for the conversation with the employer or their HR team.',
+        ],
+      },
+    ],
+  },
+
+  // ── 12 ─────────────────────────────────────────────────────────────────────
+  {
+    slug: 'ip-assignment-agreement-what-to-know',
+    title: 'IP Assignment Agreements: What You\'re Giving Up When You Sign',
+    metaDescription:
+      'IP assignment clauses in employment contracts can claim ownership of work you do on your own time. Here\'s what to look for and what to push back on.',
+    h1: 'IP Assignment Agreements: What You\'re Signing Away',
+    category: 'employment',
+    publishedAt: '2025-03-07',
+    excerpt:
+      'Most employment contracts include an IP assignment clause. Few employees read it carefully. Here\'s what it means for your side projects, inventions, and creative work.',
+    readingTime: 6,
+    relatedLanding: { href: '/ip-assignment-agreement-review', anchor: 'IP Assignment Agreement Review Tool' },
+    relatedPosts: [
+      { href: '/blog/non-compete-clause-explained', anchor: 'Non-Compete Clause Explained' },
+      { href: '/blog/what-to-check-in-an-employment-contract', anchor: 'What to Check in an Employment Contract' },
+    ],
+    sections: [
+      {
+        h2: 'What an IP Assignment Clause Does',
+        paragraphs: [
+          'An intellectual property assignment clause transfers ownership of intellectual property you create — code, designs, writing, inventions, processes — from you to your employer. This is expected for work you create as part of your job. The problem arises when the clause extends beyond your job scope.',
+          'Overbroad IP assignment clauses attempt to claim ownership of: work done on your own time, on personal equipment, unrelated to your employer\'s business, or based on skills and knowledge you had before joining the company.',
+        ],
+      },
+      {
+        h2: 'What an Overbroad Clause Looks Like',
+        paragraphs: [
+          'A clause that says "Employee assigns to Company all inventions, works, and discoveries made during the term of employment, whether or not related to Company\'s business and whether or not made during work hours" is claiming everything you create for the duration of your employment.',
+          'If you write a novel, develop a personal app, create music, or invent something in your garage — under this type of clause, your employer might claim ownership of it. Whether they\'d actually pursue this is a separate question; signing it without understanding it is a different risk.',
+        ],
+      },
+      {
+        h2: 'Statutory Protections That Limit IP Assignment',
+        paragraphs: [
+          'Several states have laws that limit what employers can claim through IP assignment. California, Delaware, Illinois, Minnesota, North Carolina, and Washington all have statutes limiting IP assignment to work actually related to the employer\'s business or made with company resources.',
+          'Even in states with these protections, the burden often falls on the employee to assert them. Knowing the clause is overbroad — and having that documented before you sign — puts you in a stronger position.',
+        ],
+      },
+      {
+        h2: 'What to Negotiate: The Moonlighting Carve-Out',
+        paragraphs: [
+          'The most common and accepted negotiation is a "moonlighting carve-out" — a clause that explicitly excludes inventions and creative works made entirely on personal time, with personal equipment, and unrelated to the company\'s current or prospective business.',
+          'Many employers will agree to this carve-out, especially for developers, designers, and writers who have existing side projects. The key is to negotiate it before you sign, ideally with a list of your current personal projects attached as an exhibit.',
+        ],
+      },
+      {
+        h2: 'Using Revealr to Review an IP Assignment Clause',
+        paragraphs: [
+          'Revealr specifically flags overbroad IP assignment language, including provisions that extend beyond work hours or relate to areas outside your employer\'s actual business. If your employment contract contains this clause, the AI will identify what it covers and suggest what a more reasonable limitation would look like.',
+        ],
+      },
+    ],
+  },
+
+  // ── 13 ─────────────────────────────────────────────────────────────────────
+  {
+    slug: 'service-agreement-vs-employment-contract',
+    title: 'Service Agreement vs. Employment Contract: Key Differences That Affect Your Rights',
+    metaDescription:
+      'Service agreements and employment contracts look similar but create very different legal relationships. Here\'s what changes and why it matters for taxes, benefits, and protections.',
+    h1: 'Service Agreement vs. Employment Contract: What\'s the Difference?',
+    category: 'freelance',
+    publishedAt: '2025-03-10',
+    excerpt:
+      'The difference between a service agreement and an employment contract isn\'t just semantics — it determines your tax obligations, legal protections, and benefit eligibility.',
+    readingTime: 6,
+    relatedLanding: { href: '/service-agreement-review', anchor: 'Service Agreement Review Tool' },
+    relatedPosts: [
+      { href: '/blog/independent-contractor-misclassification', anchor: 'Independent Contractor Misclassification' },
+      { href: '/blog/freelance-contract-mistakes', anchor: 'Freelance Contract Mistakes' },
+      { href: '/blog/what-to-check-in-an-employment-contract', anchor: 'What to Check in an Employment Contract' },
+    ],
+    sections: [
+      {
+        h2: 'The Fundamental Difference',
+        paragraphs: [
+          'An employment contract creates an employer-employee relationship. A service agreement (or contractor agreement) creates a business-to-business relationship between two independent parties. The document you sign determines which relationship you\'re in — and which comes with more rights, protections, and obligations.',
+          'The practical consequences: employment = payroll taxes withheld, benefits eligibility, labor law protections, unemployment insurance. Service agreement = you handle your own taxes, no employer benefits, more flexibility, but also more exposure.',
+        ],
+      },
+      {
+        h2: 'Key Differences in What Each Agreement Contains',
+        paragraphs: [''],
+        h3s: [
+          {
+            heading: 'Control and direction',
+            body: 'Employment contracts give the employer control over how, when, and where you work. Service agreements specify what you deliver (outcomes/deliverables) rather than how you produce them. If a service agreement looks like it\'s directing your hourly schedule and daily tasks, it may actually describe an employment relationship regardless of what the document calls it.',
+          },
+          {
+            heading: 'IP ownership',
+            body: 'Employment contracts typically assign all work-related IP to the employer. Service agreements can be structured either way — as work-for-hire (client owns the output) or with the contractor retaining rights and licensing usage. The default under copyright law often favors the creator, not the client.',
+          },
+          {
+            heading: 'Termination',
+            body: 'Employment contracts often include notice periods, severance provisions, and cause requirements. Service agreements typically end when the project is complete or either party gives notice per the agreement\'s terms. "At-will" in a service agreement context means the client can end the engagement immediately — which has very different financial implications than at-will employment.',
+          },
+          {
+            heading: 'Non-compete and exclusivity',
+            body: 'Service agreements sometimes include exclusivity clauses — restrictions on working with competitors during the engagement. These are different from non-competes: they apply during the active relationship, not after. Still worth reading carefully, especially if you work with multiple clients in the same industry.',
+          },
+        ],
+      },
+      {
+        h2: 'When a Service Agreement Looks Like Employment (And Why That\'s a Problem)',
+        paragraphs: [
+          'Worker misclassification — labeling someone a contractor when they\'re functionally an employee — is illegal and creates liability for employers. But it also creates problems for workers: you can be denied benefits and protections you\'re legally entitled to, and you\'ll be responsible for taxes that should have been withheld.',
+          'Red flags in a "service agreement" that actually describes employment: fixed work hours with no flexibility, requirement to work exclusively at a specific location, supervision of methods not just outcomes, equipment provided by the client, inability to work for other clients without permission.',
+        ],
+      },
+      {
+        h2: 'How to Review a Service Agreement Before Signing',
+        paragraphs: [
+          'Whether you\'re a freelancer reviewing a client contract or a business engaging a contractor, Revealr can review your service agreement and flag clauses that are unusually one-sided, that may describe an employment relationship rather than a contractor relationship, or that contain non-compete/exclusivity provisions worth understanding before you commit.',
+        ],
+      },
+    ],
+  },
+
+  // ── 14 ─────────────────────────────────────────────────────────────────────
+  {
+    slug: 'how-to-negotiate-a-lease',
+    title: 'How to Negotiate a Lease: What Landlords Actually Agree To Change',
+    metaDescription:
+      'Most tenants never negotiate their lease. Most landlords are open to it on specific terms. Here\'s what to ask for, how to ask, and when to walk away.',
+    h1: 'How to Negotiate a Lease: A Practical Guide for Tenants',
+    category: 'lease',
+    publishedAt: '2025-03-12',
+    excerpt:
+      'Lease negotiation is more common than tenants think — and most landlords will adjust reasonable terms when asked directly. Here\'s what to target.',
+    readingTime: 7,
+    relatedLanding: { href: '/lease-agreement-analyzer', anchor: 'Lease Agreement Analyzer' },
+    relatedPosts: [
+      { href: '/blog/how-to-review-a-lease-before-signing', anchor: 'How to Review a Lease Before Signing' },
+      { href: '/blog/common-lease-red-flags', anchor: 'Common Lease Red Flags' },
+      { href: '/blog/lease-early-termination-negotiation-guide', anchor: 'Lease Early Termination Negotiation Guide' },
+    ],
+    sections: [
+      {
+        h2: 'The Biggest Myth About Lease Negotiation',
+        paragraphs: [
+          'Most tenants assume leases are take-it-or-leave-it. Landlords are often presented as the party with all the power. The reality: most landlords use standard form leases they didn\'t draft themselves, and many clauses exist because no one ever asked to change them.',
+          'Vacancy is expensive for landlords. A good tenant who asks for reasonable changes is still more valuable than an empty unit. This gives you more negotiating leverage than you probably think — especially after you\'ve been approved.',
+        ],
+      },
+      {
+        h2: 'What Landlords Commonly Agree to Change',
+        paragraphs: [''],
+        h3s: [
+          {
+            heading: 'Security deposit terms',
+            body: 'Non-refundable deposit language is the most commonly removed clause when tenants request it. Landlords who actually understand tenant protection law often already know this clause creates more legal exposure than protection for them.',
+          },
+          {
+            heading: 'Early termination clause',
+            body: 'The fee amount (2→1 month\'s rent), the calculation method (flat fee → pro-rated), and the circumstances (adding exceptions for job relocation or medical emergency) are all commonly negotiable. Most landlords would rather have a clear, reasonable early termination process than a tenant who abandons a unit.',
+          },
+          {
+            heading: 'Automatic renewal notice window',
+            body: 'If the required notice is 60+ days, many landlords will agree to 30 days. This is the most common automatic renewal complaint and most landlords don\'t have a strong reason to require extra-long notice.',
+          },
+          {
+            heading: 'Landlord entry notice',
+            body: 'If your state requires 24 hours and the lease says "reasonable notice," asking for 24 hours in writing is almost always accepted. If the lease requires less than state law, simply note that state law governs regardless.',
+          },
+          {
+            heading: 'Pet policy adjustments',
+            body: 'Pet bans are sometimes negotiable for specific animals, especially with a pet deposit or pet rent. Breed and weight restrictions are less commonly negotiated but worth asking about for large dogs.',
+          },
+        ],
+      },
+      {
+        h2: 'What Landlords Rarely Change (and Why)',
+        paragraphs: [
+          'Rent amount after approval is rarely reduced in hot markets. Base lease term length is usually fixed. Building-wide rules (no smoking, no subletting, move-in procedures) are rarely individualized. Utilities billing structure almost never changes.',
+          'Knowing what\'s negotiable vs. not helps you focus your asks on the terms that will actually move.',
+        ],
+      },
+      {
+        h2: 'How to Frame the Negotiation',
+        paragraphs: [
+          'Don\'t frame it as a dispute. Frame it as wanting clarity. "I noticed clause 12 says the deposit is non-refundable — I\'d like to update that to standard language requiring return within 30 days minus documented damage" lands better than "this clause is illegal."',
+          'Make your requests in writing (email is fine). This creates a record and gives the landlord time to respond without feeling put on the spot. Keep the list short — 2–3 focused requests are more likely to be accepted than a comprehensive redline.',
+          'Use your lease analysis as your guide. Revealr\'s report identifies which clauses are non-standard, which are potentially unenforceable, and suggests specific alternative language. This gives you a fact-based starting point rather than a general complaint.',
+        ],
+      },
+      {
+        h2: 'When to Walk Away',
+        paragraphs: [
+          'A landlord who refuses to modify a clause that appears to violate state law is worth noting. That\'s not necessarily a reason to walk away on its own, but combined with other signals (slow to respond, defensive about standard requests, evasive about property condition), it tells you something about the relationship you\'re entering.',
+        ],
+      },
+    ],
+  },
+
+  // ── 15 ─────────────────────────────────────────────────────────────────────
+  {
+    slug: 'consulting-agreement-red-flags',
+    title: 'Consulting Agreement Red Flags: What to Watch for Before You Sign',
+    metaDescription:
+      'Consulting agreements contain clauses that can limit your other clients, claim your IP, or create unlimited liability. Here\'s what to check before signing.',
+    h1: 'Consulting Agreement Red Flags: What to Check Before You Commit',
+    category: 'freelance',
+    publishedAt: '2025-03-14',
+    excerpt:
+      'Client-provided consulting agreements are written to protect the client. These are the clauses that most commonly work against independent consultants.',
+    readingTime: 6,
+    relatedLanding: { href: '/consulting-agreement-review', anchor: 'Consulting Agreement Review Tool' },
+    relatedPosts: [
+      { href: '/blog/freelance-contract-mistakes', anchor: 'Freelance Contract Mistakes' },
+      { href: '/blog/service-agreement-vs-employment-contract', anchor: 'Service Agreement vs. Employment Contract' },
+      { href: '/blog/independent-contractor-misclassification', anchor: 'Independent Contractor Misclassification' },
+    ],
+    sections: [
+      {
+        h2: 'Why Consulting Agreements Deserve Careful Review',
+        paragraphs: [
+          'Consulting agreements are almost always drafted by the client\'s legal team. Their job is to protect the client — which means every clause that limits your rights, claims your IP, or expands your liability was written intentionally. Not out of bad faith, but because it\'s the client\'s document.',
+          'As an independent consultant, you may be signing many of these agreements over a career. The risks compound across engagements. These are the clauses worth scrutinizing.',
+        ],
+      },
+      {
+        h2: 'Six Red Flags in Consulting Agreements',
+        paragraphs: [''],
+        h3s: [
+          {
+            heading: '1. Overbroad IP assignment',
+            body: 'The most common consulting agreement issue: a clause assigning all IP created during the engagement to the client, including pre-existing tools, frameworks, or methods you bring to the work. A reasonable IP clause transfers deliverables; an overbroad one claims your underlying methodology.',
+          },
+          {
+            heading: '2. Exclusivity or non-compete during the engagement',
+            body: 'Some consulting agreements prohibit working with clients in the same industry during the engagement — not after, but during. For a consultant serving multiple clients in a specialized field, this can be a business-stopper. It\'s not always visible upfront; look for language about "competitive conflicts" or "exclusivity."',
+          },
+          {
+            heading: '3. Unlimited indemnification',
+            body: 'Indemnification clauses require you to cover the client\'s losses if something goes wrong. Unlimited indemnification — no cap, no limitations on covered claims — means your personal exposure could far exceed the value of the contract. Negotiate a cap at the fee amount or the amount covered by your professional liability insurance.',
+          },
+          {
+            heading: '4. Unilateral termination without notice or pay',
+            body: '"Client may terminate this agreement immediately for any reason" with no kill fee or notice period leaves you with no compensation for work in progress. A 2-week notice period or kill fee equal to hours already worked is a reasonable ask.',
+          },
+          {
+            heading: '5. Vague approval / acceptance process',
+            body: 'If the agreement doesn\'t define when deliverables are accepted, the client can request endless revisions without triggering final payment. Define what "accepted" means, who approves, and what the timeline is.',
+          },
+          {
+            heading: '6. Client-favorable governing law',
+            body: 'A consulting agreement that puts you (in California) under the laws of a state with different contractor protections or worse arbitration rules is worth noting. You may be able to negotiate governing law to your state.',
+          },
+        ],
+      },
+      {
+        h2: 'Using Revealr to Review a Consulting Agreement',
+        paragraphs: [
+          'Revealr identifies overbroad IP clauses, unlimited indemnification, exclusivity provisions, and unfavorable termination terms in consulting agreements. Upload your agreement and get a plain-English breakdown of the clauses most likely to affect you — before you sign.',
+        ],
+      },
+    ],
+  },
+
+  // ── 16 ─────────────────────────────────────────────────────────────────────
+  {
+    slug: 'what-is-a-non-solicitation-agreement',
+    title: 'Non-Solicitation Agreement Explained: What It Covers and How Long It Lasts',
+    metaDescription:
+      'Non-solicitation clauses restrict who you can recruit and who you can work with after leaving a job. Here\'s what they cover, how enforceable they are, and when to push back.',
+    h1: 'Non-Solicitation Agreement Explained',
+    category: 'nda',
+    publishedAt: '2025-03-17',
+    excerpt:
+      'Non-solicitation clauses are commonly bundled with NDAs and non-competes but work differently. Here\'s what they actually restrict.',
+    readingTime: 5,
+    relatedLanding: { href: '/nda-review', anchor: 'NDA Review Tool' },
+    relatedPosts: [
+      { href: '/blog/common-nda-red-flags', anchor: 'Common NDA Red Flags' },
+      { href: '/blog/non-compete-clause-explained', anchor: 'Non-Compete Clause Explained' },
+    ],
+    sections: [
+      {
+        h2: 'What a Non-Solicitation Agreement Restricts',
+        paragraphs: [
+          'A non-solicitation agreement (NSA) prevents you from soliciting two groups of people after you leave a job: (1) the company\'s employees — you can\'t recruit your former colleagues to join a new employer or your own venture, and (2) the company\'s clients — you can\'t reach out to former clients to bring your business elsewhere.',
+          'These are separate restrictions that may appear together in one clause or in separate clauses. It\'s worth understanding which ones you\'re agreeing to.',
+        ],
+      },
+      {
+        h2: 'Non-Solicitation vs. Non-Compete: What\'s the Difference?',
+        paragraphs: [
+          'Non-competes restrict where you can work. Non-solicitation clauses restrict who you can recruit and whose business you can pursue. The key practical difference: a non-compete says you can\'t work for a competitor; a non-solicitation clause says you can work for anyone but can\'t bring former colleagues or clients with you.',
+          'Non-solicitation clauses are generally considered more enforceable than non-competes because they\'re more narrowly drawn. Courts that won\'t enforce a broad non-compete may still enforce a reasonable non-solicitation restriction.',
+        ],
+      },
+      {
+        h2: 'When Non-Solicitation Clauses Cross the Line',
+        paragraphs: [
+          'Legitimate non-solicitation clauses restrict active targeting of specific former clients or colleagues. Overbroad ones try to prevent: general marketing or advertising that happens to reach former clients, responding to unsolicited outreach from former clients, or working with any former client even if they seek you out independently.',
+          'Duration matters too. 6–12 months is commonly enforceable. 2+ years for broad non-solicitation of clients is increasingly scrutinized.',
+        ],
+      },
+      {
+        h2: 'What to Review Before Signing',
+        paragraphs: [
+          'When you see a non-solicitation clause: check how "clients" are defined (just current clients, or prospects too?), how "employees" are defined (all employees, or just those you worked with?), what counts as solicitation (active outreach, or any contact?), and the duration.',
+          'Using Revealr to review an employment contract or NDA that contains non-solicitation language surfaces the scope of the restriction and flags terms that are broader than typical — giving you a specific starting point for negotiation.',
+        ],
+      },
+    ],
+  },
+
+  // ── 17 ─────────────────────────────────────────────────────────────────────
+  {
+    slug: 'job-offer-letter-vs-employment-contract',
+    title: 'Job Offer Letter vs. Employment Contract: What\'s Different and Why It Matters',
+    metaDescription:
+      'Job offer letters and employment contracts both define your employment terms, but they have different legal weight and different clauses to watch for. Here\'s what changes.',
+    h1: 'Job Offer Letter vs. Employment Contract: Key Differences',
+    category: 'employment',
+    publishedAt: '2025-03-19',
+    excerpt:
+      'An offer letter and an employment contract aren\'t the same thing — and what\'s missing from an offer letter can matter as much as what\'s in it.',
+    readingTime: 5,
+    relatedLanding: { href: '/job-offer-review', anchor: 'Job Offer Review Tool' },
+    relatedPosts: [
+      { href: '/blog/what-to-check-in-an-employment-contract', anchor: 'What to Check in an Employment Contract' },
+      { href: '/blog/non-compete-clause-explained', anchor: 'Non-Compete Clause Explained' },
+    ],
+    sections: [
+      {
+        h2: 'What a Job Offer Letter Is (and Isn\'t)',
+        paragraphs: [
+          'A job offer letter is a written summary of the basic terms of employment: title, start date, salary, reporting structure, and sometimes benefits. It\'s usually a short document — 1–3 pages — and often not written by a lawyer.',
+          'Offer letters are generally considered binding as to the terms they state. But because they\'re short, they leave many things undefined — and what\'s undefined gets filled in by other agreements you\'ll sign, company policy, or state employment law.',
+        ],
+      },
+      {
+        h2: 'What a Full Employment Contract Adds',
+        paragraphs: [
+          'A full employment agreement goes significantly further: it includes at-will vs. term provisions, detailed compensation structure (bonus triggers, equity terms, vesting), IP assignment, non-compete and non-solicitation restrictions, dispute resolution (arbitration clauses), termination provisions and severance terms, and confidentiality obligations.',
+          'The critical point: many companies include non-compete and IP assignment clauses in the offer letter itself — before you\'ve even started — alongside the compensation details. It\'s easy to focus on the salary number and miss the non-compete buried two pages later.',
+        ],
+      },
+      {
+        h2: 'What\'s Missing From Offer Letters (And Why That Matters)',
+        paragraphs: [
+          'When an offer letter is silent on something, it\'s not automatically resolved in your favor. Silence on termination terms usually means at-will employment. Silence on bonus structure usually means discretionary. Silence on IP ownership usually gets resolved by a later agreement you\'ll be asked to sign at onboarding.',
+          'The onboarding agreements — typically a package including an IP assignment, arbitration agreement, and sometimes a non-compete — are often presented as routine paperwork on your first day. By then, you\'ve already left your previous job.',
+        ],
+      },
+      {
+        h2: 'Using Revealr to Review an Offer Letter',
+        paragraphs: [
+          'Revealr reviews offer letters specifically: identifying at-will language, signing bonus clawback provisions, equity terms that need clarification, and non-compete clauses that shouldn\'t be in an offer letter at all. Upload your offer letter and get a breakdown of what the terms actually mean — before you accept.',
+        ],
+      },
+    ],
+  },
+
+  // ── 18 ─────────────────────────────────────────────────────────────────────
+  {
+    slug: 'independent-contractor-misclassification',
+    title: 'Independent Contractor Misclassification: What It Is and How to Spot It in Your Contract',
+    metaDescription:
+      'Being classified as a contractor when you\'re actually an employee costs you benefits, protections, and money. Here\'s how to spot misclassification in your agreement.',
+    h1: 'Independent Contractor Misclassification: How to Spot It in Your Agreement',
+    category: 'freelance',
+    publishedAt: '2025-03-21',
+    excerpt:
+      'Misclassification as an independent contractor can cost you thousands in taxes and benefits. Here\'s how to tell if your contract reflects your actual working relationship.',
+    readingTime: 6,
+    relatedLanding: { href: '/independent-contractor-agreement-review', anchor: 'Independent Contractor Agreement Review Tool' },
+    relatedPosts: [
+      { href: '/blog/service-agreement-vs-employment-contract', anchor: 'Service Agreement vs. Employment Contract' },
+      { href: '/blog/freelance-contract-mistakes', anchor: 'Freelance Contract Mistakes' },
+    ],
+    sections: [
+      {
+        h2: 'What Worker Misclassification Is',
+        paragraphs: [
+          'Worker misclassification occurs when someone who functions as an employee is classified and paid as an independent contractor. The label in the contract doesn\'t determine the actual legal relationship — the substance of the working arrangement does.',
+          'For the misclassified worker: no employer payroll tax contributions, no benefits, no unemployment insurance, no workers\' compensation, and often fewer legal protections. The contractor is responsible for paying self-employment taxes on the full income (vs. splitting FICA with an employer).',
+        ],
+      },
+      {
+        h2: 'The Tests Courts Use to Determine Employment Status',
+        paragraphs: [
+          'Different states and federal agencies use different tests, but the core factors are similar:',
+        ],
+        h3s: [
+          {
+            heading: 'Behavioral control',
+            body: 'Does the company control how, when, and where you do the work? Employees are directed; contractors control their own process. A contract that dictates your daily schedule, requires you to be on-call, or mandates specific work methods looks like employment.',
+          },
+          {
+            heading: 'Financial control',
+            body: 'Can you work for multiple clients? Are you free to make a profit or loss? Do you invest in your own equipment and tools? Employees receive a fixed salary; contractors can operate at a profit or loss and typically have multiple revenue sources.',
+          },
+          {
+            heading: 'Relationship permanence',
+            body: 'Is the relationship indefinite, or project-based? Long-term exclusive engagements where the "contractor" works alongside employees doing similar work often look like employment regardless of the contract label.',
+          },
+        ],
+      },
+      {
+        h2: 'Red Flags in Contractor Agreements That Signal Misclassification',
+        paragraphs: [
+          'Contract language that suggests potential misclassification: fixed work hours or schedules, requirement to work at a specific company location full-time, prohibition on other clients without approval, employer-provided equipment as the exclusive work arrangement, supervisor overseeing daily tasks rather than reviewing deliverables, and indefinite engagement with no defined project scope or end date.',
+        ],
+      },
+      {
+        h2: 'What to Do If You Suspect Misclassification',
+        paragraphs: [
+          'If your working arrangement looks more like employment than contracting: research your state\'s classification test (California\'s ABC test is notably strict), document how the work actually functions in practice, and consider whether to raise the issue directly or consult an employment attorney. The IRS Form SS-8 allows workers to formally request a classification determination.',
+          'Using Revealr to review an independent contractor agreement can surface clauses that describe employment-like control — giving you a concrete, documented basis for raising the classification question.',
+        ],
+      },
+    ],
+  },
+
+  // ── 19 ─────────────────────────────────────────────────────────────────────
+  {
+    slug: 'how-to-read-an-nda',
+    title: 'How to Read an NDA Before You Sign: A Plain-English Walkthrough',
+    metaDescription:
+      'NDAs are common, but few people read them carefully. Here\'s a clause-by-clause guide to what matters, what\'s standard, and what you should push back on.',
+    h1: 'How to Read an NDA Before You Sign',
+    category: 'nda',
+    publishedAt: '2025-03-24',
+    excerpt:
+      'NDAs look standard until they\'re not. Here\'s how to read one from start to finish — and what the key clauses actually mean.',
+    readingTime: 7,
+    relatedLanding: { href: '/nda-review', anchor: 'NDA Review Tool' },
+    relatedPosts: [
+      { href: '/blog/common-nda-red-flags', anchor: 'Common NDA Red Flags' },
+      { href: '/blog/what-is-a-non-solicitation-agreement', anchor: 'Non-Solicitation Agreement Explained' },
+      { href: '/blog/non-compete-clause-explained', anchor: 'Non-Compete Clause Explained' },
+    ],
+    sections: [
+      {
+        h2: 'Start With Who Is Bound and What Is Covered',
+        paragraphs: [
+          'The first thing to establish: is this a one-way NDA (only you are bound) or a mutual NDA (both parties are bound)? If you\'re sharing confidential information too — your ideas, your code, your business plans — a one-way NDA doesn\'t protect you.',
+          'Next, read the definition of "Confidential Information." A definition that covers all information shared or discussed without limitation is almost unlimited in scope. A reasonable definition covers: specifically marked confidential materials, named categories (trade secrets, customer lists, financial projections), and information disclosed in specific contexts (board meetings, due diligence).',
+        ],
+      },
+      {
+        h2: 'The Standard Exclusions (And Why They Matter)',
+        paragraphs: [
+          'Every well-drafted NDA has standard exclusions from confidentiality obligations. Look for: (1) Information already publicly known. (2) Information you knew before receiving it from this party. (3) Information you independently developed without reference to the confidential material. (4) Information received from a third party with no confidentiality obligation. (5) Disclosures required by law or court order.',
+          'If an NDA lacks these exclusions, it may try to claim confidentiality over information you already knew or information that\'s publicly available. This isn\'t enforceable, but creates friction.',
+        ],
+      },
+      {
+        h2: 'Permitted Uses and Permitted Disclosures',
+        paragraphs: [
+          'What can you do with the confidential information? The NDA should specify: only to evaluate the business relationship, only to persons who need to know for that purpose, and that those persons are also bound by confidentiality.',
+          'Permitted disclosure to lawyers, accountants, and advisors who are already bound by professional confidentiality obligations is standard and reasonable.',
+        ],
+      },
+      {
+        h2: 'Duration: How Long Are You Bound?',
+        paragraphs: [
+          'A typical NDA lasts 2–5 years. "Perpetual" confidentiality for general business information is unusual and increasingly difficult to enforce. Trade secrets can be protected indefinitely under law without needing a contract — so an NDA doesn\'t need to be perpetual to protect legitimate trade secrets.',
+          'Check whether the NDA distinguishes between general confidential information (finite term) and actual trade secrets (indefinite). This is good practice and signals a well-drafted agreement.',
+        ],
+      },
+      {
+        h2: 'What Happens When the NDA Ends or the Relationship Does',
+        paragraphs: [
+          'Does the NDA require return or destruction of confidential materials? Is there a certification of destruction? What happens to digital files? These provisions matter more in practice than they seem on paper.',
+          'Also check: what survives termination of the agreement? Confidentiality obligations for information that was shared should survive even if the NDA expires — otherwise the confidentiality protection disappears retroactively.',
+        ],
+      },
+      {
+        h2: 'Using Revealr to Review an NDA',
+        paragraphs: [
+          'Revealr reviews NDA clauses for overbroad definitions, missing standard exclusions, one-way obligations when mutuality would be appropriate, and excessive duration. Upload your NDA and get a plain-English breakdown of what you\'re agreeing to before you sign.',
+        ],
+      },
+    ],
+  },
+
+  // ── 20 ─────────────────────────────────────────────────────────────────────
+  {
+    slug: 'lease-early-termination-negotiation-guide',
+    title: 'Lease Early Termination: How to Negotiate an Exit Before Your Term Ends',
+    metaDescription:
+      'Need to break your lease early? Here\'s how to negotiate an exit — from invoking your lease clause to requesting a mutual release — and what it typically costs.',
+    h1: 'Lease Early Termination: How to Negotiate an Exit Before Your Term Ends',
+    category: 'lease',
+    publishedAt: '2025-03-26',
+    excerpt:
+      'Breaking a lease costs money — but how much depends on what\'s in your lease and how you handle the exit. Here\'s how to negotiate the best outcome.',
+    readingTime: 7,
+    relatedLanding: { href: '/lease-renewal-review', anchor: 'Lease Renewal Review Tool' },
+    relatedPosts: [
+      { href: '/blog/early-termination-fee-clause', anchor: 'Early Termination Fee Clause' },
+      { href: '/blog/how-to-negotiate-a-lease', anchor: 'How to Negotiate a Lease' },
+      { href: '/blog/how-to-review-a-lease-before-signing', anchor: 'How to Review a Lease Before Signing' },
+    ],
+    sections: [
+      {
+        h2: 'Read Your Lease Clause First',
+        paragraphs: [
+          'Before contacting your landlord, know exactly what your lease says about early termination. Three possible situations: (1) Your lease has an early termination clause with a defined fee and process — follow it. (2) Your lease has no early termination clause — you\'re technically liable for rent through the end of the term, but there may be negotiated alternatives. (3) Your lease is ambiguous — this gives you room to negotiate.',
+          'If you don\'t have a copy of your lease, request it from your landlord or property management company immediately.',
+        ],
+      },
+      {
+        h2: 'What You Can Legally Owe If You Break a Lease',
+        paragraphs: [
+          'In most U.S. states, landlords have a duty to mitigate — meaning they must make reasonable efforts to re-rent the unit, rather than collecting rent from you while leaving it vacant. Your liability is theoretically capped at the rent lost until they find a new tenant.',
+          'A fixed early termination fee in your lease predetermines this — often at 1–2 months\' rent, which may be more or less than the actual mitigation period. The fee is a negotiated estimate of damages.',
+        ],
+      },
+      {
+        h2: 'Legal Grounds That May Allow You to Break Without Penalty',
+        paragraphs: [
+          'Certain circumstances allow lease termination without penalty regardless of what your lease says:',
+        ],
+        h3s: [
+          {
+            heading: 'Active military service',
+            body: 'The Servicemembers Civil Relief Act (SCRA) allows active-duty military personnel to terminate a lease with 30 days\' written notice after receiving deployment orders.',
+          },
+          {
+            heading: 'Uninhabitable conditions',
+            body: 'If a landlord fails to maintain habitable conditions — no heat, significant water damage, pest infestation — you may be able to claim constructive eviction and terminate without penalty. Document everything first.',
+          },
+          {
+            heading: 'Domestic violence, sexual assault, or stalking',
+            body: 'Most states allow survivors to terminate a lease early (often with 30 days\' notice) without penalty when safety is the reason.',
+          },
+          {
+            heading: 'Landlord breach of the lease',
+            body: 'If the landlord has materially violated the lease — illegal entry, failure to repair, harassment — you may have grounds to terminate based on their breach.',
+          },
+        ],
+      },
+      {
+        h2: 'How to Negotiate an Early Exit Without a Legal Ground',
+        paragraphs: [
+          'If you don\'t have legal grounds, negotiation is your path. Approach it from the landlord\'s perspective: what do they actually care about? A consistent rental income stream and a good tenant for the replacement. Help them solve that problem.',
+          'Effective approaches: offer to find a qualified replacement tenant yourself, offer to pay until the unit is re-rented (capped at a reasonable period), offer a lump sum early termination payment if it\'s less than remaining rent, or negotiate a move-out timeline that gives the landlord maximum lead time to re-rent.',
+          'Get any agreement in writing — a signed lease termination agreement or written confirmation of the terms. Verbal agreements are difficult to enforce if the landlord later claims you still owe more.',
+        ],
+      },
+    ],
+  },
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────

@@ -10,7 +10,7 @@ export default function RelatedPages({ pages }: Props) {
     <section className="py-10 px-6 bg-[#faf9f7] border-b border-[#e8e4df]">
       <div className="max-w-3xl mx-auto">
         <h3 className="text-xs font-bold text-[#9c9590] uppercase tracking-wider mb-4">
-          Related tools
+          Related tools &amp; guides
         </h3>
         <div className="flex flex-wrap gap-3">
           {pages.map((link, i) => (
