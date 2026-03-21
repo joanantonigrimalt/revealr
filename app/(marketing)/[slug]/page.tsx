@@ -65,12 +65,10 @@ export default function SEOPage({ params }: { params: { slug: string } }) {
       )}
 
       <main>
-        {/* 1. Hero */}
+        {/* 1. Hero — upload widget + H1 */}
         <PageHero
           h1={page.h1}
           intro={page.intro}
-          ctaPrimary={page.ctaPrimary}
-          ctaSecondary={page.ctaSecondary}
           ctaMicrocopy={page.ctaMicrocopy}
         />
 
@@ -101,12 +99,8 @@ export default function SEOPage({ params }: { params: { slug: string } }) {
         {/* 6. Related pages interlinking */}
         <RelatedPages pages={page.relatedPages} />
 
-        {/* 7. Final CTA */}
-        <PageCTA
-          ctaPrimary={page.ctaPrimary}
-          ctaSecondary={page.ctaSecondary}
-          ctaMicrocopy={page.ctaMicrocopy}
-        />
+        {/* 7. Final CTA with upload widget */}
+        <PageCTA ctaMicrocopy={page.ctaMicrocopy} />
 
         {/* 8. Legal disclaimer */}
         <LegalDisclaimer disclaimer={page.disclaimer} />
