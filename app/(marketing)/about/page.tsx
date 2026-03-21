@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'About Revealr — AI Contract Analysis Tool',
   description:
     'Learn what Revealr is, how it works, and what it can and can\'t do. Revealr is an AI tool that helps people understand contracts before signing — not a law firm.',
-  alternates: { canonical: `${process.env.NEXT_PUBLIC_APP_URL ?? 'https://revealr.io'}/about` },
+  alternates: { canonical: `${process.env.NEXT_PUBLIC_APP_URL ?? 'https://getrevealr.com'}/about` },
 };
 
 export default function AboutPage() {

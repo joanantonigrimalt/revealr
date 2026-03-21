@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import type { SEOPage } from '@/content/seo-pages';
 
 // Single source of truth — matches app/layout.tsx
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://revealr.io';
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://getrevealr.com';
 
 /**
  * Per-page metadata for the 20 programmatic SEO pages.

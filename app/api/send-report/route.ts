@@ -13,8 +13,8 @@ const resend = process.env.RESEND_API_KEY
   ? new Resend(process.env.RESEND_API_KEY)
   : null;
 
-const FROM_EMAIL = 'Revealr <reports@revealr.app>';
-const REPLY_TO = 'support@revealr.app';
+const FROM_EMAIL = 'Revealr <reports@getrevealr.com>';
+const REPLY_TO = 'support@getrevealr.com';
 
 export async function POST(req: NextRequest) {
   try {
@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: true, message: 'Email skipped in dev mode.' });
     }
 
-    const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'https://revealr.app';
+    const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'https://getrevealr.com';
 
     const html = buildEmailHTML({ result, fileName, appUrl });
     const text = buildEmailText(result, fileName);

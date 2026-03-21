@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://revealr.io';
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://getrevealr.com';
 const EFFECTIVE_DATE = 'January 1, 2025';
 
 export const metadata: Metadata = {
@@ -72,7 +72,7 @@ export default function TermsPage() {
 
         <Section title="4. Payments and refunds">
           <p>The full contract analysis report is available for a one-time payment of $19 USD per document, processed through Stripe. The preview is free with no purchase required.</p>
-          <p>Due to the nature of digital services, reports are generally non-refundable once generated and delivered. If you experience a technical issue that prevented delivery of your report, contact us at hello@revealr.io and we will address it.</p>
+          <p>Due to the nature of digital services, reports are generally non-refundable once generated and delivered. If you experience a technical issue that prevented delivery of your report, contact us at hello@getrevealr.com and we will address it.</p>
         </Section>
 
         <Section title="5. Accuracy and disclaimer">
@@ -104,7 +104,7 @@ export default function TermsPage() {
         </Section>
 
         <Section title="11. Contact">
-          <p>For questions about these Terms: <strong>hello@revealr.io</strong></p>
+          <p>For questions about these Terms: <strong>hello@getrevealr.com</strong></p>
         </Section>
       </div>
     </main>

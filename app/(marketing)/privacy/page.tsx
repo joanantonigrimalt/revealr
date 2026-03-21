@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://revealr.io';
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://getrevealr.com';
 const EFFECTIVE_DATE = 'January 1, 2025';
 
 export const metadata: Metadata = {
@@ -93,7 +93,7 @@ export default function PrivacyPage() {
         </Section>
 
         <Section title="6. Your rights">
-          <p>Depending on your jurisdiction, you may have rights to access, correct, or delete personal data we hold about you. To exercise these rights, contact us at <strong>hello@revealr.io</strong>.</p>
+          <p>Depending on your jurisdiction, you may have rights to access, correct, or delete personal data we hold about you. To exercise these rights, contact us at <strong>hello@getrevealr.com</strong>.</p>
           <p>Because we do not maintain persistent user accounts and delete documents after analysis, most requests can be addressed by confirming there is no retained data to provide, correct, or delete.</p>
         </Section>
 
@@ -102,7 +102,7 @@ export default function PrivacyPage() {
         </Section>
 
         <Section title="8. Children's privacy">
-          <p>Revealr is not directed at children under 13. We do not knowingly collect personal information from children under 13. If you believe we have inadvertently collected such information, contact us at hello@revealr.io.</p>
+          <p>Revealr is not directed at children under 13. We do not knowingly collect personal information from children under 13. If you believe we have inadvertently collected such information, contact us at hello@getrevealr.com.</p>
         </Section>
 
         <Section title="9. Changes to this policy">
@@ -110,7 +110,7 @@ export default function PrivacyPage() {
         </Section>
 
         <Section title="10. Contact">
-          <p>Questions about this Privacy Policy can be directed to: <strong>hello@revealr.io</strong></p>
+          <p>Questions about this Privacy Policy can be directed to: <strong>hello@getrevealr.com</strong></p>
         </Section>
       </div>
     </main>

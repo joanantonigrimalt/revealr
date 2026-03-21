@@ -8,7 +8,7 @@ import {
 } from '@/content/blog-posts';
 import { buildArticleSchema } from '@/lib/seo';
 
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://revealr.io';
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://getrevealr.com';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Static params — pre-render all 10 articles at build time

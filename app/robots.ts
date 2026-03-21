@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://revealr.io';
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://getrevealr.com';
 
 export default function robots(): MetadataRoute.Robots {
   return {

@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Script from 'next/script';
 import { Playfair_Display, Epilogue } from 'next/font/google';
 import './globals.css';
 
@@ -20,7 +19,7 @@ const epilogue = Epilogue({
 
 // Single source of truth for the canonical domain.
 // Override via NEXT_PUBLIC_APP_URL in .env / Vercel dashboard.
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://revealr.io';
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://getrevealr.com';
 
 export const metadata: Metadata = {
   metadataBase: new URL(APP_URL),
@@ -81,6 +80,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: { canonical: APP_URL },
+  verification: { google: 'HaesI_2GcLiMousmL5q8BgYNAA7iLuQtU-5DIsZZ810' },
 };
 
 // ─── JSON-LD schemas ──────────────────────────────────────────────────────────
@@ -96,7 +96,7 @@ const organizationSchema = {
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'customer support',
-    email: 'hello@revealr.io',
+    email: 'hello@getrevealr.com',
   },
   sameAs: [],
 };
@@ -144,8 +144,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body>
-        <Script
-          id="schema-org"
+        {/* SSR-safe JSON-LD — plain <script> renders in initial HTML for crawlers */}
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify([organizationSchema, websiteSchema, softwareSchema]),

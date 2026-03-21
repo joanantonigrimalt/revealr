@@ -235,7 +235,7 @@ export default function HomePage() {
                 </h1>
 
                 <p className="text-[#6b6560] text-lg leading-relaxed mb-6 max-w-lg">
-                  Upload any contract — lease, employment agreement, NDA, freelance contract — and Revealr flags every risky clause, scores the document 0–100, and explains each risk in plain English. No lawyer needed.
+                  Upload any contract — lease, employment agreement, NDA, freelance contract — and Revealr flags every risky clause, scores the document 0–100, and explains each risk in plain English. Know what to ask before you sign.
                 </p>
 
                 <ul className="space-y-2.5 mb-8" aria-label="Key benefits">

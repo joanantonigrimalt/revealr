@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { blogPosts, getBlogPostsByCategory } from '@/content/blog-posts';
 import type { BlogCategory } from '@/content/blog-posts';
 
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://revealr.io';
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://getrevealr.com';
 
 export const metadata: Metadata = {
   title: 'Contract Review Guides & Resources',

@@ -422,9 +422,32 @@ function DashboardInner() {
               </div>
               <h1 className="font-serif font-bold text-2xl text-[#1a1814]">Contract Analysis Report</h1>
               <p className="text-[#6b6560] text-sm truncate max-w-sm">{fileName}</p>
+              <div className="flex items-center gap-2 mt-1.5 flex-wrap">
+                {result.leaseType && (
+                  <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-[#f0ece8] text-[#6b6560]">
+                    {result.leaseType}
+                  </span>
+                )}
+                {result.confidence === 'low' && (
+                  <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-amber-50 text-amber-700 border border-amber-200">
+                    Low confidence — limited text extracted
+                  </span>
+                )}
+                {result.confidence === 'medium' && (
+                  <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-50 text-blue-700 border border-blue-200">
+                    Medium confidence
+                  </span>
+                )}
+              </div>
             </div>
             <ReportDownloadButton result={result} fileName={fileName} />
           </div>
+
+          {result.missingInfo && (
+            <div className="mb-4 p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-sm animate-fade-in">
+              <strong className="font-semibold">Note:</strong> {result.missingInfo}
+            </div>
+          )}
 
           <div className="flex flex-col lg:flex-row gap-6">
             <div className="flex-1 min-w-0 space-y-6">
