@@ -29,12 +29,28 @@ export type AnalysisFlag = {
   action: string;       // what the tenant should do
 };
 
+export type DocumentCategory =
+  | 'lease'
+  | 'employment'
+  | 'nda'
+  | 'freelance'
+  | 'service'
+  | 'non-compete'
+  | 'ip-assignment'
+  | 'generic';
+
+export type AnalysisConfidence = 'high' | 'medium' | 'low';
+
 export type LeaseAnalysisResult = {
-  riskScore: number;    // 0–100
-  state: string;        // detected US state
-  leaseType: string;    // type of lease
-  summary: string;      // one-sentence overview
+  riskScore: number;           // 0–100 (−1 = quality gate failure)
+  state: string;               // detected jurisdiction or "Not specified"
+  leaseType: string;           // human-readable document type
+  summary: string;             // one-sentence overview
   flags: AnalysisFlag[];
+  // Extended fields (optional for backward compat)
+  documentCategory?: DocumentCategory;
+  confidence?: AnalysisConfidence;
+  missingInfo?: string;        // ambiguities or incomplete text note
 };
 
 export type RiskLevel = 'low' | 'moderate' | 'high' | 'severe';

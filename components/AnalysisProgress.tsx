@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import type { ProgressStep } from '@/types';
 
 const STEPS: ProgressStep[] = [
-  { id: 'verify', label: 'Opening the document', sublabel: 'Preparing your lease for analysis' },
-  { id: 'read', label: 'Reading document', sublabel: 'Extracting text from your lease' },
+  { id: 'verify', label: 'Opening the document', sublabel: 'Preparing your document for analysis' },
+  { id: 'read', label: 'Reading document', sublabel: 'Extracting text from your document' },
   { id: 'analyze', label: 'Analyzing clauses', sublabel: 'Identifying risks with AI' },
   { id: 'score', label: 'Calculating risk score', sublabel: 'Scoring 0–100 across all flags' },
   { id: 'report', label: 'Preparing report', sublabel: 'Generating your full analysis' },
@@ -40,7 +40,7 @@ export default function AnalysisProgress({ currentStep }: Props) {
       </div>
 
       <h2 className="text-center font-serif text-2xl font-bold text-text-primary mb-2">
-        Analyzing Your Lease
+        Analyzing Your Document
       </h2>
       <p className="text-center text-text-secondary text-sm mb-10">
         Our AI is reviewing every clause. This takes about 30–60 seconds.

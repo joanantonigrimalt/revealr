@@ -11,7 +11,7 @@ export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
 
 export const PRICE_CENTS = 1900; // $19.00
 export const CURRENCY = 'usd';
-export const PRODUCT_NAME = 'Lease Analysis Report — Revealr';
+export const PRODUCT_NAME = 'Contract Analysis Report — Revealr';
 
 // ─── Create checkout session ──────────────────────────────────────────────────
 
@@ -33,7 +33,7 @@ export async function createCheckoutSession(params: {
           currency: CURRENCY,
           product_data: {
             name: PRODUCT_NAME,
-            description: `AI-powered lease analysis for ${fileName}`,
+            description: `AI-powered contract analysis for ${fileName}`,
           },
           unit_amount: PRICE_CENTS,
         },

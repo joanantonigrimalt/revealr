@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
             currency: CURRENCY,
             product_data: {
               name: PRODUCT_NAME,
-              description: `Full lease analysis report for ${fileName}`,
+              description: `Full contract analysis report for ${fileName}`,
             },
             unit_amount: PRICE_CENTS,
           },

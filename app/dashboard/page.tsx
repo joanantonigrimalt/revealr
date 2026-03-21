@@ -122,7 +122,7 @@ function DashboardInner() {
     runAnalysis();
   }, [unlocked, fileKey, runAnalysis]);
 
-  // ── Unlock: go to Stripe (no analysis yet) ───────────────────────────────
+  // ── Unlock: check admin email bypass first, then Stripe ──────────────────
   const handleUnlock = async () => {
     const emailToUse = emailInput.trim();
     if (!emailToUse || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailToUse)) {
@@ -132,7 +132,19 @@ function DashboardInner() {
     setEmailError('');
     setPayLoading(true);
     try {
-      // Send fileKey — analysis will run after Stripe success
+      // Check if this email is in the admin bypass list (server-side check)
+      const bypassRes = await fetch(`/api/check-bypass?email=${encodeURIComponent(emailToUse)}`);
+      if (bypassRes.ok) {
+        const { bypassed } = await bypassRes.json();
+        if (bypassed === true) {
+          setDevBypass(true);
+          setPayLoading(false);
+          await runAnalysis();
+          return;
+        }
+      }
+
+      // Regular user — proceed to Stripe
       const checkoutRes = await fetch('/api/create-checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -408,7 +420,7 @@ function DashboardInner() {
                   </span>
                 )}
               </div>
-              <h1 className="font-serif font-bold text-2xl text-[#1a1814]">Lease Analysis Report</h1>
+              <h1 className="font-serif font-bold text-2xl text-[#1a1814]">Contract Analysis Report</h1>
               <p className="text-[#6b6560] text-sm truncate max-w-sm">{fileName}</p>
             </div>
             <ReportDownloadButton result={result} fileName={fileName} />

@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
       from: FROM_EMAIL,
       to: [email],
       reply_to: REPLY_TO,
-      subject: `Your Lease Analysis Report — Revealr`,
+      subject: `Your Contract Analysis Report — Revealr`,
       html,
       text,
     });

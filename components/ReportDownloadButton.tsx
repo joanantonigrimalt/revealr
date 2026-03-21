@@ -53,7 +53,7 @@ export default function ReportDownloadButton({ result, fileName }: Props) {
       doc.setTextColor(26, 24, 20);
       doc.setFontSize(20);
       doc.setFont('helvetica', 'bold');
-      doc.text('Lease Analysis Report', margin, y);
+      doc.text('Contract Analysis Report', margin, y);
       y += 8;
 
       doc.setFontSize(9);
