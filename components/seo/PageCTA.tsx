@@ -10,7 +10,7 @@ export default function PageCTA({ ctaMicrocopy }: Props) {
       <div className="max-w-2xl mx-auto text-center">
         <h2
           className="text-2xl sm:text-3xl font-bold text-white mb-3"
-          style={{ fontFamily: "'Playfair Display', serif", letterSpacing: '-0.02em' }}
+          style={{ fontFamily: "var(--font-playfair), Georgia, serif", letterSpacing: '-0.02em' }}
         >
           Ready to review your document?
         </h2>

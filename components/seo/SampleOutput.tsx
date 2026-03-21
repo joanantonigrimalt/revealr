@@ -36,7 +36,7 @@ export default function SampleOutput({ h2, documentLabel, flags }: Props) {
       <div className="max-w-3xl mx-auto">
         <h2
           className="text-2xl sm:text-3xl font-bold text-[#1a1814] mb-2"
-          style={{ fontFamily: "'Playfair Display', serif", letterSpacing: '-0.02em' }}
+          style={{ fontFamily: "var(--font-playfair), Georgia, serif", letterSpacing: '-0.02em' }}
         >
           {h2}
         </h2>
@@ -52,7 +52,7 @@ export default function SampleOutput({ h2, documentLabel, flags }: Props) {
               <div className="w-8 h-8 rounded-full bg-[#fdf0eb] flex items-center justify-center">
                 <span
                   className="text-[#e8572a] font-bold text-sm"
-                  style={{ fontFamily: "'Playfair Display', serif" }}
+                  style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
                 >
                   R
                 </span>
@@ -89,7 +89,10 @@ export default function SampleOutput({ h2, documentLabel, flags }: Props) {
                         <span className="text-[11px] text-[#9c9590] font-mono">{flag.section}</span>
                       </div>
                       <div className="text-sm font-semibold text-[#1a1814] mb-1">{flag.title}</div>
-                      <p className="text-xs text-[#6b6560] leading-relaxed">{flag.body}</p>
+                      <p className="text-xs text-[#6b6560] leading-relaxed mb-2">{flag.body}</p>
+                      {flag.action && (
+                        <div className="text-xs font-semibold text-[#1a1814]">→ {flag.action}</div>
+                      )}
                     </div>
                   </div>
                 </div>

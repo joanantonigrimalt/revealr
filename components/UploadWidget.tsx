@@ -97,7 +97,7 @@ export default function UploadWidget() {
             </svg>
           </div>
 
-          <p className="font-bold text-lg text-[#1a1814] mb-1 text-center" style={{ fontFamily: "'Playfair Display', serif" }}>
+          <p className="font-bold text-lg text-[#1a1814] mb-1 text-center" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
             {isDragOver ? 'Release to analyze' : 'Drop your contract here'}
           </p>
           <p className="text-sm text-[#9c9590] text-center mb-5 leading-relaxed">

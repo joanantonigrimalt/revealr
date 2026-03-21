@@ -298,7 +298,7 @@ function DashboardInner() {
                       <span className="text-xs font-semibold text-[#e8572a] uppercase tracking-wider">Full Report</span>
                     </div>
                     <div className="flex items-baseline gap-2">
-                      <span className="text-4xl font-bold text-white" style={{ fontFamily: "'Playfair Display', serif" }}>$19</span>
+                      <span className="text-4xl font-bold text-white" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>$19</span>
                       <span className="text-sm text-white/50">one-time</span>
                     </div>
                     <p className="text-xs text-white/40 mt-0.5">No subscription · Instant access</p>
@@ -456,7 +456,7 @@ function Shell({ children }: { children: React.ReactNode }) {
     <div className="min-h-screen bg-[#faf9f7] flex flex-col">
       <header className="border-b border-[#e8e4df] bg-white/80 backdrop-blur-sm sticky top-0 z-10">
         <div className="container-app flex items-center justify-between h-14">
-          <a href="/" className="font-bold text-[#1a1814] text-lg tracking-tight" style={{ fontFamily: "'Epilogue', sans-serif" }}>
+          <a href="/" className="font-bold text-[#1a1814] text-lg tracking-tight" style={{ fontFamily: "var(--font-epilogue), system-ui, sans-serif" }}>
             reveal<span className="text-[#e8572a]">r</span>
           </a>
           <span className="text-xs text-[#9c9590] hidden sm:block">Lease Intelligence Platform</span>

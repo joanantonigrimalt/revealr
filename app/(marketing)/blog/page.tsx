@@ -57,7 +57,7 @@ export default function BlogIndexPage() {
           <h1
             className="text-[#1a1814] font-bold leading-tight mb-4"
             style={{
-              fontFamily: "'Playfair Display', serif",
+              fontFamily: "var(--font-playfair), Georgia, serif",
               fontSize: 'clamp(2rem, 4vw, 3rem)',
               letterSpacing: '-0.02em',
             }}
@@ -83,7 +83,7 @@ export default function BlogIndexPage() {
                 <div className="flex items-center justify-between mb-6">
                   <h2
                     className="text-xl font-bold text-[#1a1814]"
-                    style={{ fontFamily: "'Playfair Display', serif" }}
+                    style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
                   >
                     {CATEGORY_LABELS[cat]}
                   </h2>
@@ -123,7 +123,7 @@ export default function BlogIndexPage() {
         <div className="max-w-xl mx-auto text-center">
           <h2
             className="text-2xl font-bold text-white mb-3"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
           >
             Ready to analyze your contract?
           </h2>

@@ -41,6 +41,7 @@ export interface SampleFlag {
   section: string;
   title: string;
   body: string;
+  action?: string;
 }
 
 export interface WhoItem {
@@ -996,67 +997,77 @@ export const seoPages: SEOPage[] = [
     priority: 'media-alta',
     cluster: 'lease-rental',
     hubPage: '/lease-agreement-analyzer',
-    title: "Rental Lease Review — What Every Renter Should Check Before Signing",
+    title: "Rental Lease Review: 8 Clauses Every Renter Must Check Before Signing",
     metaDescription:
-      "First time renting? Or reviewing a new lease? This guide covers what every rental lease should include — and how Revealr catches what you might miss.",
-    h1: "Rental Lease Review — What to Check in Any Rental Agreement Before Signing",
+      "Before you sign a rental lease, check these 8 clauses. Revealr's AI flags security deposit traps, illegal entry provisions, hidden fees, and auto-renewal terms in 60 seconds.",
+    h1: "Rental Lease Review — 8 Clauses Most Renters Miss Before Signing",
     h2s: [
-      "What Every Renter Should Look for in a Lease",
-      "The Clauses Most Rental Leases Get Wrong",
-      "How AI Makes Rental Lease Review Simple and Reliable",
+      "The 8 Rental Lease Clauses That Cause the Most Tenant Problems",
+      "What a Rental Lease AI Analysis Actually Flags",
+      "How to Use Revealr to Review a Rental Lease in 60 Seconds",
     ],
     intro:
-      "Reviewing a rental lease properly takes most people 2–3 hours — and even then, they often miss the clauses that matter most. This guide walks through what every rental lease should include, which clauses are commonly problematic, and how to make sure you understand everything you are signing before you commit to 12 or more months of occupancy.",
-    checksTitle: 'What every rental lease review should cover',
+      "Rental leases are written by landlords or their attorneys. The language is designed to protect the property owner — not you. Most tenants focus on the rent amount and move-in date, then sign without reading the security deposit terms, early termination penalties, maintenance obligations, or automatic renewal clauses that will govern the next 12+ months of their life. Revealr reads every clause and surfaces the ones that create real risk — before you commit.",
+    checksTitle: 'What Revealr flags in rental lease agreements',
     checks: [
-      { title: 'Rent amount, due date, and late fees', description: 'Payment terms, grace periods, and penalty fee structures' },
-      { title: 'Security deposit conditions', description: 'Amount, refund rights, deduction rules, and return timeline' },
-      { title: 'Lease break and early exit options', description: 'What it costs to leave before the lease ends' },
-      { title: 'Subletting and guest policies', description: 'Whether you can sublet and what counts as a "guest"' },
-      { title: 'Utilities and what is included', description: 'Which utilities are covered in rent vs your responsibility' },
-      { title: 'Habitability and repair obligations', description: 'What the landlord must maintain and what falls on you' },
+      { title: 'Security deposit terms and deduction rights', description: 'Non-refundable fees disguised as deposits, and vague "any damage" deduction language' },
+      { title: 'Landlord entry notice requirements', description: 'Notice periods below the 24-hour legal minimum, or verbal-only notice clauses' },
+      { title: 'Early termination fees and penalties', description: 'Flat-fee penalties, rent acceleration clauses, and subletting restrictions' },
+      { title: 'Automatic renewal provisions', description: 'Month-to-month traps and notice windows that are unreasonably short' },
+      { title: 'Maintenance and repair obligations', description: 'Clauses that shift landlord habitability responsibilities to tenants' },
+      { title: 'Utilities and hidden costs', description: 'Common-area fees, utility caps, and charges not reflected in the headline rent' },
+      { title: 'Pet and guest policies', description: 'Restrictions and fees that create liability for ordinary household situations' },
+      { title: 'Dispute resolution terms', description: 'Mandatory arbitration clauses that limit your legal options if a dispute arises' },
     ],
     sampleDocumentLabel: 'Residential Rental Lease',
     sampleFlags: [
       {
         severity: 'CRITICAL',
-        section: '§6.2',
-        title: 'Landlord Entry with Insufficient Notice',
-        body: "This clause permits the landlord to enter the premises with 4-hour verbal notice. Most states require a minimum of 24 hours written notice. This clause is likely below legal minimum and may violate your right to quiet enjoyment.",
+        section: '§8.3',
+        title: 'Security Deposit — Deductions for "Any Damage"',
+        body: "This clause permits the landlord to deduct from your security deposit for 'any damage or wear to the premises,' without distinguishing between tenant damage and normal wear and tear. Normal wear and tear (minor scuffs, carpet aging, faded paint) cannot legally be charged to tenants in most states. This language creates a basis for disputing your entire deposit at move-out.",
+        action: 'Request that the clause be amended to exclude normal wear and tear, or document pre-existing conditions in detail before move-in.',
+      },
+      {
+        severity: 'WARNING',
+        section: '§11.2',
+        title: 'Automatic Renewal with 30-Day Notice Window',
+        body: "This lease automatically renews for 12 months unless written cancellation notice is provided at least 30 days before expiration. Missing this window by even one day locks you into another full year at the renewal rate.",
+        action: 'Set a calendar reminder at least 45 days before lease expiration to decide whether to renew or give notice.',
       },
     ],
     whoThisIsFor: [
-      { role: 'First-time renters', description: "You are renting for the first time and do not know what to look for" },
-      { role: 'Renters moving to a new city', description: "You are unfamiliar with local lease standards and want a check" },
-      { role: 'Anyone with a new lease to review', description: "You have a document and want to make sure you understand it fully" },
+      { role: 'First-time renters', description: "You are renting for the first time and do not know which clauses are standard vs problematic" },
+      { role: 'Renters moving to a new city or state', description: "Lease standards and tenant protections vary significantly by location" },
+      { role: 'Anyone reviewing a renewal or new lease', description: "Even experienced renters benefit from a clause-level check before committing to another term" },
     ],
     whyReviewStat:
-      "First-time renters are significantly more likely to sign leases with unfavorable terms — not because they are careless, but because they do not yet know what standard looks like. That is exactly the gap Revealr fills.",
+      "Security deposit disputes and early termination disputes are the two most common landlord-tenant conflicts — and both almost always trace back to lease clauses the tenant did not fully understand before signing.",
     faqs: [
       {
         question: 'How long should it take to review a rental lease?',
         answer:
-          "A thorough manual review of a standard lease takes 2–4 hours. With Revealr, you get a complete risk analysis in under 60 seconds — then you can focus your reading time on the flagged sections.",
+          "A thorough manual review of a standard lease takes 2–4 hours. With Revealr, you get a complete AI risk analysis in under 60 seconds — then you focus your reading time on the specific clauses it flags.",
       },
       {
-        question: "What are tenants' most common mistakes when reviewing a lease?",
+        question: "What are the most common mistakes tenants make when reviewing a lease?",
         answer:
-          "Focusing on rent and end date while ignoring security deposit terms, entry rights, maintenance responsibilities, and early termination provisions.",
+          "Focusing on rent and move-in date while skipping security deposit deduction terms, entry rights, maintenance obligations, automatic renewal clauses, and early termination penalties.",
       },
       {
-        question: 'Can I get a rental lease reviewed for free?',
+        question: 'Can a landlord legally deduct for normal wear and tear?',
         answer:
-          "Some tenant advocacy organizations offer free lease reviews. Revealr charges $19 for an instant, comprehensive AI analysis — without appointment scheduling or waiting periods.",
+          "No. In all U.S. states, landlords cannot charge tenants for normal wear and tear (minor scuffs, carpet aging, faded paint). Lease clauses that permit deductions for 'any damage' are a common dispute trigger that Revealr flags.",
       },
       {
         question: 'What if I cannot understand the legal language in my lease?',
         answer:
-          "Revealr translates every flagged clause into plain English with a clear explanation of what it means for you in practice.",
+          "Revealr translates every flagged clause into plain English — explaining what the clause means for you in practice, not just what it says.",
       },
       {
         question: 'Is it too late to review my lease after signing?',
         answer:
-          "No. Reviewing a signed lease helps you understand your rights and responsibilities for the duration of your tenancy, especially if disputes arise.",
+          "No. Reviewing a signed lease helps you understand your rights for the rest of the tenancy, especially before a move-out, dispute, or renewal decision.",
       },
     ],
     relatedPages: [
@@ -1653,32 +1664,41 @@ export const seoPages: SEOPage[] = [
     priority: 'media',
     cluster: 'lease-rental',
     hubPage: '/lease-agreement-analyzer',
-    title: "Landlord Entry Notice Clause — Is Your Landlord Allowed to Enter Without Warning? | Revealr",
+    title: "Landlord Entry Notice Clause — What Your Lease Must Say to Be Legal | Revealr",
     metaDescription:
-      "Check your lease's landlord entry clause. Revealr flags illegal entry provisions, missing notice requirements, and clauses that violate your right to quiet enjoyment.",
-    h1: "Landlord Entry Notice Clause — Is Your Landlord Allowed to Enter Without Warning?",
+      "Most states require 24–48 hours written notice before landlord entry. Check if your lease meets this standard — Revealr flags insufficient notice, verbal-only clauses, and overbroad inspection rights.",
+    h1: "Landlord Entry Notice Clause — What Your Lease Must Say to Be Legal",
     h2s: [
-      "What Does the Law Require for Landlord Entry?",
-      "What Revealr Flags in Landlord Entry Clauses",
-      "How to Spot an Illegal or Unfair Entry Clause Before You Sign",
+      "What the Law Actually Requires for Landlord Entry",
+      "Entry Clauses Revealr Flags as Problematic",
+      "How to Negotiate a Stronger Entry Rights Clause Before You Sign",
     ],
     intro:
-      "Most states require landlords to give at least 24–48 hours written notice before entering a rental unit except in emergencies. But many leases include entry clauses that reduce this window, allow verbal notice, permit entry during unusual hours, or give landlords unrestricted inspection rights. Revealr checks your lease's entry clause against tenant protection standards and flags anything that exceeds what landlords are legally allowed to demand.",
+      "Most U.S. states require landlords to provide at least 24 hours written notice before entering a rental unit — except in genuine emergencies. Yet many leases include entry clauses that quietly shrink this window to a few hours, allow verbal notice only, define 'emergency' broadly enough to cover routine inspections, or grant landlords unrestricted access rights. These clauses often go unread until there is already a conflict. Revealr reads your entry clause and tells you whether it meets legal minimums before you sign.",
     checksTitle: 'What Revealr checks in landlord entry clauses',
     checks: [
-      { title: 'Notice period requirements', description: 'Whether the required notice meets the 24–48 hour legal minimum' },
-      { title: 'Written vs verbal notice', description: 'Verbal notice requirements are often below legal standards' },
-      { title: 'Emergency vs routine inspection', description: 'Whether emergency entry is defined or applied too broadly' },
-      { title: 'Entry hours and frequency', description: 'Restrictions on when and how often landlords can enter' },
-      { title: 'Right to quiet enjoyment', description: 'Whether entry rights conflict with your statutory right to privacy' },
+      { title: 'Notice period vs legal minimum', description: 'Whether the clause meets the 24–48 hour written notice standard required in most states' },
+      { title: 'Written vs verbal notice', description: 'Verbal-only notice requirements are typically below the legal minimum and harder to document' },
+      { title: 'Emergency entry definition', description: 'Whether "emergency" is defined narrowly or applied broadly enough to cover routine access' },
+      { title: 'Entry hours and permitted frequency', description: 'Clauses permitting entry at any hour or more than once per month for routine inspections' },
+      { title: 'Inspection scope and purpose', description: 'Whether inspections require advance notice and a stated reason, or grant open-ended access' },
+      { title: 'Right to quiet enjoyment', description: 'Whether entry provisions conflict with your statutory right to undisturbed occupancy' },
     ],
     sampleDocumentLabel: 'Lease Entry Clause',
     sampleFlags: [
       {
         severity: 'CRITICAL',
         section: '§7.3',
-        title: 'Insufficient Entry Notice Period',
-        body: "This clause permits the landlord to enter the premises upon 4 hours verbal notice for any reason, including periodic inspection. Most states require 24 hours written notice. This clause may be unenforceable and conflicts with your right to quiet enjoyment.",
+        title: 'Entry Notice Below Legal Minimum — Verbal Only',
+        body: "This clause permits the landlord to enter the premises upon 4 hours verbal notice for any reason, including periodic inspection. Most states require a minimum of 24 hours written notice. Verbal notice is also harder to document if a dispute arises. This clause is likely below the legal standard and conflicts with your right to quiet enjoyment.",
+        action: 'Request 24-hour written (or email) notice as a condition for any non-emergency entry, and ask that emergency entry be defined specifically.',
+      },
+      {
+        severity: 'WARNING',
+        section: '§7.5',
+        title: 'Routine Inspections — No Frequency Limit',
+        body: "This clause permits the landlord to conduct routine inspections at any time with advance notice, with no limit on frequency. While periodic inspections are normal, an unlimited right to inspect can effectively override your right to quiet enjoyment if exercised frequently.",
+        action: 'Request a cap of one routine inspection per quarter and require that the purpose of each inspection be stated in the notice.',
       },
     ],
     whoThisIsFor: [
@@ -1746,32 +1766,41 @@ export const seoPages: SEOPage[] = [
     priority: 'media',
     cluster: 'lease-rental',
     hubPage: '/lease-agreement-analyzer',
-    title: "Maintenance Responsibility in Lease — Who's Actually Responsible for What? | Revealr",
+    title: "Maintenance Responsibility in Lease — What Your Landlord Must Fix vs What Falls on You | Revealr",
     metaDescription:
-      "Confused about maintenance in your lease? Revealr checks if your lease unfairly shifts repair responsibilities to you — before a dispute makes it expensive.",
-    h1: "Maintenance Responsibility in Lease — Who's Actually Responsible for What?",
+      "Who is responsible for repairs in your rental? Revealr checks your lease for maintenance clauses that illegally shift habitability obligations to tenants — before a dispute costs you money.",
+    h1: "Maintenance Responsibility in Lease — What Landlords Must Fix vs What Falls on You",
     h2s: [
-      "How Maintenance Responsibility Works in Most Leases",
-      "What Revealr Looks for in Maintenance and Repair Clauses",
-      "Maintenance Clauses That Unfairly Shift Risk to Tenants",
+      "The Legal Baseline: What Landlords Are Always Responsible For",
+      "Lease Clauses That Illegally Shift Maintenance Obligations to Tenants",
+      "How to Read Your Maintenance Clause Before Signing",
     ],
     intro:
-      "Maintenance disputes are the most common landlord-tenant conflicts. The root cause is almost always a lease clause that either does not define responsibilities clearly or shifts obligations that should belong to the landlord onto the tenant. Revealr reads your maintenance clause and tells you what you are legally required to handle, what your landlord must handle, and where your lease goes beyond what is legally enforceable.",
-    checksTitle: 'What Revealr checks in maintenance clauses',
+      "In every U.S. state, landlords are legally required to maintain habitable conditions — working heat, plumbing, structural integrity, pest control. These obligations cannot be waived by a lease clause. But many leases include maintenance provisions that blur this line: requiring tenants to handle HVAC servicing, appliance repairs, or even minor structural issues up to a dollar threshold. Revealr reads your maintenance clause against state habitability standards and flags where your lease pushes beyond what is legally enforceable.",
+    checksTitle: 'What Revealr checks in lease maintenance clauses',
     checks: [
-      { title: 'Structural vs cosmetic repairs', description: 'Structural repairs are always landlord responsibility by law' },
-      { title: 'Appliance maintenance and replacement', description: 'Who covers repairs or replacement for included appliances' },
-      { title: 'Pest control responsibility', description: 'Pest control is a habitability issue in most states' },
-      { title: 'HVAC and plumbing systems', description: 'Major systems that typically belong to the landlord' },
-      { title: 'Normal wear vs tenant damage', description: 'Clauses that blur this distinction in the landlord\'s favor' },
+      { title: 'Blanket tenant repair obligations', description: '"Tenant responsible for all repairs and maintenance" — likely partially unenforceable' },
+      { title: 'Dollar-threshold maintenance splits', description: 'Clauses making tenants pay for repairs under $X, which often capture habitability systems' },
+      { title: 'Appliance maintenance and replacement', description: 'Who is responsible for servicing or replacing appliances that came with the unit' },
+      { title: 'HVAC, plumbing, and heating systems', description: 'Major habitability systems that remain landlord responsibility regardless of lease language' },
+      { title: 'Pest control responsibility', description: 'Pest infestations are a habitability issue — landlords cannot shift this to tenants' },
+      { title: 'Normal wear vs tenant damage', description: 'Vague language that blurs the distinction in the landlord\'s favor at move-out' },
     ],
     sampleDocumentLabel: 'Lease Maintenance Clause',
     sampleFlags: [
       {
+        severity: 'CRITICAL',
+        section: '§9.1',
+        title: 'Tenant Responsible for "All Repairs and Maintenance"',
+        body: "This clause requires the tenant to 'maintain the premises in good repair and be responsible for all repairs and maintenance during the tenancy.' A blanket tenant repair obligation of this scope is at least partially unenforceable: landlords cannot contractually waive their legal duty to maintain habitable conditions (working heat, plumbing, structural integrity). This clause creates a basis for the landlord to dispute responsibility for major system failures.",
+        action: 'Request that the clause be limited to minor cosmetic repairs and explicitly carve out habitability-related systems (HVAC, plumbing, electrical, structural).',
+      },
+      {
         severity: 'WARNING',
         section: '§9.4',
-        title: 'Tenant Responsible for HVAC Maintenance',
-        body: "This clause makes the tenant responsible for all maintenance and repairs under $500, including HVAC filter replacement and appliance servicing. While minor maintenance responsibility is common, HVAC maintenance typically falls to the landlord as a habitability-related system.",
+        title: 'Tenant Responsible for Repairs Under $500 — Including HVAC',
+        body: "This clause makes the tenant responsible for all maintenance and repairs under $500, including HVAC filter replacement and appliance servicing. While minor maintenance is reasonable for tenants to handle, HVAC systems are a habitability-related component in most states and typically remain landlord responsibility regardless of cost.",
+        action: 'Request that the $500 threshold explicitly excludes HVAC maintenance, heating, and plumbing — or that those systems be listed as landlord responsibilities.',
       },
     ],
     whoThisIsFor: [
@@ -1839,72 +1868,82 @@ export const seoPages: SEOPage[] = [
     priority: 'media',
     cluster: 'contract-review',
     hubPage: '/review-contract-before-signing',
-    title: "Review Contract Before Signing — What to Look for and Why It Matters | Revealr",
+    title: "How to Review a Contract Before Signing — 6 Clauses That Always Matter | Revealr",
     metaDescription:
-      "Every contract has clauses that favor the other side. This guide covers what to check before signing any contract — and how Revealr automates the review in 60 seconds.",
-    h1: "Review Any Contract Before Signing — What to Look for and Why It Matters",
+      "Before you sign any contract, check these 6 clauses. Revealr's AI flags termination asymmetry, auto-renewals, liability shifts, arbitration waivers, and hidden penalties — across any document type.",
+    h1: "How to Review a Contract Before Signing — 6 Clauses That Always Matter",
     h2s: [
-      "Why You Should Always Review a Contract Before Signing",
-      "What Revealr Checks Across Any Contract Type",
-      "The Clauses Most People Overlook Before Signing",
+      "Why Every Contract Is Written Against You (Until You Read It)",
+      "The 6 Clause Types That Create the Most Post-Signing Problems",
+      "How to Use AI to Review Any Contract in 60 Seconds",
     ],
     intro:
-      "Every contract you sign was drafted by someone — and that someone was trying to protect their own interests. That does not make the contract dishonest, but it does mean the terms lean in their favor. Reviewing a contract before signing is how you find where the asymmetry is, understand what you are actually committing to, and decide what to push back on.",
-    checksTitle: 'Universal contract clauses to check before signing',
+      "Every contract is drafted by the other side — and every first draft protects their interests, not yours. That is not dishonest; it is just how contracts work. The question is whether you read it before signing. Most people do not. They skim the headline terms (price, dates, deliverables) and sign without reading the termination clause, the liability provision, the auto-renewal window, or the arbitration waiver that eliminates their right to sue. Revealr reads every clause and surfaces the specific language you need to negotiate before you commit.",
+    checksTitle: 'The 6 clause types Revealr checks in any contract',
     checks: [
-      { title: 'Termination and early exit terms', description: 'What it costs to leave and under what conditions' },
-      { title: 'Automatic renewal provisions', description: 'Notice windows and price changes on renewal' },
-      { title: 'Liability and indemnification', description: 'Who bears the financial risk if something goes wrong' },
-      { title: 'Dispute resolution and arbitration', description: 'Whether you can sue or must go to arbitration' },
-      { title: 'Hidden fees and penalties', description: 'Financial obligations that are not in the headline terms' },
+      { title: 'Termination rights and exit asymmetry', description: 'Whether you and the other party have equal or unequal exit rights under the contract' },
+      { title: 'Automatic renewal provisions', description: 'Notice windows, price escalation rights, and conditions for non-renewal' },
+      { title: 'Liability caps and indemnification', description: 'Who bears the financial risk when something goes wrong — and whether that risk is capped' },
+      { title: 'Dispute resolution and arbitration waivers', description: 'Binding arbitration clauses and class action waivers that limit your legal options' },
+      { title: 'Hidden fees, penalties, and clawbacks', description: 'Financial obligations buried in the body of the agreement that are not in the headline terms' },
+      { title: 'Scope of obligations and deliverables', description: 'Vague or unlimited obligation clauses that create open-ended commitments on your side' },
     ],
-    sampleDocumentLabel: 'Contract',
+    sampleDocumentLabel: 'Service Agreement',
     sampleFlags: [
       {
         severity: 'CRITICAL',
         section: '§11',
-        title: 'Termination for Cause Only — No Exit Right',
-        body: "You may only terminate this agreement for material breach, with 30 days to cure. The other party may terminate for convenience with 14 days notice. This asymmetry locks you in while giving the other party a free exit.",
+        title: 'Asymmetric Termination Rights — You Are Locked In',
+        body: "You may only terminate this agreement for material breach, with a 30-day cure period. The other party may terminate for convenience with 14 days written notice. This clause gives the other party a free exit while locking you in to a high bar for termination. If the relationship deteriorates, you bear all the exit cost.",
+        action: 'Request mutual termination for convenience with a reasonable notice period (30 days) on both sides.',
       },
       {
         severity: 'WARNING',
         section: '§6',
-        title: 'Auto-Renewal with 90-Day Notice Window',
-        body: "This contract automatically renews for 12 months unless written notice of cancellation is provided at least 90 days before the renewal date. This is an unusually long notice window.",
+        title: 'Auto-Renewal with 90-Day Cancellation Window',
+        body: "This contract automatically renews for 12 months unless written cancellation notice is provided at least 90 days before the renewal date. A 90-day notice window is unusually long — most standard agreements use 30 days. Missing this window by even a week locks you into another year.",
+        action: 'Request a 30-day cancellation notice window, or at minimum add a calendar reminder for 120 days before renewal.',
+      },
+      {
+        severity: 'WARNING',
+        section: '§14.2',
+        title: 'Mandatory Arbitration — Class Action Waiver',
+        body: "All disputes must be resolved through binding arbitration. You waive your right to a jury trial and your right to participate in any class action. Arbitration tends to favor the party that uses it frequently (businesses) over one-time claimants.",
+        action: 'Ask if this clause is negotiable. For consumer contracts, some jurisdictions limit the enforceability of mandatory arbitration clauses.',
       },
     ],
     whoThisIsFor: [
-      { role: 'Anyone about to sign a contract', description: "Any type of contract — lease, employment, service, NDA, or other" },
-      { role: 'People who skipped reviewing before', description: "You signed something without reading it and want to be more careful next time" },
-      { role: 'First-time contract signers', description: "You have never reviewed a contract before and want a practical guide" },
+      { role: 'Anyone about to sign any contract', description: "Lease, employment offer, NDA, service agreement, freelance contract — this checklist applies to all of them" },
+      { role: 'People who have signed without reading before', description: "You want to avoid the experience of discovering a problematic clause after the fact" },
+      { role: 'Business owners and freelancers', description: "You receive contracts regularly and want a fast first-pass before diving into the details" },
     ],
     whyReviewStat:
-      "The average person signs 7–12 significant contracts per year. Most are signed without being fully read. A single clause — an auto-renewal, a clawback, an arbitration waiver — can have consequences that last years.",
+      "A single overlooked clause — an auto-renewal, a liability waiver, an arbitration requirement — can have consequences that last years and cost far more than any reasonable review would have taken.",
     faqs: [
       {
         question: 'Do I need a lawyer to review a contract before signing?',
         answer:
-          "Not for every contract. For standard leases, employment offers, NDAs, and service agreements, Revealr can flag the most important risks in 60 seconds. For high-stakes or complex agreements, a lawyer review is still advisable.",
+          "Not for every contract. For standard leases, employment offers, NDAs, and service agreements, Revealr flags the most important risks in 60 seconds. For high-stakes, complex, or high-value agreements, consulting a licensed attorney remains advisable.",
       },
       {
         question: 'What happens if I sign a contract without reviewing it?',
         answer:
-          "You are legally bound to its terms, even ones you did not understand. Some clauses may be unenforceable, but challenging them requires legal action. Prevention is far cheaper than remedy.",
+          "You are legally bound to all its terms — including ones you did not understand or notice. Some clauses may be unenforceable, but challenging them requires legal action. Prevention is far cheaper than remedy.",
       },
       {
-        question: 'How long does it take to properly review a contract?',
+        question: 'What is the single most important clause to check in any contract?',
         answer:
-          "A thorough manual review of a 10-page contract takes 2–4 hours. Revealr does it in 60 seconds — then you focus your reading time on the specific clauses it flags.",
+          "The termination clause. It determines how difficult and expensive it is to exit the agreement if things go wrong. Check it before anything else — then look at liability, auto-renewal, and arbitration.",
       },
       {
-        question: 'What is the most important clause to check in any contract?',
+        question: 'Can I negotiate a contract after receiving the first draft?',
         answer:
-          "The termination clause, the liability cap, and any automatic renewal provisions. These three determine what happens when things go wrong and how difficult it is to exit.",
+          "Almost always yes. Most first drafts are written to protect the drafter. Revealr tells you exactly which clauses to push back on and what to ask for — giving you a specific starting point for negotiation rather than a general unease.",
       },
       {
         question: 'Can I review a contract I have already signed?',
         answer:
-          "Yes. Understanding your existing contracts helps you know your rights and obligations if a dispute arises. Revealr works on signed and unsigned contracts.",
+          "Yes. Understanding an existing contract helps you know your rights and obligations — especially before a dispute, a renewal decision, or a request to exit.",
       },
     ],
     relatedPages: [

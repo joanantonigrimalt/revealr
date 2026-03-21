@@ -12,7 +12,7 @@ export default function WhatRevealrChecks({ title, h2, checks }: Props) {
       <div className="max-w-3xl mx-auto">
         <h2
           className="text-2xl sm:text-3xl font-bold text-[#1a1814] mb-2"
-          style={{ fontFamily: "'Playfair Display', serif", letterSpacing: '-0.02em' }}
+          style={{ fontFamily: "var(--font-playfair), Georgia, serif", letterSpacing: '-0.02em' }}
         >
           {h2}
         </h2>

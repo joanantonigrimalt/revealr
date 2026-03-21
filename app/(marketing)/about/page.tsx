@@ -18,7 +18,7 @@ export default function AboutPage() {
           <h1
             className="text-[#1a1814] font-bold leading-tight mb-4"
             style={{
-              fontFamily: "'Playfair Display', serif",
+              fontFamily: "var(--font-playfair), Georgia, serif",
               fontSize: 'clamp(2rem, 4vw, 3rem)',
               letterSpacing: '-0.02em',
             }}
@@ -37,7 +37,7 @@ export default function AboutPage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-2xl font-bold text-[#1a1814] mb-6"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
           >
             What Revealr is
           </h2>
@@ -65,7 +65,7 @@ export default function AboutPage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-2xl font-bold text-[#1a1814] mb-6"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
           >
             What Revealr is not
           </h2>
@@ -102,7 +102,7 @@ export default function AboutPage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-2xl font-bold text-[#1a1814] mb-6"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
           >
             How we handle your documents
           </h2>
@@ -128,7 +128,7 @@ export default function AboutPage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-2xl font-bold text-[#1a1814] mb-6"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
           >
             The problem we're solving
           </h2>
@@ -157,7 +157,7 @@ export default function AboutPage() {
         <div className="max-w-xl mx-auto text-center">
           <h2
             className="text-2xl font-bold text-[#1a1814] mb-3"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
           >
             Ready to review your next contract?
           </h2>

@@ -16,7 +16,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
     <section className="mb-10">
       <h2
         className="text-xl font-bold text-[#1a1814] mb-4"
-        style={{ fontFamily: "'Playfair Display', serif" }}
+        style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
       >
         {title}
       </h2>
@@ -35,7 +35,7 @@ export default function TermsPage() {
           <h1
             className="text-[#1a1814] font-bold mb-3"
             style={{
-              fontFamily: "'Playfair Display', serif",
+              fontFamily: "var(--font-playfair), Georgia, serif",
               fontSize: 'clamp(1.8rem, 4vw, 2.5rem)',
               letterSpacing: '-0.02em',
             }}

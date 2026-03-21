@@ -27,8 +27,8 @@ const config: Config = {
         'info-bg': '#eff6ff',
       },
       fontFamily: {
-        serif: ['Playfair Display', 'Georgia', 'serif'],
-        sans: ['Epilogue', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-playfair)', 'Georgia', 'serif'],
+        sans: ['var(--font-epilogue)', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
         DEFAULT: '0.5rem',

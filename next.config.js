@@ -1,8 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    serverComponentsExternalPackages: ['pdf-parse', 'mammoth'],
-  },
+  // Stable in Next.js 14.2+ (was experimental.serverComponentsExternalPackages)
+  serverExternalPackages: ['pdf-parse', 'mammoth'],
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {

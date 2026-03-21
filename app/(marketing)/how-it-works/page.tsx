@@ -89,7 +89,7 @@ export default function HowItWorksPage() {
           <h1
             className="text-[#1a1814] font-bold leading-tight mb-4"
             style={{
-              fontFamily: "'Playfair Display', serif",
+              fontFamily: "var(--font-playfair), Georgia, serif",
               fontSize: 'clamp(2rem, 4vw, 3rem)',
               letterSpacing: '-0.02em',
             }}
@@ -108,7 +108,7 @@ export default function HowItWorksPage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-2xl font-bold text-[#1a1814] mb-8"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
           >
             What happens when you upload a contract
           </h2>
@@ -136,7 +136,7 @@ export default function HowItWorksPage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-2xl font-bold text-[#1a1814] mb-3"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
           >
             What the AI is trained to detect
           </h2>
@@ -171,7 +171,7 @@ export default function HowItWorksPage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-2xl font-bold text-[#1a1814] mb-3"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
           >
             What the severity levels mean
           </h2>
@@ -198,7 +198,7 @@ export default function HowItWorksPage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-2xl font-bold text-[#1a1814] mb-3"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
           >
             The 0–100 risk score
           </h2>
@@ -232,7 +232,7 @@ export default function HowItWorksPage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-2xl font-bold text-[#1a1814] mb-3"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
           >
             What Revealr cannot do
           </h2>
@@ -255,7 +255,7 @@ export default function HowItWorksPage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-2xl font-bold text-[#1a1814] mb-6"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
           >
             How to use your results responsibly
           </h2>
@@ -285,7 +285,7 @@ export default function HowItWorksPage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-2xl font-bold text-[#1a1814] mb-6"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
           >
             How your document is handled
           </h2>
@@ -320,7 +320,7 @@ export default function HowItWorksPage() {
         <div className="max-w-3xl mx-auto">
           <h2
             className="text-2xl font-bold text-[#1a1814] mb-6"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
           >
             Supported file types
           </h2>
@@ -347,7 +347,7 @@ export default function HowItWorksPage() {
         <div className="max-w-xl mx-auto text-center">
           <h2
             className="text-2xl font-bold text-white mb-3"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
           >
             See it in action
           </h2>

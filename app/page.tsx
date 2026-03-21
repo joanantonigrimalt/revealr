@@ -2,7 +2,6 @@
 
 import { useState, useRef } from 'react';
 import Link from 'next/link';
-import Script from 'next/script';
 import UploadWidget from '@/components/UploadWidget';
 import SiteFooter from '@/components/SiteFooter';
 
@@ -164,10 +163,10 @@ const STEPS = [
 
 // ─── Stats ────────────────────────────────────────────────────────────────────
 const STATS = [
-  { value: '12,000+', label: 'Contracts analyzed' },
-  { value: '67%', label: 'Contain at least one risky clause' },
   { value: '60 sec', label: 'Average analysis time' },
+  { value: '2–4 hr', label: 'Manual review time saved' },
   { value: '$19', label: 'Full report, one-time' },
+  { value: 'Any doc', label: 'Lease, NDA, employment, and more' },
 ];
 
 export default function HomePage() {
@@ -175,13 +174,13 @@ export default function HomePage() {
 
   return (
     <>
-      <Script
-        id="faq-schema"
+      {/* FAQ schema — lowercase <script> renders SSR-safe in App Router client components */}
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <div className="min-h-screen bg-white flex flex-col" style={{ fontFamily: "'Epilogue', sans-serif" }}>
+      <div className="min-h-screen bg-white flex flex-col" style={{ fontFamily: "var(--font-epilogue), system-ui, sans-serif" }}>
 
         {/* ── Nav ──────────────────────────────────────────────────────────── */}
         <header role="banner">
@@ -230,7 +229,7 @@ export default function HomePage() {
                 <h1
                   id="hero-heading"
                   className="font-bold text-[#1a1814] leading-tight mb-4"
-                  style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(2.2rem, 4vw, 3.6rem)', letterSpacing: '-0.02em' }}
+                  style={{ fontFamily: "var(--font-playfair), Georgia, serif", fontSize: 'clamp(2.2rem, 4vw, 3.6rem)', letterSpacing: '-0.02em' }}
                 >
                   Know What You're Signing — AI Contract Analysis in 60 Seconds
                 </h1>
@@ -265,8 +264,8 @@ export default function HomePage() {
                     ))}
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-[#1a1814]">Trusted by 12,000+ users</p>
-                    <p className="text-xs text-[#9c9590]">★★★★★ 4.9/5 across 12,000+ contract analyses</p>
+                    <p className="text-sm font-semibold text-[#1a1814]">Used by renters, freelancers & employees</p>
+                    <p className="text-xs text-[#9c9590]">Leases · Employment · NDAs · Freelance · Any contract</p>
                   </div>
                 </div>
               </div>
@@ -295,7 +294,7 @@ export default function HomePage() {
           <section aria-labelledby="docs-heading" className="py-20 px-6">
             <div className="max-w-5xl mx-auto">
               <div className="text-center mb-12">
-                <h2 id="docs-heading" className="font-bold text-3xl text-[#1a1814] mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
+                <h2 id="docs-heading" className="font-bold text-3xl text-[#1a1814] mb-3" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
                   Works on Any Contract or Document
                 </h2>
                 <p className="text-[#6b6560] max-w-xl mx-auto leading-relaxed">
@@ -331,7 +330,7 @@ export default function HomePage() {
             <div className="max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
               {STATS.map((s) => (
                 <div key={s.label}>
-                  <div className="text-3xl font-bold text-white mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  <div className="text-3xl font-bold text-white mb-1" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
                     {s.value}
                   </div>
                   <div className="text-xs text-white/50 uppercase tracking-wider">{s.label}</div>
@@ -344,7 +343,7 @@ export default function HomePage() {
           <section id="how-it-works" aria-labelledby="how-heading" className="py-20 px-6 bg-[#faf9f7]">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
-                <h2 id="how-heading" className="font-bold text-3xl text-[#1a1814] mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
+                <h2 id="how-heading" className="font-bold text-3xl text-[#1a1814] mb-3" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
                   How Revealr Works
                 </h2>
                 <p className="text-[#6b6560] max-w-xl mx-auto leading-relaxed">
@@ -354,7 +353,7 @@ export default function HomePage() {
               <div className="grid sm:grid-cols-3 gap-6">
                 {STEPS.map((step) => (
                   <div key={step.n} className="bg-white border border-[#e8e4df] rounded-2xl p-7 text-center">
-                    <div className="w-10 h-10 rounded-full bg-[#e8572a] text-white font-bold text-lg flex items-center justify-center mx-auto mb-5" style={{ fontFamily: "'Playfair Display', serif" }}>
+                    <div className="w-10 h-10 rounded-full bg-[#e8572a] text-white font-bold text-lg flex items-center justify-center mx-auto mb-5" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
                       {step.n}
                     </div>
                     <h3 className="font-bold text-[#1a1814] mb-2 text-base">{step.title}</h3>
@@ -369,7 +368,7 @@ export default function HomePage() {
           <section aria-labelledby="sample-heading" className="py-20 px-6">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
-                <h2 id="sample-heading" className="font-bold text-3xl text-[#1a1814] mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
+                <h2 id="sample-heading" className="font-bold text-3xl text-[#1a1814] mb-3" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
                   What Your Report Looks Like
                 </h2>
                 <p className="text-[#6b6560] max-w-xl mx-auto leading-relaxed">
@@ -382,7 +381,7 @@ export default function HomePage() {
                 <div className="bg-[#faf9f7] border-b border-[#e8e4df] px-6 py-4 flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="w-9 h-9 rounded-full bg-[#fdf0eb] flex items-center justify-center">
-                      <span className="text-[#e8572a] font-bold" style={{ fontFamily: "'Playfair Display', serif" }}>R</span>
+                      <span className="text-[#e8572a] font-bold" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>R</span>
                     </div>
                     <div>
                       <div className="text-sm font-bold text-[#1a1814]">Revealr Risk Report</div>
@@ -391,7 +390,7 @@ export default function HomePage() {
                   </div>
                   <div className="text-right">
                     <div className="text-xs text-[#9c9590]">Risk Score</div>
-                    <div className="text-2xl font-bold text-[#1a1814]" style={{ fontFamily: "'Playfair Display', serif" }}>
+                    <div className="text-2xl font-bold text-[#1a1814]" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
                       74 <span className="text-sm font-normal text-[#9c9590]">/ 100</span>
                     </div>
                   </div>
@@ -453,7 +452,7 @@ export default function HomePage() {
           <section id="pricing" aria-labelledby="pricing-heading" className="py-20 px-6 bg-[#faf9f7] border-t border-[#f0ece8]">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
-                <h2 id="pricing-heading" className="font-bold text-3xl text-[#1a1814] mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
+                <h2 id="pricing-heading" className="font-bold text-3xl text-[#1a1814] mb-3" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
                   One Report. One Price. No Subscription.
                 </h2>
                 <p className="text-[#6b6560] max-w-xl mx-auto leading-relaxed">
@@ -466,7 +465,7 @@ export default function HomePage() {
                   <div className="flex items-start justify-between mb-6">
                     <div>
                       <div className="text-sm font-semibold text-[#e8572a] uppercase tracking-wider mb-1">Full Report</div>
-                      <div className="text-4xl font-bold text-[#1a1814]" style={{ fontFamily: "'Playfair Display', serif" }}>
+                      <div className="text-4xl font-bold text-[#1a1814]" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
                         $19
                         <span className="text-base font-normal text-[#9c9590] ml-1">/ document</span>
                       </div>
@@ -522,7 +521,7 @@ export default function HomePage() {
           <section id="faq" aria-labelledby="faq-heading" className="py-20 px-6">
             <div className="max-w-3xl mx-auto">
               <div className="text-center mb-10">
-                <h2 id="faq-heading" className="font-bold text-3xl text-[#1a1814] mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
+                <h2 id="faq-heading" className="font-bold text-3xl text-[#1a1814] mb-3" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
                   Frequently Asked Questions
                 </h2>
               </div>
@@ -558,7 +557,7 @@ export default function HomePage() {
           {/* ── Final CTA ─────────────────────────────────────────────────────── */}
           <section aria-labelledby="final-cta-heading" className="border-t border-[#f0ece8] bg-[#1a1814] py-20 px-6">
             <div className="max-w-2xl mx-auto text-center">
-              <h2 id="final-cta-heading" className="font-bold text-3xl sm:text-4xl text-white mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+              <h2 id="final-cta-heading" className="font-bold text-3xl sm:text-4xl text-white mb-4" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
                 Know What You're Signing Before You Sign It
               </h2>
               <p className="text-white/60 text-lg mb-8 leading-relaxed">

@@ -112,7 +112,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             <h1
               className="text-[#1a1814] font-bold leading-tight mb-4"
               style={{
-                fontFamily: "'Playfair Display', serif",
+                fontFamily: "var(--font-playfair), Georgia, serif",
                 fontSize: 'clamp(1.8rem, 3.5vw, 2.5rem)',
                 letterSpacing: '-0.02em',
               }}
@@ -156,7 +156,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               <div key={i} className="mb-10">
                 <h2
                   className="text-xl font-bold text-[#1a1814] mb-4"
-                  style={{ fontFamily: "'Playfair Display', serif" }}
+                  style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
                 >
                   {section.h2}
                 </h2>
@@ -195,7 +195,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             <div className="max-w-2xl mx-auto">
               <h2
                 className="text-lg font-bold text-[#1a1814] mb-5"
-                style={{ fontFamily: "'Playfair Display', serif" }}
+                style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
               >
                 Related guides
               </h2>
@@ -237,7 +237,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           <div className="max-w-xl mx-auto text-center">
             <h2
               className="text-2xl font-bold text-white mb-3"
-              style={{ fontFamily: "'Playfair Display', serif" }}
+              style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
             >
               Analyze your contract now
             </h2>

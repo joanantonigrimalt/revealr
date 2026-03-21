@@ -11,7 +11,7 @@ export default function SiteNav() {
           href="/"
           aria-label="Revealr homepage"
           className="text-xl font-bold tracking-tight text-[#1a1814]"
-          style={{ fontFamily: "'Epilogue', sans-serif" }}
+          style={{ fontFamily: "var(--font-epilogue), system-ui, sans-serif" }}
         >
           reveal<span className="text-[#e8572a]">r</span>
         </Link>
@@ -37,7 +37,7 @@ export default function SiteNav() {
         <Link
           href="/"
           className="flex items-center gap-1.5 bg-[#1a1814] text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-black transition-colors"
-          style={{ fontFamily: "'Epilogue', sans-serif" }}
+          style={{ fontFamily: "var(--font-epilogue), system-ui, sans-serif" }}
         >
           Analyze My Contract <span className="text-[#e8572a] ml-0.5">→</span>
         </Link>

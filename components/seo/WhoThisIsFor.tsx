@@ -12,7 +12,7 @@ export default function WhoThisIsFor({ h2, items, whyReviewStat }: Props) {
       <div className="max-w-3xl mx-auto">
         <h2
           className="text-2xl sm:text-3xl font-bold text-[#1a1814] mb-8"
-          style={{ fontFamily: "'Playfair Display', serif", letterSpacing: '-0.02em' }}
+          style={{ fontFamily: "var(--font-playfair), Georgia, serif", letterSpacing: '-0.02em' }}
         >
           {h2}
         </h2>

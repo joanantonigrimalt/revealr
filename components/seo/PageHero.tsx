@@ -38,7 +38,7 @@ export default function PageHero({ h1, intro, ctaMicrocopy }: Props) {
             <h1
               className="font-bold text-[#1a1814] leading-tight mb-4"
               style={{
-                fontFamily: "'Playfair Display', serif",
+                fontFamily: "var(--font-playfair), Georgia, serif",
                 fontSize: 'clamp(1.9rem, 3.5vw, 3.2rem)',
                 letterSpacing: '-0.02em',
               }}

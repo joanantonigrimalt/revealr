@@ -78,7 +78,7 @@ export default function SiteFooter() {
             <Link
               href="/"
               className="font-bold text-[#1a1814] text-lg"
-              style={{ fontFamily: "'Epilogue', sans-serif" }}
+              style={{ fontFamily: "var(--font-epilogue), system-ui, sans-serif" }}
             >
               reveal<span className="text-[#e8572a]">r</span>
             </Link>

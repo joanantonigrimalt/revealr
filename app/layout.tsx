@@ -1,6 +1,22 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
+import { Playfair_Display, Epilogue } from 'next/font/google';
 import './globals.css';
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-playfair',
+  display: 'swap',
+});
+
+const epilogue = Epilogue({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-epilogue',
+  display: 'swap',
+});
 
 // Single source of truth for the canonical domain.
 // Override via NEXT_PUBLIC_APP_URL in .env / Vercel dashboard.
@@ -119,26 +135,13 @@ const softwareSchema = {
     description:
       'Full contract analysis report — risk score, all flagged clauses, action plan, PDF download, email delivery.',
   },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.9',
-    reviewCount: '2400',
-    bestRating: '5',
-    worstRating: '1',
-  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={`${playfair.variable} ${epilogue.variable}`}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Epilogue:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
       </head>
       <body>
         <Script
