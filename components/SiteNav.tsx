@@ -16,8 +16,8 @@ export default function SiteNav() {
           reveal<span className="text-[#e8572a]">r</span>
         </Link>
 
-        <div className="hidden sm:flex items-center gap-8 text-sm text-[#6b6560] font-medium">
-          <Link href="/rental-lease-review" className="hover:text-[#1a1814] transition-colors">
+        <div className="hidden sm:flex items-center gap-7 text-sm text-[#6b6560] font-medium">
+          <Link href="/lease-agreement-analyzer" className="hover:text-[#1a1814] transition-colors">
             Lease Review
           </Link>
           <Link href="/employment-contract-review" className="hover:text-[#1a1814] transition-colors">
@@ -29,8 +29,8 @@ export default function SiteNav() {
           <Link href="/freelance-contract-review" className="hover:text-[#1a1814] transition-colors">
             Freelance
           </Link>
-          <Link href="/contract-risk-checker" className="hover:text-[#1a1814] transition-colors">
-            Risk Checker
+          <Link href="/blog" className="hover:text-[#1a1814] transition-colors">
+            Resources
           </Link>
         </div>
 
