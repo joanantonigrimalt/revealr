@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import UploadWidget from '@/components/UploadWidget';
 import SiteFooter from '@/components/SiteFooter';
@@ -169,8 +169,101 @@ const STATS = [
   { value: 'Any doc', label: 'Lease, NDA, employment, and more' },
 ];
 
+// ─── Sample report data by contract type ─────────────────────────────────────
+const SAMPLE_TABS = [
+  {
+    id: 'lease',
+    label: 'Rental Lease',
+    docLabel: 'Residential Lease · California',
+    score: 68,
+    flags: [
+      {
+        sev: 'CRITICAL', cls: 'bg-[#fef2f2] border-[#fecaca] text-[#dc2626]',
+        dot: 'bg-[#dc2626]', section: '§8.3',
+        title: 'Security Deposit: No Itemization Required',
+        body: 'Landlord may deduct from the security deposit for any damages "deemed appropriate" with no obligation to provide an itemized list within a specific timeframe.',
+        action: 'Request language requiring written itemization within 21 days of move-out per CA Civil Code §1950.5.',
+      },
+      {
+        sev: 'WARNING', cls: 'bg-[#fffbeb] border-[#fde68a] text-[#d97706]',
+        dot: 'bg-[#d97706]', section: '§12.1',
+        title: 'Auto-Renewal: 60-Day Notice Window',
+        body: 'Lease auto-renews for 12 months unless tenant provides 60 days written notice. Most residential leases require only 30 days.',
+        action: 'Negotiate the notice period down to 30 days, or note the 60-day deadline in your calendar before the renewal window opens.',
+      },
+    ],
+  },
+  {
+    id: 'employment',
+    label: 'Employment',
+    docLabel: 'Employment Agreement · Tech',
+    score: 74,
+    flags: [
+      {
+        sev: 'CRITICAL', cls: 'bg-[#fef2f2] border-[#fecaca] text-[#dc2626]',
+        dot: 'bg-[#dc2626]', section: '§11.2',
+        title: 'IP Assignment Covers Outside Work',
+        body: 'All inventions conceived during employment are assigned to the company, including work done on personal time with personal resources.',
+        action: 'Request a carve-out for work created without company resources, on personal time, unrelated to company business.',
+      },
+      {
+        sev: 'WARNING', cls: 'bg-[#fffbeb] border-[#fde68a] text-[#d97706]',
+        dot: 'bg-[#d97706]', section: '§4.1',
+        title: 'Non-Compete: Nationwide Scope',
+        body: 'Geographic restriction applies nationwide for 18 months with no industry limitation. Courts in many states view this scope as overbroad.',
+        action: 'Negotiate a specific state or regional limitation with a defined list of competing companies.',
+      },
+    ],
+  },
+  {
+    id: 'nda',
+    label: 'NDA',
+    docLabel: 'Non-Disclosure Agreement · One-sided',
+    score: 55,
+    flags: [
+      {
+        sev: 'CRITICAL', cls: 'bg-[#fef2f2] border-[#fecaca] text-[#dc2626]',
+        dot: 'bg-[#dc2626]', section: '§2.1',
+        title: 'Confidentiality: No Expiration Date',
+        body: '"Confidential information" obligations are perpetual with no end date. Standard NDAs typically expire in 2–5 years for non-trade-secret information.',
+        action: 'Request a 3–5 year term with trade secrets carved out for perpetual protection separately.',
+      },
+      {
+        sev: 'WARNING', cls: 'bg-[#fffbeb] border-[#fde68a] text-[#d97706]',
+        dot: 'bg-[#d97706]', section: '§1.2',
+        title: 'Confidential Info: Overbroad Definition',
+        body: 'Definition includes "all information shared in any format, oral or written." No carve-out for publicly available information or prior knowledge.',
+        action: 'Ask for standard carve-outs: public domain, prior knowledge, independently developed, legally required disclosures.',
+      },
+    ],
+  },
+  {
+    id: 'freelance',
+    label: 'Freelance',
+    docLabel: 'Freelance Contract · Design Work',
+    score: 61,
+    flags: [
+      {
+        sev: 'CRITICAL', cls: 'bg-[#fef2f2] border-[#fecaca] text-[#dc2626]',
+        dot: 'bg-[#dc2626]', section: '§5.1',
+        title: 'Work-for-Hire: All IP Transferred',
+        body: 'All creative work, including preliminary concepts and rejected drafts, is assigned as work-for-hire. You retain no portfolio rights.',
+        action: 'Negotiate a license for portfolio use and limit work-for-hire to final approved deliverables only.',
+      },
+      {
+        sev: 'WARNING', cls: 'bg-[#fffbeb] border-[#fde68a] text-[#d97706]',
+        dot: 'bg-[#d97706]', section: '§3.4',
+        title: 'Revisions: No Cap Defined',
+        body: 'Contract requires "revisions until client satisfaction" with no defined limit. This creates open-ended obligations with no completion criteria.',
+        action: 'Add a specific revision limit (e.g. 2 rounds) with additional rounds billed at your hourly rate.',
+      },
+    ],
+  },
+] as const;
+
 export default function HomePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [sampleTab, setSampleTab] = useState<number>(0);
 
   return (
     <>
@@ -367,13 +460,32 @@ export default function HomePage() {
           {/* ── Sample output ─────────────────────────────────────────────────── */}
           <section aria-labelledby="sample-heading" className="py-20 px-6">
             <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-12">
+              <div className="text-center mb-10">
                 <h2 id="sample-heading" className="font-bold text-3xl text-[#1a1814] mb-3" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
                   What Your Report Looks Like
                 </h2>
                 <p className="text-[#6b6560] max-w-xl mx-auto leading-relaxed">
-                  Every clause gets evaluated. Every risk gets explained. Every flag comes with an action.
+                  Every clause gets evaluated. Every risk gets explained. Every flag comes with a concrete action step.
                 </p>
+              </div>
+
+              {/* Contract type tabs */}
+              <div className="flex justify-center mb-6">
+                <div className="inline-flex rounded-full bg-[#f5f3f0] border border-[#e8e4df] p-1 gap-1">
+                  {SAMPLE_TABS.map((tab, i) => (
+                    <button
+                      key={tab.id}
+                      onClick={() => setSampleTab(i)}
+                      className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all ${
+                        sampleTab === i
+                          ? 'bg-white text-[#1a1814] shadow-sm border border-[#e8e4df]'
+                          : 'text-[#9c9590] hover:text-[#6b6560]'
+                      }`}
+                    >
+                      {tab.label}
+                    </button>
+                  ))}
+                </div>
               </div>
 
               <div className="rounded-2xl border border-[#e8e4df] overflow-hidden shadow-sm max-w-2xl mx-auto">
@@ -385,42 +497,20 @@ export default function HomePage() {
                     </div>
                     <div>
                       <div className="text-sm font-bold text-[#1a1814]">Revealr Risk Report</div>
-                      <div className="text-xs text-[#9c9590]">Employment Agreement · Analyzed just now</div>
+                      <div className="text-xs text-[#9c9590]">{SAMPLE_TABS[sampleTab].docLabel}</div>
                     </div>
                   </div>
                   <div className="text-right">
                     <div className="text-xs text-[#9c9590]">Risk Score</div>
                     <div className="text-2xl font-bold text-[#1a1814]" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
-                      74 <span className="text-sm font-normal text-[#9c9590]">/ 100</span>
+                      {SAMPLE_TABS[sampleTab].score} <span className="text-sm font-normal text-[#9c9590]">/ 100</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Flags */}
                 <div className="p-6 space-y-3 bg-white">
-                  {[
-                    {
-                      sev: 'CRITICAL', cls: 'bg-[#fef2f2] border-[#fecaca] text-[#dc2626]',
-                      dot: 'bg-[#dc2626]', section: '§11.2',
-                      title: 'IP Assignment Covers Outside Work',
-                      body: "All inventions conceived during employment are assigned to the company, including work done on personal time. This may cover your side projects.",
-                      action: 'Request a carve-out for work created without company resources.',
-                    },
-                    {
-                      sev: 'CRITICAL', cls: 'bg-[#fef2f2] border-[#fecaca] text-[#dc2626]',
-                      dot: 'bg-[#dc2626]', section: '§4.1',
-                      title: 'Non-Compete Covers Entire Country',
-                      body: 'Geographic restriction is nationwide with no industry limitation. Courts in most states would consider this overbroad.',
-                      action: 'Negotiate a specific state or regional limitation.',
-                    },
-                    {
-                      sev: 'WARNING', cls: 'bg-[#fffbeb] border-[#fde68a] text-[#d97706]',
-                      dot: 'bg-[#d97706]', section: '§15.1',
-                      title: 'Mandatory Arbitration Waiver',
-                      body: 'All disputes go to binding arbitration. You waive the right to a jury trial and class action participation.',
-                      action: 'Ask if this clause is negotiable. Some employers will remove it.',
-                    },
-                  ].map((flag, i) => (
+                  {SAMPLE_TABS[sampleTab].flags.map((flag, i) => (
                     <div key={i} className={`rounded-xl border p-4 ${flag.cls}`}>
                       <div className="flex items-start gap-3">
                         <div className={`flex-shrink-0 w-2 h-2 rounded-full mt-1.5 ${flag.dot}`} />
@@ -431,9 +521,7 @@ export default function HomePage() {
                           </div>
                           <div className="text-sm font-bold text-[#1a1814] mb-1">{flag.title}</div>
                           <p className="text-xs text-[#6b6560] leading-relaxed mb-2">{flag.body}</p>
-                          <div className="text-xs font-semibold text-[#1a1814]">
-                            → {flag.action}
-                          </div>
+                          <div className="text-xs font-semibold text-[#1a1814]">→ {flag.action}</div>
                         </div>
                       </div>
                     </div>
@@ -441,7 +529,7 @@ export default function HomePage() {
                 </div>
 
                 <div className="px-6 py-3 bg-[#faf9f7] border-t border-[#e8e4df] flex items-center justify-between">
-                  <span className="text-xs text-[#9c9590]">3 flags detected · Analysis complete</span>
+                  <span className="text-xs text-[#9c9590]">Sample · {SAMPLE_TABS[sampleTab].flags.length} flags shown · Full report has more</span>
                   <span className="text-xs font-semibold text-[#e8572a]">$19 to unlock full report →</span>
                 </div>
               </div>

@@ -31,6 +31,7 @@ export type AnalysisFlag = {
 
 export type DocumentCategory =
   | 'lease'
+  | 'purchase'
   | 'employment'
   | 'nda'
   | 'freelance'

@@ -52,21 +52,12 @@ export const metadata: Metadata = {
     title: 'Revealr — AI Contract Analysis. Know What You\'re Signing.',
     description:
       'Upload any contract and get an AI risk analysis in 60 seconds. Risk score, flagged clauses, plain-English explanations, and a full action plan. $19 one-time.',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Revealr — AI-Powered Contract Analysis',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Revealr — AI Contract Analysis in 60 Seconds',
     description:
       'Upload any contract. Our AI flags every risky clause with plain-English explanations and a full action plan. $19, no subscription.',
-    images: ['/og-image.png'],
   },
   robots: {
     index: true,
@@ -140,9 +131,7 @@ const softwareSchema = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning className={`${playfair.variable} ${epilogue.variable}`}>
-      <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-      </head>
+      <head />
       <body>
         {/* SSR-safe JSON-LD — plain <script> renders in initial HTML for crawlers */}
         <script

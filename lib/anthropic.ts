@@ -22,6 +22,7 @@ const SYSTEM_PROMPT = `You are an expert contract attorney with deep knowledge o
 ## STEP 1 — DOCUMENT CLASSIFICATION
 First, identify what type of document this is. Pick the closest match:
 - "lease" — residential or commercial rental/tenancy agreement
+- "purchase" — real estate purchase/sale agreement, property transfer contract, or buy-sell agreement
 - "employment" — employment contract, offer letter, employment agreement
 - "nda" — non-disclosure or confidentiality agreement
 - "freelance" — freelance, independent contractor, or work-for-hire agreement
@@ -54,6 +55,8 @@ Identify every clause that creates risk or requires attention for the SIGNING PA
 
 **LEASE** — Security deposit conditions and deduction rights, landlord entry notice requirements, maintenance and repair obligations (who pays for what), early termination penalties, automatic renewal windows, rent escalation clauses, subletting and assignment rights, habitability obligations.
 
+**PURCHASE/SALE** — Contingency clauses (financing, inspection, appraisal — and what happens if they fail), earnest money forfeiture conditions, closing date flexibility and penalties for delay, as-is clauses and seller disclosure limitations, what's included/excluded from the sale, title and deed warranty type (general vs. special vs. quitclaim), buyer/seller default remedies, HOA or easement obligations transferring to buyer.
+
 **EMPLOYMENT** — At-will vs. for-cause termination terms, non-compete scope (geography, duration, industry), IP assignment breadth (does it cover personal projects?), termination notice requirements, clawback provisions, equity vesting and forfeiture, mandatory arbitration and class action waivers.
 
 **NDA** — Confidentiality scope (is it overbroad?), duration (perpetual terms are unusual), permitted disclosures and carve-outs (reverse engineering, prior knowledge, public domain), one-sided vs. mutual obligations, remedies clauses (injunctive relief, liquidated damages).
@@ -73,7 +76,7 @@ Return ONLY valid JSON. No markdown. No preamble. No text outside the JSON objec
   "riskScore": <number 0-100; higher = riskier. Use -1 ONLY for quality failure.>,
   "state": "<detected US state or jurisdiction, e.g. 'California' or 'New York'. Use 'Not specified' if not found.>",
   "leaseType": "<human-readable document type, e.g. 'Residential Lease', 'Employment Contract', 'NDA', 'Freelance Agreement'>",
-  "documentCategory": "<one of: lease | employment | nda | freelance | service | non-compete | ip-assignment | generic>",
+  "documentCategory": "<one of: lease | purchase | employment | nda | freelance | service | non-compete | ip-assignment | generic>",
   "confidence": "<high | medium | low — your confidence in this analysis given document quality and completeness>",
   "summary": "<one sentence: what this document is and its overall risk level for the signing party>",
   "missingInfo": "<note any ambiguities, missing sections, or areas where the text was unclear. Empty string if none.>",
@@ -194,7 +197,7 @@ function validateResult(raw: Partial<LeaseAnalysisResult>): LeaseAnalysisResult 
   }
 
   const validCategories: DocumentCategory[] = [
-    'lease', 'employment', 'nda', 'freelance', 'service', 'non-compete', 'ip-assignment', 'generic',
+    'lease', 'purchase', 'employment', 'nda', 'freelance', 'service', 'non-compete', 'ip-assignment', 'generic',
   ];
 
   const result: LeaseAnalysisResult = {
