@@ -1438,6 +1438,358 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+
+  // ── 21 ─────────────────────────────────────────────────────────────────────
+  {
+    slug: 'ai-vs-lawyer-contract-review',
+    title: 'AI Contract Review vs. a Lawyer: When to Use Each',
+    metaDescription:
+      'AI contract review is fast, affordable, and available 24/7. Lawyers provide jurisdiction-specific advice. Here\'s when to use each — and when you need both.',
+    h1: 'AI Contract Review vs. a Lawyer: When to Use Each',
+    category: 'general',
+    publishedAt: '2025-03-01',
+    excerpt:
+      'AI can surface risk patterns in seconds. Lawyers provide legal advice. Understanding the difference helps you use both tools appropriately.',
+    readingTime: 6,
+    relatedLanding: { href: '/contract-risk-checker', anchor: 'Contract Risk Checker' },
+    relatedPosts: [
+      { href: '/blog/how-to-read-a-contract-with-ai', anchor: 'How to Read a Contract with AI' },
+      { href: '/blog/what-to-check-in-an-employment-contract', anchor: 'What to Check in an Employment Contract' },
+    ],
+    sections: [
+      {
+        h2: 'The Core Difference',
+        paragraphs: [
+          'AI contract analysis and legal advice serve different purposes. Conflating them leads to either overreliance on AI (signing documents that needed a lawyer) or underutilizing AI (paying $300 for a lawyer to read a standard NDA).',
+          'AI tools like Revealr identify patterns in contract language — clauses that are unusual, one-sided, or commonly cause problems. A licensed attorney provides legal advice: they can tell you whether a specific clause is enforceable in your jurisdiction, what your options are in a dispute, and what legal exposure you carry.',
+        ],
+      },
+      {
+        h2: 'What AI Contract Review Does Well',
+        paragraphs: [
+          'AI is fast, affordable, and available immediately. For most standard contracts, the significant risks are in predictable places: security deposit language, non-compete scope, IP assignment, automatic renewal windows, arbitration clauses.',
+        ],
+        h3s: [
+          {
+            heading: 'Rapid risk identification across the full document',
+            body: 'A 20-page contract takes an AI model seconds to read. It will surface clause-level issues that a rushed human reviewer might miss — especially in footnotes, addenda, and cross-references.',
+          },
+          {
+            heading: 'Plain-English translation of legal language',
+            body: 'AI is particularly useful for explaining what a clause actually means in practical terms. "The party of the first part shall indemnify and hold harmless" can be translated into "you agree to cover their legal costs if someone sues them over something you did."',
+          },
+          {
+            heading: 'Preparation for negotiation',
+            body: 'The output of an AI analysis — specific clause references, plain-English descriptions, suggested alternatives — gives you a structured starting point for negotiation. You go in knowing exactly what to push back on.',
+          },
+          {
+            heading: 'Flagging documents that need a lawyer',
+            body: 'An AI review that identifies multiple critical flags in a high-value contract is itself a signal that professional review is warranted. The AI helps you triage, not replace, legal judgment.',
+          },
+        ],
+      },
+      {
+        h2: 'What Only a Lawyer Can Do',
+        paragraphs: [
+          'Legal advice is not the same as contract analysis. A lawyer provides a professional opinion about your specific situation, under the law of your specific jurisdiction, based on facts only you can provide.',
+        ],
+        h3s: [
+          {
+            heading: 'Jurisdiction-specific advice',
+            body: 'Non-compete enforceability varies dramatically by state. California refuses to enforce them; Texas enforces them narrowly; New York has an evolving standard. An AI can flag a non-compete as broad — only a lawyer in your jurisdiction can tell you whether it\'s legally binding on you.',
+          },
+          {
+            heading: 'Advice that accounts for your specific situation',
+            body: 'Your negotiating leverage, the counterparty\'s history, what you\'ve already said in writing, what your industry norms are — none of this is in the contract document. A lawyer incorporates this context into their advice.',
+          },
+          {
+            heading: 'Representation if there\'s a dispute',
+            body: 'If a clause is later disputed, you want documented legal advice from a professional who can represent you. An AI output is not a legal opinion and carries no professional liability.',
+          },
+          {
+            heading: 'Complex multi-party or high-value transactions',
+            body: 'Business acquisitions, large commercial leases, equity agreements, and any contract with significant financial or legal exposure warrant professional review regardless of what any AI tool finds.',
+          },
+        ],
+      },
+      {
+        h2: 'A Practical Decision Framework',
+        paragraphs: [
+          'Use AI first for almost any contract. It costs $19 and takes 60 seconds. If the AI finds no critical flags and the contract is routine, you may not need a lawyer at all.',
+          'Escalate to a lawyer when: the AI surfaces multiple critical flags; the contract involves significant assets, equity, or IP; you\'re in a disputed situation; or you need advice that accounts for your jurisdiction\'s specific laws.',
+          'The most effective approach for high-stakes contracts: run an AI review first, then bring the flagged clauses to a lawyer. This makes the professional consultation faster and more focused — and typically cuts the billable time significantly.',
+        ],
+      },
+    ],
+  },
+
+  // ── 22 ─────────────────────────────────────────────────────────────────────
+  {
+    slug: 'how-to-negotiate-an-employment-contract',
+    title: 'How to Negotiate an Employment Contract: A Practical Guide',
+    metaDescription:
+      'Most employment contracts are negotiable. Here\'s what to push back on, how to frame requests professionally, and which terms matter most for your long-term career.',
+    h1: 'How to Negotiate an Employment Contract',
+    category: 'employment',
+    publishedAt: '2025-03-05',
+    excerpt:
+      'Employment contracts are not take-it-or-leave-it. Most terms can be negotiated — if you know what to ask for and how to ask.',
+    readingTime: 7,
+    relatedLanding: { href: '/employment-contract-review', anchor: 'Employment Contract Review Tool' },
+    relatedPosts: [
+      { href: '/blog/what-to-check-in-an-employment-contract', anchor: 'What to Check in an Employment Contract' },
+      { href: '/blog/non-compete-clause-explained', anchor: 'Non-Compete Clause Explained' },
+    ],
+    sections: [
+      {
+        h2: 'Why Most People Don\'t Negotiate',
+        paragraphs: [
+          'There are two reasons employees don\'t push back on employment contracts. First, they assume the document is standard and non-negotiable. Second, they don\'t want to seem difficult during what feels like a final stage of the hiring process.',
+          'Both assumptions are wrong. Most employment contracts are drafted to favor the employer by default — because no one pushes back. And employers expect negotiation from professional candidates. A candidate who never asks questions about the contract is not reassuring; they\'re just signing away leverage.',
+        ],
+      },
+      {
+        h2: 'The Most Negotiable Terms',
+        paragraphs: ['Not everything in an employment contract has equal flexibility. Focus your energy on terms with the highest long-term impact.'],
+        h3s: [
+          {
+            heading: 'Non-compete scope and geography',
+            body: 'This is the most important term to negotiate for most professional roles. Request a defined list of direct competitors rather than a broad industry exclusion. Negotiate the geographic scope down to where you actually work — "nationwide" is rarely justified. Push for a shorter duration: 6 months is more common than 2 years in jurisdictions that enforce these clauses.',
+          },
+          {
+            heading: 'IP assignment and personal project carve-outs',
+            body: 'If you have existing side projects, a business, or creative work you developed before this job, request a written carve-out by name before you sign. Generic "work done on personal time with personal resources" carve-outs are better than nothing but may not protect specific projects. Get your projects listed explicitly.',
+          },
+          {
+            heading: 'Severance and notice periods',
+            body: 'At-will employment means either party can terminate with no notice by default. If you\'re accepting a role with career risk — leaving a stable position, relocating, taking below-market salary for equity — negotiate explicit severance terms and notice requirements. Even 4–8 weeks of severance is meaningful.',
+          },
+          {
+            heading: 'Equity terms',
+            body: 'If the offer includes stock options or RSUs, the contract details matter: vesting schedule, cliff, acceleration on change of control, exercise window after departure. A 30-day exercise window on departure is standard but potentially limiting; 90–180 days is better. Double-trigger acceleration (vesting accelerates if the company is acquired AND you\'re let go) protects against a common scenario.',
+          },
+          {
+            heading: 'Bonus structure',
+            body: 'If a bonus is "discretionary," it can be reduced to zero. Push for objective metrics tied to the bonus (e.g., "50% of bonus is paid if company achieves X, 50% based on personal OKRs"). Ask what the payout history has been. Get it in writing.',
+          },
+        ],
+      },
+      {
+        h2: 'How to Frame Negotiation Requests',
+        paragraphs: [
+          'Professional negotiation is matter-of-fact, not adversarial. You\'re not asking for special treatment — you\'re asking for terms you can sign in good conscience.',
+          'Useful framing: "I noticed the non-compete covers all technology companies nationwide for 24 months. I\'d like to discuss narrowing the scope to [specific companies/region] and reducing the term to 12 months." Specific, calm, and focused on a concrete outcome.',
+          'Ask for modifications in writing over email. This creates a record and gives the other side time to get HR or legal to respond. In-person pushback is harder to action and easier to dismiss.',
+          'Know your walk-away point before you start. The leverage you have in negotiation depends on how badly each side needs the deal. If you have competing offers, say so — it\'s relevant and not aggressive.',
+        ],
+      },
+      {
+        h2: 'What Employers Rarely Change',
+        paragraphs: [
+          'Some terms are harder to negotiate: mandatory arbitration clauses are often company policy and HR does not have authority to change them. At-will employment status in at-will states is similarly fixed in most cases.',
+          'That doesn\'t mean you shouldn\'t try — just calibrate your expectations and don\'t make these dealbreakers unless they genuinely are.',
+        ],
+      },
+    ],
+  },
+
+  // ── 23 ─────────────────────────────────────────────────────────────────────
+  {
+    slug: 'how-to-review-a-purchase-agreement',
+    title: 'How to Review a Purchase Agreement Before Closing',
+    metaDescription:
+      'What to check in a real estate purchase agreement before you sign: contingencies, earnest money, as-is clauses, closing terms, and what the AI flags most often.',
+    h1: 'How to Review a Purchase Agreement Before Closing',
+    category: 'general',
+    publishedAt: '2025-03-10',
+    excerpt:
+      'A real estate purchase agreement is one of the largest contracts most people ever sign. Here\'s what to check before closing.',
+    readingTime: 7,
+    relatedLanding: { href: '/purchase-agreement-review', anchor: 'Purchase Agreement Review Tool' },
+    relatedPosts: [
+      { href: '/blog/how-to-review-a-lease-before-signing', anchor: 'How to Review a Lease Before Signing' },
+      { href: '/blog/how-to-read-a-contract-with-ai', anchor: 'How to Read a Contract with AI' },
+    ],
+    sections: [
+      {
+        h2: 'Why Purchase Agreements Get Less Attention Than They Deserve',
+        paragraphs: [
+          'The average home purchase involves multiple simultaneous pressures: competing buyers, tight timelines, excited agents, and the emotional weight of a major decision. In this environment, the 30-page purchase agreement often gets less scrutiny than the home inspection report.',
+          'Purchase agreements are not standard documents. Every deal involves negotiated terms, and the defaults favor the party whose agent drafted the contract. Understanding the key clauses before you sign — not after — is the only way to know what you\'ve actually agreed to.',
+        ],
+      },
+      {
+        h2: 'The 7 Clauses That Matter Most in a Purchase Agreement',
+        paragraphs: [''],
+        h3s: [
+          {
+            heading: '1. Contingency clauses',
+            body: 'Financing, inspection, and appraisal contingencies are your legal escape routes if things go wrong. Understand what triggers each contingency, the deadline to invoke it, and what happens to your earnest money if you walk. Waiving contingencies is common in competitive markets but carries real risk — a failed appraisal without an appraisal contingency leaves you either making up the difference in cash or losing your deposit.',
+          },
+          {
+            heading: '2. Earnest money and forfeiture conditions',
+            body: 'Earnest money (typically 1–3% of the purchase price) demonstrates commitment and is typically credited at closing. But under what conditions does the seller keep it? If you back out for a reason not covered by a contingency, you typically forfeit the deposit. Understand the exact forfeiture conditions before you write the check.',
+          },
+          {
+            heading: '3. As-is clauses and seller disclosure limitations',
+            body: '"As-is" sales limit what you can demand of the seller after inspection. The seller still has disclosure obligations, but an as-is clause waives your right to ask for repairs or renegotiate price based on inspection findings. Know whether this is in your contract before the inspection period starts.',
+          },
+          {
+            heading: '4. Closing date flexibility and delay penalties',
+            body: 'Closing dates are often tight. If your financing is delayed or title issues arise, what are the consequences? Some agreements allow for reasonable extensions; others impose per-day penalties or allow the other party to cancel. Understand the timeline and who bears the cost of a delay.',
+          },
+          {
+            heading: '5. What\'s included and excluded from the sale',
+            body: 'Fixtures are generally included; personal property is not. But "fixtures" is often disputed. The contract should list specific items that are included (appliances, window treatments, built-ins) or excluded (specific light fixtures, garage equipment). Verbal agreements about what stays don\'t survive closing.',
+          },
+          {
+            heading: '6. Title warranty type',
+            body: 'A general warranty deed provides the strongest title guarantee — the seller warrants title against all claims, even those predating their ownership. A special warranty deed only warrants against claims arising during the seller\'s ownership. A quitclaim deed provides no warranty. Know what you\'re getting.',
+          },
+          {
+            heading: '7. Default remedies',
+            body: 'If the buyer defaults, the seller typically keeps the earnest money. If the seller defaults, the buyer can typically demand specific performance (force the sale) or sue for damages. Understand both scenarios and what your actual remedies are.',
+          },
+        ],
+      },
+      {
+        h2: 'Before You Sign: A Quick Checklist',
+        paragraphs: [
+          'Run through these before countersigning any purchase agreement: (1) Are all contingencies present and is the timeline realistic? (2) Is the earnest money amount and forfeiture condition clear? (3) Does the agreement specify what\'s included in the sale? (4) What is the exact closing date and what happens if it\'s missed? (5) Is there an as-is clause, and if so, what are the remaining inspection rights?',
+          'Real estate transactions are complex enough that professional review — by a real estate attorney or experienced agent — is typically warranted. Use an AI review as a first pass to understand the document and identify specific clauses to discuss with your attorney.',
+        ],
+      },
+    ],
+  },
+
+  // ── 24 ─────────────────────────────────────────────────────────────────────
+  {
+    slug: 'what-is-at-will-employment',
+    title: 'What Is At-Will Employment? What It Actually Means for You',
+    metaDescription:
+      'At-will employment means either party can end the job at any time, for any reason, with no notice required. Here\'s what it actually means — and what it doesn\'t.',
+    h1: 'What Is At-Will Employment? What It Actually Means',
+    category: 'employment',
+    publishedAt: '2025-03-12',
+    excerpt:
+      'Most U.S. employment is at-will, but the term is often misunderstood. Here\'s what it means, what it doesn\'t protect you from, and what to negotiate.',
+    readingTime: 5,
+    relatedLanding: { href: '/employment-contract-review', anchor: 'Employment Contract Review Tool' },
+    relatedPosts: [
+      { href: '/blog/what-to-check-in-an-employment-contract', anchor: 'What to Check in an Employment Contract' },
+      { href: '/blog/how-to-negotiate-an-employment-contract', anchor: 'How to Negotiate an Employment Contract' },
+    ],
+    sections: [
+      {
+        h2: 'The Basic Definition',
+        paragraphs: [
+          'At-will employment means that either the employer or the employee can end the employment relationship at any time, for any reason, without providing advance notice or legal justification.',
+          'This is the default rule in 49 U.S. states. (Montana is the exception — it has a "good cause" termination standard after a probationary period.) Unless your employment contract explicitly overrides it, you are almost certainly an at-will employee in the U.S.',
+        ],
+      },
+      {
+        h2: 'What At-Will Employment Does NOT Mean',
+        paragraphs: ['At-will is frequently misunderstood as meaning employers can do anything. That\'s not accurate.'],
+        h3s: [
+          {
+            heading: 'It doesn\'t override anti-discrimination law',
+            body: 'You cannot be fired because of your race, sex, national origin, religion, disability, age (if over 40), or other protected characteristics under federal law. State and local laws add additional categories. "At-will" is not a defense for discriminatory termination.',
+          },
+          {
+            heading: 'It doesn\'t override retaliation protections',
+            body: 'Firing an employee for reporting workplace safety violations (OSHA), filing a wage complaint, or whistleblowing on illegal activity is illegal regardless of at-will status. Many states add additional retaliation protections.',
+          },
+          {
+            heading: 'It doesn\'t void contractual promises',
+            body: 'If your employment contract includes severance terms, notice requirements, or cause-based termination standards, those override the at-will default for that specific employer-employee relationship. At-will is the default, not a trump card.',
+          },
+          {
+            heading: 'It doesn\'t eliminate implied contract claims',
+            body: 'In some states, employer handbooks, verbal promises, or past practices can create implied contractual rights — even without a written employment contract. "We never fire people without a performance improvement plan first" can create a legal expectation in some jurisdictions.',
+          },
+        ],
+      },
+      {
+        h2: 'What At-Will Employment Means in Practice',
+        paragraphs: [
+          'In practice, at-will means your employer can let you go without severance, without notice, and without explaining why — as long as the reason isn\'t legally prohibited.',
+          'This is why negotiating severance and notice terms explicitly in your employment contract matters. An at-will agreement with contractual severance and 30-day notice obligations on both sides is very different from a pure at-will arrangement.',
+        ],
+      },
+      {
+        h2: 'When to Negotiate Away from Pure At-Will',
+        paragraphs: [
+          'If you\'re leaving a stable job, relocating, or accepting below-market compensation for equity or other benefits, you\'re taking on career risk. In these situations, negotiating explicit severance terms is reasonable and common.',
+          'Consider requesting: a defined notice period on both sides (30–60 days), severance of 1–3 months if terminated without cause, and a specific definition of "cause" so termination for cause isn\'t used to avoid paying severance. These are negotiable terms at the offer stage — significantly less so after you\'ve started.',
+        ],
+      },
+    ],
+  },
+
+  // ── 25 ─────────────────────────────────────────────────────────────────────
+  {
+    slug: 'how-to-review-a-freelance-contract',
+    title: 'How to Review a Freelance Contract Before Signing',
+    metaDescription:
+      'A freelance contract checklist: what to check in payment terms, IP ownership, revision clauses, termination rights, and how to push back on unfavorable terms.',
+    h1: 'How to Review a Freelance Contract Before Signing',
+    category: 'freelance',
+    publishedAt: '2025-03-15',
+    excerpt:
+      'Most freelance disputes trace back to the contract. Here\'s what to check — and push back on — before the project starts.',
+    readingTime: 6,
+    relatedLanding: { href: '/freelance-contract-review', anchor: 'Freelance Contract Review Tool' },
+    relatedPosts: [
+      { href: '/blog/freelance-contract-mistakes', anchor: 'Freelance Contract Mistakes' },
+      { href: '/blog/ip-assignment-agreement-what-to-know', anchor: 'IP Assignment: What to Know' },
+    ],
+    sections: [
+      {
+        h2: 'Why Freelance Contract Review Is Different',
+        paragraphs: [
+          'Employment contracts protect one relationship. Freelance contracts define a commercial transaction — and often, the freelancer has less leverage and less familiarity with contract language than the client.',
+          'The risk in a poorly drafted freelance contract is usually specific: you do the work, the client doesn\'t pay, or you deliver the work and they own more than you realized. Most freelance disputes are entirely predictable from reading the contract before starting.',
+        ],
+      },
+      {
+        h2: 'The 6 Most Important Clauses in Any Freelance Contract',
+        paragraphs: [''],
+        h3s: [
+          {
+            heading: '1. IP ownership and work-for-hire',
+            body: 'This is the highest-risk clause for most creative and technical freelancers. Work-for-hire language means the client owns everything you create from the moment of creation. If the contract assigns ownership of preliminary concepts, rejected drafts, and tools/processes you developed for the project — not just the final deliverable — you may be giving away significant IP. Negotiate ownership down to final approved deliverables and retain rights to tools and methodologies.',
+          },
+          {
+            heading: '2. Payment schedule and late payment terms',
+            body: 'When is payment due? What triggers the invoice? What happens if payment is late? A contract that says "payment within 30 days of project completion" is less protective than "payment within 14 days of invoice date." Late payment fees (1.5–2% per month is standard) create an incentive for timely payment and compensation for delays.',
+          },
+          {
+            heading: '3. Kill fee',
+            body: 'If the client cancels the project after work has started, are you compensated? A kill fee (typically 25–50% of the contracted amount for work completed) protects you from losing revenue on opportunity cost. Many client-provided contracts omit kill fees entirely.',
+          },
+          {
+            heading: '4. Revision limits',
+            body: '"Revisions until client satisfaction" is unlimited scope. Define the number of revision rounds (2 is standard), what constitutes a revision versus a new request, and what additional rounds cost. This single clause is responsible for a significant portion of scope creep in creative projects.',
+          },
+          {
+            heading: '5. Termination rights asymmetry',
+            body: 'Can the client terminate the project at any time for any reason? What are you owed if they do? A contract that lets the client terminate without cause and owe you only completed work devalues your scheduling commitment. At minimum, negotiate for a kill fee and payment for all deliverables in progress at the time of termination.',
+          },
+          {
+            heading: '6. Indemnification scope',
+            body: 'Indemnification clauses hold you responsible for losses the client suffers due to your work. Broad indemnification language ("any claim arising from the deliverables") can expose you to liability for things outside your control. Negotiate indemnification to cover only your direct negligence or breach — not general claims related to the use of your work.',
+          },
+        ],
+      },
+      {
+        h2: 'Before You Sign: A Practical Checklist',
+        paragraphs: [
+          'Before signing any freelance contract: (1) Confirm the payment amount, schedule, and late fee terms are explicit. (2) Read the IP ownership section carefully and understand exactly what you\'re transferring. (3) Check for a revision cap and make sure it\'s defined. (4) Look for a kill fee — if there isn\'t one, add it. (5) Check what happens if the client is late to provide feedback or approvals (timeline extension rights protect you). (6) Check whether the non-disparagement clause is mutual.',
+          'Client-provided contracts are written by or for the client. That\'s not an accusation — it\'s just context. Your job is to read it with that lens and ask for changes that make the agreement fair to both sides.',
+        ],
+      },
+    ],
+  },
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────

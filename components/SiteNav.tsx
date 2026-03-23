@@ -34,8 +34,8 @@ export default function SiteNav() {
           <Link href="/freelance-contract-review" className="hover:text-[#1a1814] transition-colors">
             Freelance
           </Link>
-          <Link href="/how-it-works" className="hover:text-[#1a1814] transition-colors">
-            How It Works
+          <Link href="/purchase-agreement-review" className="hover:text-[#1a1814] transition-colors">
+            Purchase
           </Link>
           <Link href="/blog" className="hover:text-[#1a1814] transition-colors">
             Resources

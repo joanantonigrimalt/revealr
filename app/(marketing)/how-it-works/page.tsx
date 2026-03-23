@@ -3,6 +3,46 @@ import Link from 'next/link';
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://getrevealr.com';
 
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to Analyze a Contract with Revealr',
+  description: 'Upload any contract and get an AI risk analysis in 60 seconds — risk score, flagged clauses, plain-English explanations, and a full action plan.',
+  totalTime: 'PT2M',
+  supply: [{ '@type': 'HowToSupply', name: 'Your contract document (PDF, Word, or image)' }],
+  tool: [{ '@type': 'HowToTool', name: 'Revealr AI Contract Analyzer', url: APP_URL }],
+  step: [
+    {
+      '@type': 'HowToStep',
+      position: 1,
+      name: 'Upload your contract',
+      text: 'Drag and drop or select your file — PDF, Word (.doc/.docx), or image (JPG, PNG) up to 20 MB. Your document is encrypted in transit immediately on upload.',
+      url: `${APP_URL}/#upload`,
+    },
+    {
+      '@type': 'HowToStep',
+      position: 2,
+      name: 'AI analyzes the full document',
+      text: 'The AI model processes the complete document text in context — identifying risk patterns, one-sided terms, missing protections, and unusual obligations across the document.',
+      url: `${APP_URL}/how-it-works`,
+    },
+    {
+      '@type': 'HowToStep',
+      position: 3,
+      name: 'Risky clauses are identified and categorized',
+      text: 'Each clause that deviates from typical standards is flagged with a severity level (Critical, Warning, Info), a location reference, a plain-English explanation, and a specific recommended action.',
+      url: `${APP_URL}/how-it-works`,
+    },
+    {
+      '@type': 'HowToStep',
+      position: 4,
+      name: 'You get a risk score and full report',
+      text: 'A 0–100 risk score summarizes the overall finding. The full report ($19) includes every flag, the complete action plan, a downloadable PDF, and email delivery.',
+      url: `${APP_URL}/#pricing`,
+    },
+  ],
+};
+
 export const metadata: Metadata = {
   title: 'How Revealr Works — AI Contract Analysis Methodology',
   description:
@@ -19,7 +59,7 @@ const STEPS = [
   {
     number: '02',
     title: 'The AI reads the full text',
-    body: "Our AI model processes the complete document — every clause, every section, including footnotes and addenda. This isn't a keyword search. The model reads contractual language in context.",
+    body: "The AI model processes the complete document text — clauses, sections, footnotes, and addenda. It reads contractual language in context, not as isolated keywords, looking for patterns that commonly create problems for the signing party.",
   },
   {
     number: '03',
@@ -81,6 +121,8 @@ const WHAT_REVEALR_CANNOT_DO = [
 
 export default function HowItWorksPage() {
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
     <main className="bg-[#faf9f7] min-h-screen">
       {/* ── Hero ── */}
       <section className="bg-white border-b border-[#e8e4df] py-14 px-6">
@@ -352,7 +394,7 @@ export default function HowItWorksPage() {
             See it in action
           </h2>
           <p className="text-white/60 mb-7 leading-relaxed">
-            Upload any contract and get a free preview analysis in under 60 seconds.
+            Upload any contract and get an AI risk analysis in under 60 seconds. $19, no subscription.
           </p>
           <Link
             href="/"
@@ -363,5 +405,6 @@ export default function HowItWorksPage() {
         </div>
       </section>
     </main>
+    </>
   );
 }

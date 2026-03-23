@@ -140,8 +140,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             {/* Inline CTA — relevant landing */}
             <div className="bg-[#fdf0eb] border border-[#f0cfc0] rounded-xl p-4 mb-10 flex items-center justify-between gap-4 flex-wrap">
               <p className="text-sm text-[#1a1814]">
-                <span className="font-semibold">Skip the reading?</span> Upload your contract and get an AI analysis in
-                60 seconds.
+                <span className="font-semibold">Have a contract to review?</span> Upload it and get an AI risk analysis in 60 seconds — $19, no subscription.
               </p>
               <Link
                 href={post.relatedLanding.href}
@@ -242,7 +241,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               Analyze your contract now
             </h2>
             <p className="text-white/60 mb-7 leading-relaxed">
-              Upload any contract and get a full risk analysis in 60 seconds. Free preview, $19 to unlock.
+              Upload any contract and get a full AI risk analysis in 60 seconds. $19, no subscription needed.
             </p>
             <Link
               href={post.relatedLanding.href}

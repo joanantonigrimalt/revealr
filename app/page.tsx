@@ -165,8 +165,8 @@ const STEPS = [
   },
   {
     n: '2',
-    title: 'AI reads every clause',
-    body: 'Our AI scans each clause for risk patterns — one-sided terms, unenforceable language, hidden obligations, and more.',
+    title: 'AI analyzes the full document',
+    body: 'The AI reads the complete contract text in context — identifying risk patterns, one-sided terms, missing protections, and unusual obligations.',
   },
   {
     n: '3',
@@ -308,7 +308,7 @@ export default function HomePage() {
               <Link href="/employment-contract-review" className="hover:text-[#1a1814] transition-colors">Employment</Link>
               <Link href="/nda-review" className="hover:text-[#1a1814] transition-colors">NDAs</Link>
               <Link href="/freelance-contract-review" className="hover:text-[#1a1814] transition-colors">Freelance</Link>
-              <a href="#how-it-works" className="hover:text-[#1a1814] transition-colors">How it works</a>
+              <Link href="/purchase-agreement-review" className="hover:text-[#1a1814] transition-colors">Purchase</Link>
               <a href="#pricing" className="hover:text-[#1a1814] transition-colors">Pricing</a>
             </div>
             <a
@@ -484,7 +484,7 @@ export default function HomePage() {
                   What Your Report Looks Like
                 </h2>
                 <p className="text-[#6b6560] max-w-xl mx-auto leading-relaxed">
-                  Every clause gets evaluated. Every risk gets explained. Every flag comes with a concrete action step.
+                  Risk patterns are identified and explained in plain English. Each flag comes with a specific action step you can take.
                 </p>
               </div>
 
@@ -669,6 +669,75 @@ export default function HomePage() {
             </div>
           </section>
 
+          {/* ── Who this is for / not for ──────────────────────────────────── */}
+          <section aria-labelledby="who-heading" className="py-20 px-6 bg-[#faf9f7] border-t border-[#f0ece8]">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 id="who-heading" className="font-bold text-3xl text-[#1a1814] mb-3" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
+                  Who Revealr Is Best For
+                </h2>
+                <p className="text-[#6b6560] max-w-xl mx-auto leading-relaxed">
+                  A practical tool for anyone signing a contract without a lawyer present.
+                </p>
+              </div>
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* Good fit */}
+                <div className="bg-white border border-[#e8e4df] rounded-2xl p-7">
+                  <div className="flex items-center gap-2 mb-5">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    <span className="text-sm font-bold text-[#16a34a]">Works well for</span>
+                  </div>
+                  <ul className="space-y-3">
+                    {[
+                      'Tenants reviewing an apartment or commercial lease before signing',
+                      'Employees reading a job offer, employment contract, or non-compete',
+                      'Freelancers and contractors reviewing client agreements',
+                      'Consultants dealing with NDAs and service agreements',
+                      'Anyone who wants to understand what they\'re agreeing to before paying a lawyer',
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-2.5 text-sm text-[#444]">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0 mt-0.5" aria-hidden="true">
+                          <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                {/* Not ideal */}
+                <div className="bg-white border border-[#e8e4df] rounded-2xl p-7">
+                  <div className="flex items-center gap-2 mb-5">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#dc2626" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                    <span className="text-sm font-bold text-[#dc2626]">Not a replacement for a lawyer when</span>
+                  </div>
+                  <ul className="space-y-3">
+                    {[
+                      'The agreement involves significant assets, equity, or property transfer',
+                      'You\'re in an active dispute or litigation',
+                      'You need advice specific to your jurisdiction\'s laws',
+                      'The contract is unusually complex or involves multiple parties',
+                      'You need a professional opinion that\'s legally defensible',
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-2.5 text-sm text-[#444]">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9c9590" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0 mt-0.5" aria-hidden="true">
+                          <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="text-xs text-[#9c9590] mt-5 leading-relaxed border-t border-[#f0ece8] pt-4">
+                    Revealr is best used as a first pass — to understand the document and identify questions to bring to a professional.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* ── FAQ ───────────────────────────────────────────────────────────── */}
           <section id="faq" aria-labelledby="faq-heading" className="py-20 px-6">
             <div className="max-w-3xl mx-auto">
@@ -695,11 +764,11 @@ export default function HomePage() {
                         <polyline points="6 9 12 15 18 9" />
                       </svg>
                     </button>
-                    {openFaq === i && (
+                    <div style={{ maxHeight: openFaq === i ? '500px' : '0', overflow: 'hidden', transition: 'max-height 0.25s ease' }}>
                       <div className="px-5 pb-5 bg-white border-t border-[#f0ece8]">
                         <p className="text-sm text-[#6b6560] leading-relaxed pt-4">{faq.a}</p>
                       </div>
-                    )}
+                    </div>
                   </div>
                 ))}
               </div>

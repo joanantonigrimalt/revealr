@@ -58,11 +58,17 @@ const COMPANY_LINKS = [
 
 const RESOURCE_LINKS = [
   { href: '/blog/how-to-review-a-lease-before-signing', label: 'How to Review a Lease' },
-  { href: '/blog/common-lease-red-flags', label: 'Lease Red Flags Guide' },
+  { href: '/blog/common-lease-red-flags', label: 'Common Lease Red Flags' },
   { href: '/blog/what-to-check-in-an-employment-contract', label: 'Employment Contract Guide' },
   { href: '/blog/common-nda-red-flags', label: 'NDA Red Flags Guide' },
   { href: '/blog/freelance-contract-mistakes', label: 'Freelance Contract Guide' },
   { href: '/blog/how-to-read-a-contract-with-ai', label: 'AI Contract Review Guide' },
+  { href: '/blog/non-compete-clause-explained', label: 'Non-Compete Clause Explained' },
+  { href: '/blog/ip-assignment-agreement-what-to-know', label: 'IP Assignment Guide' },
+  { href: '/blog/how-to-negotiate-a-lease', label: 'How to Negotiate a Lease' },
+  { href: '/blog/how-to-read-an-nda', label: 'How to Read an NDA' },
+  { href: '/blog/job-offer-letter-vs-employment-contract', label: 'Offer Letter vs Employment Contract' },
+  { href: '/blog/consulting-agreement-red-flags', label: 'Consulting Agreement Red Flags' },
 ];
 
 export default function SiteFooter() {

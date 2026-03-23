@@ -128,7 +128,7 @@ export default function BlogIndexPage() {
             Ready to analyze your contract?
           </h2>
           <p className="text-white/60 mb-7 leading-relaxed">
-            Upload any contract and get a full AI risk analysis in 60 seconds. Free preview.
+            Upload any contract and get a full AI risk analysis in 60 seconds. $19, no subscription.
           </p>
           <Link
             href="/"
