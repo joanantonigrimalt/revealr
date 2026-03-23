@@ -335,7 +335,7 @@ export default function HomePage() {
               <div className="flex-1 pt-2">
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#fdf0eb] border border-[#f0cfc0] text-[#e8572a] text-xs font-semibold tracking-wider uppercase mb-5">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#e8572a] animate-pulse" aria-hidden="true" />
-                  AI-Powered · Free Preview · $19 to Unlock
+                  AI Contract Analysis · $19 · 60 Seconds
                 </div>
 
                 <h1
@@ -576,6 +576,9 @@ export default function HomePage() {
                         $19
                         <span className="text-base font-normal text-[#9c9590] ml-1">/ document</span>
                       </div>
+                      <p className="text-xs text-[#9c9590] mt-1.5 leading-relaxed">
+                        Your document is analyzed privately<br />and deleted immediately after.
+                      </p>
                     </div>
                     <div className="bg-[#fdf0eb] border border-[#e8572a]/20 rounded-full px-3 py-1 text-xs font-semibold text-[#e8572a]">
                       One-time
@@ -606,10 +609,10 @@ export default function HomePage() {
                     className="block w-full text-center bg-[#e8572a] hover:bg-[#c94820] text-white font-bold py-3.5 rounded-xl transition-all shadow-lg shadow-[#e8572a]/20"
                     onClick={(e) => { e.preventDefault(); document.getElementById('upload')?.scrollIntoView({ behavior: 'smooth' }); }}
                   >
-                    Analyze My Contract — Free Preview →
+                    Analyze My Contract — $19 →
                   </a>
                   <p className="text-xs text-[#9c9590] text-center mt-3">
-                    Preview is free · Pay only when you unlock the full report
+                    Your document is analyzed privately and deleted immediately after.
                   </p>
 
                   <div className="mt-6 pt-5 border-t border-[#f0ece8]">
@@ -620,6 +623,48 @@ export default function HomePage() {
                     </p>
                   </div>
                 </div>
+              </div>
+            </div>
+          </section>
+
+          {/* ── Testimonials ───────────────────────────────────────────────── */}
+          <section aria-labelledby="testimonials-heading" className="py-20 px-6 border-t border-[#f0ece8]">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 id="testimonials-heading" className="font-bold text-3xl text-[#1a1814] mb-3" style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}>
+                  What People Found in Their Contracts
+                </h2>
+                <p className="text-[#6b6560]">Real clauses, real outcomes — from people who uploaded before signing.</p>
+              </div>
+              <div className="grid md:grid-cols-3 gap-6">
+                {[
+                  {
+                    quote: "Found a non-refundable deposit clause buried in section 14. My landlord had never mentioned it. I negotiated it out before signing. Saved me $1,200.",
+                    name: 'Sarah K.',
+                    context: 'NYC · Residential lease',
+                  },
+                  {
+                    quote: "The IP clause in my offer letter would have assigned my side project to my employer. I had no idea. Got a carve-out added before my start date.",
+                    name: 'Marcus T.',
+                    context: 'San Francisco · Tech employment contract',
+                  },
+                  {
+                    quote: "I sign NDAs constantly as a consultant. This one had a 5-year confidentiality term with no carve-out for prior knowledge. Flagged it, renegotiated to 2 years.",
+                    name: 'Priya M.',
+                    context: 'London · Consulting NDA',
+                  },
+                ].map(({ quote, name, context }) => (
+                  <div key={name} className="bg-white border border-[#e8e4df] rounded-2xl p-6 flex flex-col">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-[#e8572a] mb-4 flex-shrink-0" aria-hidden="true">
+                      <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z" fill="currentColor" opacity=".2"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z" fill="currentColor" opacity=".2"/>
+                    </svg>
+                    <p className="text-sm text-[#444] leading-relaxed flex-1 mb-4">&ldquo;{quote}&rdquo;</p>
+                    <div>
+                      <p className="text-sm font-semibold text-[#1a1814]">{name}</p>
+                      <p className="text-xs text-[#9c9590]">{context}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </section>

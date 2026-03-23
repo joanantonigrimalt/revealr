@@ -32,7 +32,7 @@ export default function PageHero({ h1, intro, ctaMicrocopy }: Props) {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#fdf0eb] border border-[#f0cfc0] text-[#e8572a] text-xs font-semibold tracking-wider uppercase mb-5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#e8572a] animate-pulse" aria-hidden="true" />
-              AI-Powered · Free Preview · $19 to Unlock
+              AI Contract Analysis · $19 · 60 Seconds
             </div>
 
             <h1

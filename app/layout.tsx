@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { Playfair_Display, Epilogue } from 'next/font/google';
 import './globals.css';
 
@@ -131,8 +132,48 @@ const softwareSchema = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning className={`${playfair.variable} ${epilogue.variable}`}>
-      <head />
+      <head>
+        {/* Google Tag Manager — GTM-NGF28TGB
+            This must be the first tag in <head> for accurate tracking.
+            GTM container manages all marketing tags and events.
+        */}
+        <Script id="gtm-main" strategy="beforeInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGF28TGB');`}
+        </Script>
+
+        {/* Google Ads Conversion Tracking via GTM
+            Account: AW-956507305
+            Conversion event fired from app/success/page.tsx ONLY
+            after Stripe payment validation.
+        */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-956507305"
+          strategy="beforeInteractive"
+        />
+        <Script id="google-ads-gtag" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-956507305');
+          `}
+        </Script>
+      </head>
       <body>
+        {/* Google Tag Manager (noscript) — fallback if JavaScript is disabled */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-NGF28TGB"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
+
         {/* SSR-safe JSON-LD — plain <script> renders in initial HTML for crawlers */}
         <script
           type="application/ld+json"

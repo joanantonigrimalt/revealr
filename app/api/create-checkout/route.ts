@@ -3,7 +3,20 @@ import { stripe, PRICE_CENTS, CURRENCY, PRODUCT_NAME } from '@/lib/stripe';
 
 export const runtime = 'nodejs';
 
-// POST /api/create-checkout — creates Stripe session; analysis runs AFTER payment
+/**
+ * POST /api/create-checkout
+ * 
+ * Creates a Stripe Checkout session.
+ * 
+ * On success, redirects to /success (NOT /dashboard) where:
+ * 1. Session ID is validated with Stripe
+ * 2. Payment status is confirmed
+ * 3. Google Ads conversion is tracked ONLY if payment is confirmed
+ * 4. User is redirected to /dashboard to start analysis
+ * 
+ * This separation ensures Google Ads conversion tracking is triggered
+ * ONLY after server-side validation of successful payment.
+ */
 export async function POST(req: NextRequest) {
   try {
     const { fileKey, email, fileName } = await req.json() as {
@@ -40,7 +53,8 @@ export async function POST(req: NextRequest) {
         },
       ],
       metadata: { fileKey, email, fileName },
-      success_url: `${appUrl}/dashboard?unlocked=1&file=${encodeURIComponent(fileKey)}&email=${encodeURIComponent(email)}&name=${encodeURIComponent(fileName)}&session_id={CHECKOUT_SESSION_ID}`,
+      // ── Redirect to /success for validation (not /dashboard) ────────────────────
+      success_url: `${appUrl}/success?session_id={CHECKOUT_SESSION_ID}&file=${encodeURIComponent(fileKey)}&email=${encodeURIComponent(email)}&name=${encodeURIComponent(fileName)}`,
       cancel_url: `${appUrl}/dashboard?cancelled=1&file=${encodeURIComponent(fileKey)}&email=${encodeURIComponent(email)}&name=${encodeURIComponent(fileName)}`,
     });
 
@@ -51,3 +65,4 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: msg }, { status: 500 });
   }
 }
+

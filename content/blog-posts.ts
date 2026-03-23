@@ -122,6 +122,45 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
+        h2: 'A 10-Minute Lease Review Checklist',
+        paragraphs: [
+          'If you only have 10 minutes before signing, focus on these — in order of how often they cause financial disputes:',
+        ],
+        h3s: [
+          {
+            heading: 'Minutes 1–2: Security deposit',
+            body: 'Find the security deposit clause. Confirm the amount, whether any portion is non-refundable, what deductions are allowed, and the return deadline. Write these down. If the lease says "non-refundable," that is a red flag worth raising before signing.',
+          },
+          {
+            heading: 'Minutes 3–4: Early termination',
+            body: 'Find the early termination section. Calculate the actual cost if you needed to leave 6 months early. Anything over two months\' rent is worth negotiating. "Pay until a new tenant is found" with no cap is particularly risky.',
+          },
+          {
+            heading: 'Minutes 5–6: Automatic renewal',
+            body: 'Find the renewal clause. Note the notice deadline — the date by which you must give written notice to avoid renewal. Calendar it immediately. A 60-day window in a 12-month lease means you need to decide in month 10.',
+          },
+          {
+            heading: 'Minutes 7–8: Maintenance and entry',
+            body: 'Find who is responsible for repairs. Any clause that assigns HVAC, pest control, or appliance maintenance to the tenant is worth clarifying in writing before signing. Then find the landlord entry clause and confirm it matches your state\'s notice requirement.',
+          },
+          {
+            heading: 'Minutes 9–10: Fees and restrictions',
+            body: 'Scan for any fees not discussed verbally: late fees (amount and grace period), pet fees, parking fees, storage fees. Check the guest and occupancy policy. Check whether subletting is allowed if you might need that flexibility.',
+          },
+        ],
+      },
+      {
+        h2: 'Questions to Ask Your Landlord Before You Sign',
+        paragraphs: [
+          'Reading the lease is step one. These questions help you understand how the landlord actually operates — and signal that you are an informed tenant:',
+          '"How are security deposit deductions handled at move-out, and can I get that in writing?" This tests whether the landlord has a fair process or a history of dispute.',
+          '"If I need to leave before the lease ends, what is the actual process?" This clarifies whether they will actively re-rent the unit or simply bill you until the end of the term.',
+          '"Is there anything in this lease that has led to disputes with previous tenants?" An honest landlord will tell you. A defensive reaction is itself informative.',
+          '"Can we document the current condition of the unit before I move in?" A move-in checklist, signed by both parties with photos, protects you from false damage claims at move-out. Any resistance to this is a signal.',
+          'Landlords who respond to these questions with irritation or evasion are telling you something important about what the tenancy might be like.',
+        ],
+      },
+      {
         h2: 'Limitations: What a Lease Review Tool Can\'t Tell You',
         paragraphs: [
           'AI analysis and even careful reading can\'t tell you: whether the landlord actually follows the lease\'s terms, what the local rental market is like, whether the unit has unresolved maintenance issues, or whether specific clauses are actually enforceable in your jurisdiction.',
@@ -438,6 +477,62 @@ export const blogPosts: BlogPost[] = [
           'The negotiation is much easier before you sign than after you\'ve started. Employers expect reasonable negotiation from professional candidates.',
         ],
       },
+      {
+        h2: 'Employment Contract Red Flags to Watch For',
+        paragraphs: [
+          'Some contract terms are worth flagging immediately — not necessarily as deal-breakers, but as things that warrant a direct conversation before you sign.',
+        ],
+        h3s: [
+          {
+            heading: 'Non-compete covering your entire industry',
+            body: 'A non-compete that bars you from working in your field for 12–24 months — regardless of your role or what you actually knew — is a career risk. Ask for geographic limits, a shorter term, or a carve-out for your existing clients and skills. In some states (California, Minnesota, North Dakota, Oklahoma) these are unenforceable regardless.',
+          },
+          {
+            heading: 'IP assignment that extends to personal projects',
+            body: 'If the clause assigns ownership of anything you create "relating to the company\'s business or anticipated business," it could cover side projects built on your own time. Ask for a written carve-out listing any pre-existing work you want to retain and excluding work done on personal equipment with no company resources.',
+          },
+          {
+            heading: 'Clawback provisions on bonuses or equity',
+            body: 'Some contracts let employers claw back bonuses or unvested equity if you leave within a certain period, are terminated for cause, or if financial results are restated. Read these carefully — "for cause" definitions are often broad, and clawback windows can extend years after the compensation was received.',
+          },
+          {
+            heading: '"Garden leave" without compensation',
+            body: 'Some contracts include a notice period during which the employer can place you on "garden leave" — barring you from working elsewhere but not requiring you to report in. If your contract has a 6-month notice period but only pays through 30 days, understand what the actual financial obligation is on each side.',
+          },
+        ],
+      },
+      {
+        h2: 'An Employment Contract Review Checklist',
+        paragraphs: [
+          'Before signing any employment contract, work through this checklist:',
+        ],
+        h3s: [
+          {
+            heading: 'Compensation: confirm it in writing',
+            body: 'Base salary, bonus (guaranteed vs. discretionary, tied to which metrics), equity (type, cliff, vesting schedule, acceleration on change of control, exercise window if options), benefits start date, and any signing bonus repayment obligations if you leave within a set period.',
+          },
+          {
+            heading: 'Restrictive covenants: scope and enforceability',
+            body: 'List every restriction: non-compete, non-solicitation of employees, non-solicitation of clients, non-disparagement. For each, note the duration, geographic scope, and definition of prohibited activity. Check whether your state enforces them. If the scope is broad, propose narrower language in writing.',
+          },
+          {
+            heading: 'Termination: notice, cause, and severance',
+            body: 'What constitutes "cause"? How much notice is required from each side? Is severance defined in the contract, or at employer discretion? If severance requires you to sign a release, ask to see the release template before you accept the job.',
+          },
+          {
+            heading: 'Dispute resolution: arbitration and jurisdiction',
+            body: 'If arbitration is required, note whether it\'s before JAMS, AAA, or another body, whether class actions are waived, and what law governs. Some arbitration clauses are more favorable to employees than others — this matters if you ever have a dispute over unpaid wages or discrimination.',
+          },
+        ],
+      },
+      {
+        h2: 'The Cost of Not Reviewing Your Employment Contract',
+        paragraphs: [
+          'Employment contract disputes are among the most expensive legal matters individuals face. A non-compete that prevents you from working in your industry for a year has enormous financial impact. An IP assignment that transfers ownership of a side business you built before joining can cost far more than any bonus.',
+          'Most employment lawyers offer free or low-cost consultations for contract review. For senior or specialized roles — or any contract with equity, non-competes, or unusual terms — an hour with an employment attorney before signing is cheap insurance.',
+          'Even without legal counsel, running your contract through an AI contract analyzer before signing gives you a clear map of every clause that deserves attention. The goal isn\'t to make signing adversarial — it\'s to enter the relationship with eyes open.',
+        ],
+      },
     ],
   },
 
@@ -501,6 +596,67 @@ export const blogPosts: BlogPost[] = [
         paragraphs: [
           'Asking for NDA modifications is normal and expected in professional contexts. Common reasonable asks: narrow the definition of confidential information, add standard exclusions, shorten the term, make it mutual, exclude legally protected discussions.',
           'If a counterparty refuses any changes to a sweeping NDA, that tells you something about how they approach the underlying business relationship.',
+        ],
+      },
+      {
+        h2: 'Types of NDAs You\'re Likely to Encounter',
+        paragraphs: [
+          'Not all NDAs are the same document. Understanding which type you\'re signing affects how you should evaluate its terms.',
+        ],
+        h3s: [
+          {
+            heading: 'Pre-employment / interview NDAs',
+            body: 'Signed before a job interview or hiring process. These are typically one-way (you agree not to disclose what you learn about the company) and limited in scope. Red flag: if the NDA includes IP assignment language or non-compete terms — those belong in an employment contract, not a pre-interview NDA.',
+          },
+          {
+            heading: 'Employment NDAs',
+            body: 'Incorporated into or attached to an employment contract. Often include the broadest obligations: confidentiality of all business information, assignment of work product, and sometimes non-solicitation. These benefit most from careful review because they govern a long-term relationship.',
+          },
+          {
+            heading: 'Business partnership / vendor NDAs',
+            body: 'Signed before sharing information with a potential partner, vendor, or investor. Should typically be mutual — both parties are sharing information. If you\'re asked to sign a one-way NDA before a business discussion where you\'ll be sharing your own ideas, propose making it mutual.',
+          },
+          {
+            heading: 'Settlement NDAs',
+            body: 'Signed as part of a legal settlement. These are often the most consequential: they may prevent you from discussing the facts of a dispute, naming the other party, or pursuing future claims. In the U.S., NDAs tied to settlements of sexual harassment or assault claims are now unenforceable under federal law. Know what you\'re agreeing to silence.',
+          },
+        ],
+      },
+      {
+        h2: 'What You Cannot Be Forced to Keep Confidential',
+        paragraphs: [
+          'NDAs have real legal limits. Understanding these helps you push back on overbroad language from an informed position.',
+          'In the United States, federal and most state laws protect your right to discuss wages and working conditions with coworkers — NDAs cannot override this. The Speak Out Act (2022) bars NDAs that prevent disclosure of sexual harassment and assault. Whistleblower protections in securities law, environmental law, and healthcare law override NDA obligations when reporting unlawful conduct to regulators.',
+          'In the UK, "super-injunctions" and NDAs that prevent reporting of criminal conduct are increasingly unenforceable and may expose the drafter to contempt proceedings. EU member states have implemented the EU Trade Secrets Directive, which includes explicit exceptions for journalism, whistleblowing, and lawful disclosure.',
+          'In practical terms: if an NDA attempts to prevent you from discussing illegal activity, reporting to law enforcement or regulatory bodies, or exercising statutory employment rights, those provisions are likely void — regardless of what the document says.',
+        ],
+      },
+      {
+        h2: 'Before You Sign Any NDA: A Quick Checklist',
+        paragraphs: [
+          'Run through these questions before signing any non-disclosure agreement:',
+        ],
+        h3s: [
+          {
+            heading: 'Is "confidential information" defined specifically?',
+            body: 'Look for a concrete definition — marked documents, specific categories, named systems. "All information shared" is a red flag. Ask for a narrowed definition tied to actual trade secrets or specific business information.',
+          },
+          {
+            heading: 'Are the standard exclusions present?',
+            body: 'A properly drafted NDA excludes: information already public, information you independently developed, information you received from a third party without restriction, and information you\'re required to disclose by law. If these aren\'t in the document, add them.',
+          },
+          {
+            heading: 'What is the duration?',
+            body: '2–5 years is standard for general business information. Perpetual NDAs for non-trade-secret information are unusual. If the term is indefinite, propose a specific time limit with a carve-out for actual trade secrets.',
+          },
+          {
+            heading: 'Should this be mutual?',
+            body: 'If both parties will be sharing confidential information, the NDA should bind both. Ask who is disclosing and who is receiving. If the answer is "both of us," propose mutual obligations.',
+          },
+          {
+            heading: 'What are the remedies?',
+            body: 'Injunctive relief (a court order to stop disclosure) is standard and reasonable. Liquidated damages, criminal penalties, or uncapped indemnification for any breach are not. If the remedies section is aggressive, ask for actual damages language instead.',
+          },
         ],
       },
     ],
