@@ -23,10 +23,11 @@ export default function DashboardPage() {
 function DashboardInner() {
   const params = useSearchParams();
 
-  const fileKey   = params.get('file') ?? '';
-  const fileName  = decodeURIComponent(params.get('name') ?? 'lease.pdf');
-  const email     = decodeURIComponent(params.get('email') ?? '');
-  const sessionId = params.get('session_id');  // Comes from /success after payment validation
+  const fileKey     = params.get('file') ?? '';
+  const fileName    = decodeURIComponent(params.get('name') ?? 'lease.pdf');
+  const email       = decodeURIComponent(params.get('email') ?? '');
+  const sessionId   = params.get('session_id');  // Comes from /success after payment validation
+  const pageContext = params.get('context') ?? undefined;
   const cancelled = params.get('cancelled') === '1';
   const isPaid    = sessionId !== null;  // If session_id exists, payment was validated
 
@@ -65,7 +66,7 @@ function DashboardInner() {
       const res = await fetch('/api/analyze', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ fileKey, fileName }),
+        body: JSON.stringify({ fileKey, fileName, pageContext }),
       });
 
       if (!res.ok) {
@@ -83,7 +84,7 @@ function DashboardInner() {
       setError(err instanceof Error ? err.message : 'An unexpected error occurred.');
       setStatus('error');
     }
-  }, [fileKey, fileName]);
+  }, [fileKey, fileName, pageContext]);
 
   // ── A: Fresh upload — animate first, then bypass check or paywall ────────
   useEffect(() => {

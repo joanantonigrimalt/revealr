@@ -9,9 +9,10 @@ export const maxDuration = 120;
 // POST /api/analyze — runs analysis (no payment required, result returned to client)
 export async function POST(req: NextRequest) {
   try {
-    const { fileKey, fileName } = await req.json() as {
+    const { fileKey, fileName, pageContext } = await req.json() as {
       fileKey: string;
       fileName: string;
+      pageContext?: string;
     };
 
     if (!fileKey || !fileName) {
@@ -52,7 +53,7 @@ export async function POST(req: NextRequest) {
     // Run Claude analysis
     let result;
     try {
-      result = await analyzeLease(extracted);
+      result = await analyzeLease(extracted, pageContext);
     } catch (err) {
       console.error('[analyze]', err);
       const msg = err instanceof Error ? err.message : 'AI analysis failed.';

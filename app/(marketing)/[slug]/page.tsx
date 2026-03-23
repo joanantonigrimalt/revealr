@@ -41,11 +41,20 @@ export async function generateMetadata({
 // ─────────────────────────────────────────────────────────────────────────────
 // Page
 // ─────────────────────────────────────────────────────────────────────────────
+const CLUSTER_TO_CONTEXT: Record<string, string> = {
+  'lease-rental': 'lease',
+  'employment-job': 'employment',
+  'nda-restrictive': 'nda',
+  'service-freelance': 'freelance',
+  'purchase-real-estate': 'purchase',
+};
+
 export default function SEOPage({ params }: { params: { slug: string } }) {
   const page = getPageBySlug(params.slug);
   if (!page) notFound();
 
   const isToolPage = TOOL_PAGE_SLUGS.has(page.slug);
+  const pageContext = page.cluster ? CLUSTER_TO_CONTEXT[page.cluster] : undefined;
 
   return (
     <>
@@ -77,6 +86,7 @@ export default function SEOPage({ params }: { params: { slug: string } }) {
           h1={page.h1}
           intro={page.intro}
           ctaMicrocopy={page.ctaMicrocopy}
+          pageContext={pageContext}
         />
 
         {/* 2. What Revealr checks */}
@@ -107,7 +117,7 @@ export default function SEOPage({ params }: { params: { slug: string } }) {
         <RelatedPages pages={page.relatedPages} />
 
         {/* 7. Final CTA with upload widget */}
-        <PageCTA ctaMicrocopy={page.ctaMicrocopy} />
+        <PageCTA ctaMicrocopy={page.ctaMicrocopy} pageContext={pageContext} />
 
         {/* 8. Legal disclaimer */}
         <LegalDisclaimer disclaimer={page.disclaimer} />

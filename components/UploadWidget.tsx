@@ -6,7 +6,11 @@ import { formatFileSize } from '@/lib/utils';
 
 type Step = 'upload' | 'email';
 
-export default function UploadWidget() {
+type Props = {
+  pageContext?: string; // e.g. 'lease' | 'employment' | 'nda' | 'freelance' | 'purchase'
+};
+
+export default function UploadWidget({ pageContext }: Props = {}) {
   const [step, setStep] = useState<Step>('upload');
   const [file, setFile] = useState<File | null>(null);
   const [email, setEmail] = useState('');
@@ -49,7 +53,8 @@ export default function UploadWidget() {
 
       if (!res.ok) throw new Error(data.error ?? `Upload failed (${res.status}).`);
 
-      window.location.href = `/dashboard?file=${encodeURIComponent(data.fileKey)}&name=${encodeURIComponent(data.fileName)}&email=${encodeURIComponent(email.trim())}`;
+      const contextParam = pageContext ? `&context=${encodeURIComponent(pageContext)}` : '';
+      window.location.href = `/dashboard?file=${encodeURIComponent(data.fileKey)}&name=${encodeURIComponent(data.fileName)}&email=${encodeURIComponent(email.trim())}${contextParam}`;
     } catch (err) {
       setEmailError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
       setLoading(false);

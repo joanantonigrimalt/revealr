@@ -145,7 +145,8 @@ Return ONLY valid JSON. No markdown. No preamble. No text outside the JSON objec
 // ─── Main analysis function ────────────────────────────────────────────────
 
 export async function analyzeLease(
-  extracted: ExtractResult
+  extracted: ExtractResult,
+  pageContext?: string
 ): Promise<LeaseAnalysisResult> {
   // Quality gate for text documents
   if (extracted.kind === 'text' && extracted.content.length < MIN_TEXT_CHARS) {
@@ -153,7 +154,7 @@ export async function analyzeLease(
     return qualityFailureResult('The extracted text was too short to analyze. The document may be incomplete or the text could not be extracted properly.');
   }
 
-  const messages = buildMessages(extracted);
+  const messages = buildMessages(extracted, pageContext);
 
   const response = await Promise.race([
     client.messages.create({
@@ -178,14 +179,30 @@ export async function analyzeLease(
 
 // ─── Helpers ───────────────────────────────────────────────────────────────
 
-function buildMessages(extracted: ExtractResult): Anthropic.MessageParam[] {
+const CONTEXT_HINTS: Record<string, string> = {
+  lease:      'The user uploaded this from a lease agreement analysis page. Prioritize lease-specific risks: security deposit conditions, landlord entry rights, maintenance obligations, early termination penalties, automatic renewal windows, rent escalation, and subletting rights.',
+  employment: 'The user uploaded this from an employment contract analysis page. Prioritize employment-specific risks: at-will vs. for-cause termination, non-compete scope (geography + duration), IP assignment breadth (does it cover personal projects?), clawback provisions, equity vesting, and mandatory arbitration.',
+  nda:        'The user uploaded this from an NDA analysis page. Prioritize NDA-specific risks: overbroad confidentiality scope, perpetual or unusually long duration, one-sided obligations, permitted disclosure carve-outs, and injunctive relief clauses.',
+  freelance:  'The user uploaded this from a freelance/contractor agreement analysis page. Prioritize freelance-specific risks: IP ownership and work-for-hire language, kill fees, payment schedules and late payment terms, unlimited revision clauses, client termination without cause, and indemnification scope.',
+  purchase:   'The user uploaded this from a real estate purchase agreement analysis page. Prioritize purchase-specific risks: contingency clause conditions (financing, inspection, appraisal), earnest money forfeiture, closing date flexibility, as-is clauses, what is included/excluded, title warranty type, and buyer/seller default remedies.',
+};
+
+function buildContextNote(pageContext?: string): string {
+  if (!pageContext || !CONTEXT_HINTS[pageContext]) return '';
+  const hint = CONTEXT_HINTS[pageContext];
+  return `\n\nContext hint: ${hint} If the document type you identify in Step 2 does NOT match "${pageContext}", add an "info" flag at the top of the flags array with title "Document Type Mismatch" explaining what type it actually is and that it was uploaded on a ${pageContext} analysis page.`;
+}
+
+function buildMessages(extracted: ExtractResult, pageContext?: string): Anthropic.MessageParam[] {
+  const contextNote = buildContextNote(pageContext);
+
   if (extracted.kind === 'text') {
     // Truncate at 80k chars to stay well within Claude's context window
     const content = extracted.content.slice(0, 80_000);
     return [
       {
         role: 'user',
-        content: `Please analyze the following contract document:\n\n${content}`,
+        content: `Please analyze the following contract document:${contextNote}\n\n${content}`,
       },
     ];
   }
@@ -204,7 +221,7 @@ function buildMessages(extracted: ExtractResult): Anthropic.MessageParam[] {
         },
         {
           type: 'text',
-          text: 'Please analyze this contract document image. Identify all risks and clauses that require attention for the signing party.',
+          text: `Please analyze this contract document image. Identify all risks and clauses that require attention for the signing party.${contextNote}`,
         },
       ],
     },

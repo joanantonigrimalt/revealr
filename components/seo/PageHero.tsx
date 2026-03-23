@@ -6,6 +6,7 @@ type Props = {
   h1: string;
   intro: string;
   ctaMicrocopy: string;
+  pageContext?: string;
 };
 
 const BENEFITS = [
@@ -16,7 +17,7 @@ const BENEFITS = [
   { bold: 'PDF + email delivery', rest: ' — share with the other party or an attorney' },
 ];
 
-export default function PageHero({ h1, intro, ctaMicrocopy }: Props) {
+export default function PageHero({ h1, intro, ctaMicrocopy, pageContext }: Props) {
   return (
     <section className="border-b border-[#f0ece8] bg-white py-12 px-6">
       <div className="max-w-6xl mx-auto">
@@ -24,7 +25,7 @@ export default function PageHero({ h1, intro, ctaMicrocopy }: Props) {
 
           {/* ── Left: Upload widget ── */}
           <div className="w-full lg:w-[400px] flex-shrink-0">
-            <UploadWidget />
+            <UploadWidget pageContext={pageContext} />
           </div>
 
           {/* ── Right: H1, intro, benefits ── */}

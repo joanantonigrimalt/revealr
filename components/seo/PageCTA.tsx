@@ -2,9 +2,10 @@ import UploadWidget from '@/components/UploadWidget';
 
 type Props = {
   ctaMicrocopy: string;
+  pageContext?: string;
 };
 
-export default function PageCTA({ ctaMicrocopy }: Props) {
+export default function PageCTA({ ctaMicrocopy, pageContext }: Props) {
   return (
     <section className="py-16 px-6 bg-[#1a1814]">
       <div className="max-w-2xl mx-auto text-center">
@@ -18,7 +19,7 @@ export default function PageCTA({ ctaMicrocopy }: Props) {
           Upload your contract and get a complete risk analysis in under 60 seconds.
         </p>
         <div className="max-w-sm mx-auto">
-          <UploadWidget />
+          <UploadWidget pageContext={pageContext} />
         </div>
         <p className="text-white/40 text-xs mt-5">{ctaMicrocopy}</p>
       </div>
