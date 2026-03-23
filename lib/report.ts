@@ -7,8 +7,15 @@ export function buildEmailHTML(params: {
   result: LeaseAnalysisResult;
   fileName: string;
   appUrl: string;
+  sessionId?: string;
+  fileKey?: string;
 }): string {
-  const { result, fileName, appUrl } = params;
+  const { result, fileName, appUrl, sessionId, fileKey } = params;
+
+  // Build the "View Full Report" URL — deep link back into the dashboard
+  const reportUrl = sessionId && fileKey
+    ? `${appUrl}/dashboard?file=${encodeURIComponent(fileKey)}&name=${encodeURIComponent(fileName)}&session_id=${encodeURIComponent(sessionId)}`
+    : appUrl;
   const level = getRiskLevel(result.riskScore);
   const cfg = RISK_LEVEL_CONFIG[level];
   const counts = countFlags(result.flags);
@@ -103,10 +110,10 @@ export function buildEmailHTML(params: {
 
     <!-- CTA -->
     <div style="background:#1a1814;border-radius:12px;padding:24px;margin:32px 0;text-align:center;">
-      <div style="color:#faf9f7;font-size:16px;font-weight:600;margin-bottom:8px;">View Your Full Interactive Report</div>
-      <div style="color:#9c9590;font-size:13px;margin-bottom:20px;">Access your complete analysis with action steps and recommendations</div>
-      <a href="${appUrl}" style="display:inline-block;background:#e8572a;color:#fff;padding:12px 28px;border-radius:8px;font-weight:600;font-size:14px;text-decoration:none;">
-        View Report →
+      <div style="color:#faf9f7;font-size:16px;font-weight:600;margin-bottom:8px;">View Your Full Report</div>
+      <div style="color:#9c9590;font-size:13px;margin-bottom:20px;">Access your complete analysis with all flags, action steps, and PDF download</div>
+      <a href="${reportUrl}" style="display:inline-block;background:#e8572a;color:#fff;padding:12px 28px;border-radius:8px;font-weight:600;font-size:14px;text-decoration:none;">
+        View Full Report →
       </a>
     </div>
 

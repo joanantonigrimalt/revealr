@@ -19,7 +19,7 @@ const REPLY_TO = 'support@getrevealr.com';
 export async function POST(req: NextRequest) {
   try {
     const body: EmailReportPayload = await req.json();
-    const { email, result, fileName } = body;
+    const { email, result, fileName, sessionId, fileKey } = body;
 
     if (!email || !result || !fileName) {
       return NextResponse.json({ error: 'Missing required fields.' }, { status: 400 });
@@ -33,21 +33,25 @@ export async function POST(req: NextRequest) {
 
     const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'https://getrevealr.com';
 
-    const html = buildEmailHTML({ result, fileName, appUrl });
+    const html = buildEmailHTML({ result, fileName, appUrl, sessionId, fileKey });
     const text = buildEmailText(result, fileName);
 
     const { error } = await resend.emails.send({
       from: FROM_EMAIL,
       to: [email],
       reply_to: REPLY_TO,
-      subject: `Your Contract Analysis Report — Revealr`,
+      subject: 'Your Revealr Contract Analysis is Ready',
       html,
       text,
     });
 
     if (error) {
       console.error('[send-report] Resend error:', error);
-      return NextResponse.json({ error: 'Failed to send email. Please try again.' }, { status: 500 });
+      // Non-fatal: caller shows report on screen anyway
+      return NextResponse.json(
+        { error: 'We could not send your email. Your report is available here.' },
+        { status: 500 }
+      );
     }
 
     return NextResponse.json({ success: true, message: 'Report sent successfully.' });

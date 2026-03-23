@@ -32,8 +32,15 @@ First, identify what type of document this is. Pick the closest match:
 - "generic" — any other legal contract or agreement
 
 ## STEP 2 — QUALITY CHECK
-If the document text is shorter than 150 characters, mostly garbled, clearly a non-contract document, or so incomplete you cannot perform a meaningful analysis:
-→ Return the quality-failure JSON structure described at the end.
+Evaluate the document BEFORE analysis. Return the appropriate failure structure (described at the end) if:
+
+**Not a contract at all** — The document is clearly something other than a legal contract or agreement: a resume/CV, photo, invoice, receipt, medical record, article, email, presentation, form, report, or any non-legal document.
+→ Set "qualityFailureReason": "not_a_contract" in the failure JSON.
+
+**Unreadable or too short** — The text is shorter than 150 characters, mostly garbled, image-only without OCR, or so incomplete you cannot perform a meaningful analysis.
+→ Set "qualityFailureReason": "unreadable" in the failure JSON.
+
+If neither condition applies, proceed to Step 3.
 
 ## STEP 3 — ANALYSIS
 Identify every clause that creates risk or requires attention for the SIGNING PARTY (the party receiving the document to sign — tenant, employee, contractor, service provider, disclosing party, etc.).
@@ -94,21 +101,14 @@ Return ONLY valid JSON. No markdown. No preamble. No text outside the JSON objec
 ### Quality failure structure (use ONLY when Step 2 quality check fails):
 {
   "riskScore": -1,
+  "qualityFailureReason": "<not_a_contract | unreadable>",
   "state": "N/A",
   "leaseType": "Unknown",
   "documentCategory": "generic",
   "confidence": "low",
-  "summary": "The document could not be analyzed due to insufficient or unreadable content.",
-  "missingInfo": "The uploaded file did not contain enough readable text to perform a meaningful analysis. This may be because the file is image-based (scanned without OCR), password-protected, or not a contract document.",
-  "flags": [
-    {
-      "type": "info",
-      "section": "General",
-      "title": "Document Quality — Analysis Not Possible",
-      "description": "Revealr could not extract sufficient readable text from this file to perform a clause-level analysis. This typically happens with scanned PDFs that have no embedded text layer, image files where the text is not machine-readable, or very short document fragments.",
-      "action": "Please re-upload the document in a text-based format: a digital PDF (not a scan), a .docx Word document, or a higher-quality image. If you only have a scan, try using an OCR tool (Adobe Acrobat, Google Drive, or Smallpdf) to create a searchable PDF first."
-    }
-  ]
+  "summary": "The document could not be analyzed.",
+  "missingInfo": "<explain why>",
+  "flags": []
 }`;
 
 // ─── Main analysis function ────────────────────────────────────────────────
@@ -188,11 +188,13 @@ function extractText(response: Anthropic.Message): string {
   return block.text;
 }
 
-function validateResult(raw: Partial<LeaseAnalysisResult>): LeaseAnalysisResult {
+function validateResult(raw: Partial<LeaseAnalysisResult> & { qualityFailureReason?: string }): LeaseAnalysisResult {
   // Handle quality failure from the model (riskScore === -1)
   if (raw.riskScore === -1) {
+    const reason = raw.qualityFailureReason === 'not_a_contract' ? 'not_a_contract' : 'unreadable';
     return qualityFailureResult(
-      raw.missingInfo ?? 'The document could not be analyzed with sufficient confidence.'
+      raw.missingInfo ?? 'The document could not be analyzed with sufficient confidence.',
+      reason
     );
   }
 
@@ -228,26 +230,20 @@ function validateResult(raw: Partial<LeaseAnalysisResult>): LeaseAnalysisResult 
   return result;
 }
 
-function qualityFailureResult(missingInfo: string): LeaseAnalysisResult {
+function qualityFailureResult(
+  missingInfo: string,
+  reason: 'not_a_contract' | 'unreadable' = 'unreadable'
+): LeaseAnalysisResult {
   return {
     riskScore: 0,
+    qualityFailureReason: reason,
     state: 'N/A',
     leaseType: 'Unknown',
     documentCategory: 'generic',
     confidence: 'low',
-    summary: 'The document could not be analyzed due to insufficient readable content.',
+    summary: 'The document could not be analyzed.',
     missingInfo,
-    flags: [
-      {
-        type: 'info',
-        section: 'General',
-        title: 'Document Quality — Analysis Not Possible',
-        description:
-          'Revealr could not extract sufficient readable text from this file. This typically happens with scanned PDFs that have no text layer, password-protected files, or very short document fragments.',
-        action:
-          'Re-upload in a text-based format: a digital PDF (not a scan), a .docx Word document, or use an OCR tool (Adobe Acrobat, Google Drive, or Smallpdf) to create a searchable PDF from a scan.',
-      },
-    ],
+    flags: [],
   };
 }
 

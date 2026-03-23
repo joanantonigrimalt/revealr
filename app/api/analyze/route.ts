@@ -59,6 +59,14 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: msg }, { status: 500 });
     }
 
+    // If Claude determined this is not a contract, return a clear user-facing error
+    if (result.qualityFailureReason === 'not_a_contract') {
+      return NextResponse.json(
+        { error: 'This document does not appear to be a contract. Please upload a lease, NDA, employment agreement, or similar legal document.' },
+        { status: 422 }
+      );
+    }
+
     return NextResponse.json(result);
   } catch (err) {
     console.error('[analyze]', err);

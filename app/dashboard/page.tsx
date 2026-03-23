@@ -26,8 +26,9 @@ function DashboardInner() {
   const fileKey   = params.get('file') ?? '';
   const fileName  = decodeURIComponent(params.get('name') ?? 'lease.pdf');
   const email     = decodeURIComponent(params.get('email') ?? '');
-  const unlocked  = params.get('unlocked') === '1';
+  const sessionId = params.get('session_id');  // Comes from /success after payment validation
   const cancelled = params.get('cancelled') === '1';
+  const isPaid    = sessionId !== null;  // If session_id exists, payment was validated
 
   // Status machine:
   //  'loading'   — fake progress animation (no Claude, just UX)
@@ -47,6 +48,9 @@ function DashboardInner() {
   const [emailSending, setEmailSending] = useState(false);
   const [payLoading, setPayLoading]     = useState(false);
   const [devBypass, setDevBypass]       = useState(false);
+  const [leadEmail, setLeadEmail]       = useState('');
+  const [leadSaved, setLeadSaved]       = useState(false);
+  const [leadSaving, setLeadSaving]     = useState(false);
 
   const ran = useRef(false);
 
@@ -83,7 +87,7 @@ function DashboardInner() {
 
   // ── A: Fresh upload — animate first, then bypass check or paywall ────────
   useEffect(() => {
-    if (unlocked || !fileKey || ran.current) return;
+    if (isPaid || !fileKey || ran.current) return;
     ran.current = true;
 
     const init = async () => {
@@ -113,14 +117,16 @@ function DashboardInner() {
       setStatus('locked');
     };
     init();
-  }, [fileKey, unlocked, runAnalysis]);
+  }, [fileKey, isPaid, runAnalysis]);
 
-  // ── B: After Stripe payment — now run Claude ──────────────────────────────
+  // ── B: After payment validated by /success — now run Claude ────────────────
+  // Note: Google Ads conversion is tracked in /success page ONLY, not here.
+  // This ensures conversion tracking is tied to server-side Stripe validation.
   useEffect(() => {
-    if (!unlocked || !fileKey || ran.current) return;
+    if (!isPaid || !fileKey || ran.current) return;
     ran.current = true;
     runAnalysis();
-  }, [unlocked, fileKey, runAnalysis]);
+  }, [isPaid, fileKey, runAnalysis]);
 
   // ── Unlock: check admin email bypass first, then Stripe ──────────────────
   const handleUnlock = async () => {
@@ -169,24 +175,44 @@ function DashboardInner() {
       const res = await fetch('/api/send-report', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: to, result: r, fileName }),
+        body: JSON.stringify({ email: to, result: r, fileName, sessionId, fileKey }),
       });
       if (res.ok) setEmailSent(true);
+      else {
+        // Non-fatal: report still visible on screen
+        const d = await res.json().catch(() => ({}));
+        console.warn('[sendEmail]', d.error ?? 'Email delivery failed');
+      }
     } catch { } finally {
       setEmailSending(false);
     }
-  }, [fileName]);
+  }, [fileName, sessionId, fileKey]);
 
   const handleResend = () => {
     if (result && emailInput) { setEmailSent(false); sendEmail(result, emailInput); }
   };
 
+  const handleSaveLead = async () => {
+    if (!leadEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(leadEmail)) return;
+    setLeadSaving(true);
+    try {
+      await fetch('/api/save-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: leadEmail, fileKey, fileName }),
+      });
+      setLeadSaved(true);
+    } catch { } finally {
+      setLeadSaving(false);
+    }
+  };
+
   // Auto-send email after analysis completes post-payment
   useEffect(() => {
-    if (status === 'success' && unlocked && result && email && !emailSent) {
+    if (status === 'success' && isPaid && result && email && !emailSent) {
       sendEmail(result, email);
     }
-  }, [status, unlocked, result, email, emailSent, sendEmail]);
+  }, [status, isPaid, result, email, emailSent, sendEmail]);
 
   // ── Guards ────────────────────────────────────────────────────────────────
   if (!fileKey) {
@@ -316,24 +342,38 @@ function DashboardInner() {
                     <p className="text-xs text-white/40 mt-0.5">No subscription · Instant access</p>
                   </div>
 
-                  {/* Feature list */}
+                  {/* Free preview vs full report comparison */}
                   <div className="px-6 py-4 border-b border-[#f0ece8]">
-                    <ul className="space-y-2">
-                      {[
-                        'Risk score with severity breakdown',
-                        'All flagged clauses with explanations',
-                        'Specific action per issue',
-                        'Full prioritized action plan',
-                        'PDF download + email delivery',
-                      ].map(item => (
-                        <li key={item} className="flex items-start gap-2 text-xs text-[#6b6560]">
-                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e8572a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0 mt-0.5">
-                            <polyline points="20 6 9 17 4 12" />
-                          </svg>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
+                    <div className="mb-3">
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-[#9c9590] mb-1.5">Free preview (you're seeing this)</p>
+                      <ul className="space-y-1">
+                        {['Risk score (blurred)', 'First 2 flags (blurred)'].map(item => (
+                          <li key={item} className="flex items-center gap-2 text-xs text-[#9c9590]">
+                            <span className="w-3 h-3 rounded-full border border-[#d8d4d0] flex-shrink-0" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-[#e8572a] mb-1.5">What you unlock for $19</p>
+                      <ul className="space-y-1.5">
+                        {[
+                          'All flagged clauses with severity',
+                          'Plain-English explanation per flag',
+                          'Specific action per issue',
+                          'Full prioritized action plan',
+                          'PDF download + email delivery',
+                        ].map(item => (
+                          <li key={item} className="flex items-start gap-2 text-xs text-[#1a1814] font-medium">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e8572a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0 mt-0.5">
+                              <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
 
                   {/* Email + CTA */}
@@ -375,7 +415,40 @@ function DashboardInner() {
                       <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                       <span>Secured by Stripe · Results in ~60 sec</span>
                     </div>
+
+                    {/* Lawyer note */}
+                    <p className="mt-4 text-[10px] text-[#b5b0ab] leading-relaxed text-center">
+                      For high-stakes contracts, consider having a qualified attorney review before signing.
+                    </p>
                   </div>
+                </div>
+
+                {/* Pre-payment email capture */}
+                <div className="mt-3 px-4 py-4 bg-white border border-[#e8e4df] rounded-xl">
+                  {leadSaved ? (
+                    <p className="text-xs text-green-700 font-medium text-center">✓ Link saved — check your inbox</p>
+                  ) : (
+                    <>
+                      <p className="text-xs text-[#6b6560] mb-2">Save your analysis link — get it by email</p>
+                      <div className="flex gap-2">
+                        <input
+                          type="email"
+                          value={leadEmail}
+                          onChange={(e) => setLeadEmail(e.target.value)}
+                          onKeyDown={(e) => e.key === 'Enter' && handleSaveLead()}
+                          placeholder="you@example.com"
+                          className="flex-1 px-3 py-2 rounded-lg border border-[#e8e4df] text-xs focus:outline-none focus:ring-2 focus:ring-[#e8572a]/20 focus:border-[#e8572a]/60 transition-all"
+                        />
+                        <button
+                          onClick={handleSaveLead}
+                          disabled={leadSaving}
+                          className="px-3 py-2 bg-[#1a1814] text-white text-xs font-semibold rounded-lg hover:bg-black transition-colors disabled:opacity-50 whitespace-nowrap"
+                        >
+                          {leadSaving ? '…' : 'Save My Link'}
+                        </button>
+                      </div>
+                    </>
+                  )}
                 </div>
 
                 {/* Document info */}

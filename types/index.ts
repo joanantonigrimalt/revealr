@@ -44,6 +44,7 @@ export type AnalysisConfidence = 'high' | 'medium' | 'low';
 
 export type LeaseAnalysisResult = {
   riskScore: number;           // 0–100 (−1 = quality gate failure)
+  qualityFailureReason?: 'not_a_contract' | 'unreadable';
   state: string;               // detected jurisdiction or "Not specified"
   leaseType: string;           // human-readable document type
   summary: string;             // one-sentence overview
@@ -74,6 +75,8 @@ export type EmailReportPayload = {
   email: string;
   result: LeaseAnalysisResult;
   fileName: string;
+  sessionId?: string;
+  fileKey?: string;
 };
 
 // ─── API Response Types ───────────────────────────────────────────────────────
