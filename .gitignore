@@ -23,4 +23,7 @@ next-env.d.ts
 .DS_Store
 *.pem
 
+# Google service account credentials — never commit
+scripts/google-credentials.json
+
 .vercel
