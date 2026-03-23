@@ -187,7 +187,7 @@ export default function UploadWidget() {
                 Uploading…
               </>
             ) : (
-              <>Analyze My Contract — Free Preview <span className="text-[#e8572a]">→</span></>
+              <>Upload Your Contract — See Your Risk Score <span className="text-[#e8572a]">→</span></>
             )}
           </button>
 

@@ -367,18 +367,17 @@ export default function HomePage() {
                   ))}
                 </ul>
 
-                <div className="flex items-center gap-3">
-                  <div className="flex -space-x-2" aria-hidden="true">
-                    {['#e8572a', '#1a1814', '#6b6560', '#c94820'].map((c, i) => (
-                      <div key={i} className="w-8 h-8 rounded-full border-2 border-white flex items-center justify-center text-white text-xs font-bold" style={{ backgroundColor: c }}>
-                        {['J', 'M', 'S', 'R'][i]}
-                      </div>
-                    ))}
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-[#1a1814]">Used by renters, freelancers & employees</p>
-                    <p className="text-xs text-[#9c9590]">Leases · Employment · NDAs · Freelance · Any contract</p>
-                  </div>
+                <div className="space-y-3">
+                  {[
+                    { quote: 'Found a clause that would have cost me my security deposit.', attr: 'Tenant, New York' },
+                    { quote: "Spotted a non-compete I didn't know was in my offer letter.", attr: 'Software engineer, California' },
+                    { quote: 'Flagged an IP clause that covered my side projects.', attr: 'Freelance designer, Texas' },
+                  ].map(({ quote, attr }) => (
+                    <blockquote key={attr} className="border-l-2 border-[#e8572a]/40 pl-3">
+                      <p className="text-sm text-[#444] italic">&ldquo;{quote}&rdquo;</p>
+                      <cite className="text-xs text-[#9c9590] not-italic">— {attr}</cite>
+                    </blockquote>
+                  ))}
                 </div>
               </div>
             </div>
@@ -609,7 +608,7 @@ export default function HomePage() {
                     className="block w-full text-center bg-[#e8572a] hover:bg-[#c94820] text-white font-bold py-3.5 rounded-xl transition-all shadow-lg shadow-[#e8572a]/20"
                     onClick={(e) => { e.preventDefault(); document.getElementById('upload')?.scrollIntoView({ behavior: 'smooth' }); }}
                   >
-                    Analyze My Contract — $19 →
+                    Upload Your Contract — $19 →
                   </a>
                   <p className="text-xs text-[#9c9590] text-center mt-3">
                     Your document is analyzed privately and deleted immediately after.

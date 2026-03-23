@@ -47,7 +47,7 @@ export default function SiteNav() {
           className="flex items-center gap-1.5 bg-[#1a1814] text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-black transition-colors"
           style={{ fontFamily: "var(--font-epilogue), system-ui, sans-serif" }}
         >
-          Analyze My Contract <span className="text-[#e8572a] ml-0.5">→</span>
+          Upload Your Contract <span className="text-[#e8572a] ml-0.5">→</span>
         </Link>
       </nav>
     </header>
