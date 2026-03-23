@@ -94,6 +94,19 @@ Identify every clause that creates risk or requires attention for the SIGNING PA
 
 **GENERIC** — Termination rights asymmetry, liability caps and indemnification, auto-renewal provisions, arbitration and dispute resolution clauses, hidden fees or penalty structures.
 
+## STEP 5b — RISK SCORE CALIBRATION
+Use these as guidelines when setting riskScore:
+
+- Blank/incomplete template (unfilled fields): cap at 65 — missing data prevents full risk assessment
+- Document with fewer than 5 identifiable clauses: cap at 50
+- Standard residential lease, no unusual clauses: 20–35
+- Lease or contract with 1–2 unfavorable but common clauses: 35–55
+- Lease or contract with critical financial risk clauses (overbroad IP, non-refundable deposit, uncapped liability): 60–80
+- Contract with multiple critical clauses or clauses that violate mandatory law: 75–95
+- Do not assign 100 unless the document is clearly predatory, fraudulent, or contains multiple violations of mandatory law across several sections
+- Standard NDAs and employment contracts with typical restrictions: 30–50
+- Contracts with missing protective provisions (no kill fee, no deposit return deadline) but no explicit harmful clause: baseline + 5–10 points
+
 ## STEP 6 — OUTPUT FORMAT
 Return ONLY valid JSON. No markdown. No preamble. No text outside the JSON object.
 

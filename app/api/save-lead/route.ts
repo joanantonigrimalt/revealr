@@ -12,10 +12,12 @@ const FROM_EMAIL = 'Revealr <reports@getrevealr.com>';
 // Sends immediate email + schedules 24h and 72h reminders via Resend
 export async function POST(req: NextRequest) {
   try {
-    const { email, fileKey, fileName } = await req.json() as {
+    const { email, fileKey, fileName, flagCount, riskScore } = await req.json() as {
       email: string;
       fileKey: string;
       fileName: string;
+      flagCount?: number;
+      riskScore?: number;
     };
 
     if (!email || !fileKey || !fileName) {
@@ -34,12 +36,20 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: true });
     }
 
+    const immediateSubject = flagCount
+      ? `Your contract has ${flagCount} issue${flagCount > 1 ? 's' : ''} flagged — unlock your full report`
+      : 'Your contract analysis is waiting';
+
+    const reminder24hSubject = flagCount
+      ? `Your contract has ${flagCount} issues flagged — unlock your full report`
+      : 'Still thinking? Your contract analysis is ready';
+
     // ── 1. Immediate email ────────────────────────────────────────────────────
     await resend.emails.send({
       from: FROM_EMAIL,
       to: [email],
-      subject: 'Your contract analysis is waiting',
-      html: buildLeadEmail({ fileName, checkoutUrl, variant: 'immediate' }),
+      subject: immediateSubject,
+      html: buildLeadEmail({ fileName, checkoutUrl, variant: 'immediate', flagCount, riskScore }),
     });
 
     // ── 2. 24h reminder ───────────────────────────────────────────────────────
@@ -47,8 +57,8 @@ export async function POST(req: NextRequest) {
     await resend.emails.send({
       from: FROM_EMAIL,
       to: [email],
-      subject: 'Still thinking? Your contract analysis is ready',
-      html: buildLeadEmail({ fileName, checkoutUrl, variant: 'reminder_24h' }),
+      subject: reminder24hSubject,
+      html: buildLeadEmail({ fileName, checkoutUrl, variant: 'reminder_24h', flagCount, riskScore }),
       scheduledAt: in24h,
     } as Parameters<typeof resend.emails.send>[0]);
 
@@ -76,19 +86,27 @@ function buildLeadEmail(params: {
   fileName: string;
   checkoutUrl: string;
   variant: 'immediate' | 'reminder_24h' | 'expiry_72h';
+  flagCount?: number;
+  riskScore?: number;
 }): string {
-  const { fileName, checkoutUrl, variant } = params;
+  const { fileName, checkoutUrl, variant, flagCount, riskScore } = params;
+
+  const flagLine = flagCount
+    ? `We found <strong>${flagCount} issue${flagCount > 1 ? 's' : ''}</strong>${riskScore !== undefined ? ` (Risk Score: ${riskScore}/100)` : ''} in <strong>${fileName}</strong> that you should review before signing.`
+    : `We've analyzed <strong>${fileName}</strong> and found potential issues you should know about before signing.`;
 
   const copy = {
     immediate: {
       headline: 'Your contract analysis is ready.',
-      body: `We've analyzed <strong>${fileName}</strong> and found potential issues you should know about before signing.`,
+      body: flagLine,
       subtext: 'Your analysis is ready. Unlock it for $19.',
       cta: 'Unlock Full Report — $19',
     },
     reminder_24h: {
-      headline: 'Still thinking about that contract?',
-      body: `Your AI analysis of <strong>${fileName}</strong> is still waiting. Risk score, flagged clauses, and a full action plan — all ready for you.`,
+      headline: flagCount ? `${flagCount} issue${flagCount > 1 ? 's' : ''} found — still thinking?` : 'Still thinking about that contract?',
+      body: flagCount
+        ? `Your AI analysis of <strong>${fileName}</strong> flagged ${flagCount} issue${flagCount > 1 ? 's' : ''} you should know about. Risk score, full action plan, and clause-level flags — all waiting for you.`
+        : `Your AI analysis of <strong>${fileName}</strong> is still waiting. Risk score, flagged clauses, and a full action plan — all ready for you.`,
       subtext: 'Your analysis is ready. Unlock it for $19.',
       cta: 'Unlock My Analysis — $19',
     },

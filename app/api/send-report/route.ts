@@ -36,11 +36,18 @@ export async function POST(req: NextRequest) {
     const html = buildEmailHTML({ result, fileName, appUrl, sessionId, fileKey });
     const text = buildEmailText(result, fileName);
 
+    const score = result.riskScore ?? 0;
+    const subject = score >= 70
+      ? `⚠️ Your Contract Analysis is Ready — ${score}/100 Risk Score`
+      : score >= 40
+      ? `Your Contract Analysis is Ready — ${score}/100 Risk Score`
+      : `✅ Your Contract Analysis is Ready — ${score}/100 Risk Score`;
+
     const { error } = await resend.emails.send({
       from: FROM_EMAIL,
       to: [email],
       reply_to: REPLY_TO,
-      subject: 'Your Revealr Contract Analysis is Ready',
+      subject,
       html,
       text,
     });

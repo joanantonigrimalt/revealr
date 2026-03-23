@@ -177,13 +177,16 @@ function DashboardInner() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: to, result: r, fileName, sessionId, fileKey }),
       });
-      if (res.ok) setEmailSent(true);
-      else {
-        // Non-fatal: report still visible on screen
+      if (res.ok) {
+        setEmailSent(true);
+      } else {
         const d = await res.json().catch(() => ({}));
         console.warn('[sendEmail]', d.error ?? 'Email delivery failed');
+        setEmailError('We could not deliver your report by email. Your report is available on this page — bookmark it or copy the URL.');
       }
-    } catch { } finally {
+    } catch {
+      setEmailError('We could not deliver your report by email. Your report is available on this page — bookmark it or copy the URL.');
+    } finally {
       setEmailSending(false);
     }
   }, [fileName, sessionId, fileKey]);
@@ -519,6 +522,36 @@ function DashboardInner() {
           {result.missingInfo && (
             <div className="mb-4 p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-sm animate-fade-in">
               <strong className="font-semibold">Note:</strong> {result.missingInfo}
+            </div>
+          )}
+
+          {/* Email error — shown if auto-send or resend failed */}
+          {emailError && (
+            <div className="mb-4 p-4 rounded-xl bg-red-50 border border-red-200 text-red-800 text-sm animate-fade-in">
+              <strong className="font-semibold">Email delivery failed.</strong> {emailError}
+            </div>
+          )}
+
+          {/* Email input for paid users who arrived without email param */}
+          {isPaid && !email && !emailSent && (
+            <div className="mb-4 p-4 rounded-xl bg-[#faf9f7] border border-[#e8e4df] text-sm animate-fade-in">
+              <p className="font-semibold text-[#1a1814] mb-2">Get your report by email</p>
+              <div className="flex gap-2">
+                <input
+                  type="email"
+                  value={emailInput ?? ''}
+                  onChange={(e) => setEmailInput(e.target.value)}
+                  placeholder="you@example.com"
+                  className="flex-1 px-3 py-2 rounded-lg border border-[#e8e4df] text-sm focus:outline-none focus:ring-2 focus:ring-[#e8572a]/20 focus:border-[#e8572a]/60"
+                />
+                <button
+                  onClick={() => { if (result && emailInput) sendEmail(result, emailInput); }}
+                  disabled={emailSending || !emailInput}
+                  className="px-4 py-2 bg-[#e8572a] text-white text-sm font-semibold rounded-lg disabled:opacity-50"
+                >
+                  {emailSending ? 'Sending…' : 'Send'}
+                </button>
+              </div>
             </div>
           )}
 
