@@ -146,7 +146,7 @@ export function buildArticleSchema(params: {
 }
 
 /**
- * Product schema — inject on main/tool pages for rich results (price, rating)
+ * Product schema — inject on main/tool pages for rich results (price only, no fake ratings)
  */
 export function buildProductSchema(): string {
   const schema = {
@@ -167,13 +167,6 @@ export function buildProductSchema(): string {
       priceCurrency: 'USD',
       availability: 'https://schema.org/InStock',
       url: APP_URL,
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '12000',
-      bestRating: '5',
-      worstRating: '1',
     },
   };
   return JSON.stringify(schema);

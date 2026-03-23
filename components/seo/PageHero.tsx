@@ -68,24 +68,14 @@ export default function PageHero({ h1, intro, ctaMicrocopy }: Props) {
               ))}
             </ul>
 
-            {/* Social proof strip */}
-            <div className="flex items-center gap-3">
-              <div className="flex -space-x-2" aria-hidden="true">
-                {(['#e8572a', '#1a1814', '#6b6560', '#c94820'] as const).map((c, i) => (
-                  <div
-                    key={i}
-                    className="w-8 h-8 rounded-full border-2 border-white flex items-center justify-center text-white text-xs font-bold"
-                    style={{ backgroundColor: c }}
-                  >
-                    {['J', 'M', 'S', 'R'][i]}
-                  </div>
-                ))}
-              </div>
-              <div className="text-xs text-[#6b6560]">
-                <span className="font-semibold text-[#1a1814]">12,000+</span> contracts analyzed
-                <span className="mx-2 text-[#d5d0cb]">·</span>
-                <span className="text-[#e8572a] font-semibold">★ 4.9</span>
-              </div>
+            {/* Trust strip — no fake metrics */}
+            <div className="flex items-center gap-2 text-xs text-[#9c9590]">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <span>Secured by Stripe</span>
+              <span className="text-[#d5d0cb]">·</span>
+              <span>Results in ~60 sec</span>
+              <span className="text-[#d5d0cb]">·</span>
+              <span>No subscription</span>
             </div>
 
             {/* Microcopy */}
