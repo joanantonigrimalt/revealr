@@ -57,6 +57,11 @@ const SEO_SLUGS = [
   'review-contract-before-signing',
   'contract-risk-checker',
   'purchase-agreement-review',
+  'ai-contract-review',
+  'contract-red-flags',
+  'sign-contract-checklist',
+  'job-offer-letter-review',
+  'rental-agreement-review',
 ];
 
 const BLOG_SLUGS = [

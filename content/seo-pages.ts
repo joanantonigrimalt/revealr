@@ -2233,6 +2233,530 @@ export const seoPages: SEOPage[] = [
     disclaimer:
       'Revealr provides AI-assisted document analysis for informational purposes only. It is not a substitute for advice from a licensed real estate attorney. Always consult a qualified professional before signing a purchase agreement.',
   },
+
+  // ── 22 ─────────────────────────────────────────────────────────────────────
+  {
+    slug: 'ai-contract-review',
+    primaryKeyword: 'ai contract review',
+    secondaryKeywords: [
+      'ai contract analysis',
+      'upload contract for review',
+      'contract review tool online',
+      'automated contract review',
+      'ai document review',
+      'contract checker online',
+      'review any contract with ai',
+    ],
+    intent: 'transaccional',
+    difficulty: 'media',
+    monetization: 'alto',
+    priority: 'alta',
+    cluster: 'contract-review',
+    hubPage: '/review-contract-before-signing',
+    title: 'AI Contract Review — Upload Any Contract, Get Plain-English Analysis | Revealr',
+    metaDescription:
+      'AI contract review in 60 seconds. Upload any contract and get a risk score, flagged clauses, plain-English explanations, and a full action plan. $19 one-time.',
+    h1: 'AI Contract Review — Upload Any Contract, Get Plain-English Analysis',
+    h2s: [
+      'What Does AI Contract Review Actually Check?',
+      'How Revealr Flags Clauses in Real Contracts',
+      'Who Uses AI Contract Review — and Why',
+    ],
+    intro:
+      'Most contract review tools are built for legal teams and cost $40–500/month. Revealr is built for the person signing — one document, one price, plain-English results in 60 seconds. Upload any contract and get a risk score, every risky clause flagged by severity, a plain-English explanation of what each clause means for you, and a specific action for each flag.',
+    checksTitle: 'What Revealr checks in any contract',
+    checks: [
+      { title: 'Termination rights', description: 'Which party can terminate, for what reasons, with how much notice — and whether those rights are symmetric' },
+      { title: 'Auto-renewal clauses', description: 'Contracts that roll over automatically unless cancelled — and the notice window required to opt out' },
+      { title: 'Liability caps and indemnification', description: 'Limits on what each party can recover, and who indemnifies whom for what' },
+      { title: 'Payment terms and penalties', description: 'When payment is due, how late fees are calculated, and what triggers penalty clauses' },
+      { title: 'IP assignment language', description: 'Whether work you create is assigned to the other party — and how broad that assignment is' },
+      { title: 'Arbitration and dispute clauses', description: 'Whether you waive court access, class action rights, or jury trial rights in disputes' },
+    ],
+    sampleDocumentLabel: 'Service Agreement',
+    sampleFlags: [
+      {
+        severity: 'CRITICAL',
+        section: '§8.1',
+        title: 'Unilateral Termination Right',
+        body: 'One party can terminate this agreement with 7 days notice for any reason. The other party requires 30 days written notice plus documented cause. This asymmetry puts one side at a significant disadvantage — a 7-day window leaves little time to find alternatives.',
+        action: 'Request symmetric termination terms — both parties on the same notice period and conditions, or mutual termination for cause with equivalent notice.',
+      },
+      {
+        severity: 'WARNING',
+        section: '§12.3',
+        title: 'Auto-Renewal With Short Notice Window',
+        body: 'This contract renews automatically for 12 months unless either party cancels at least 45 days before the expiry date. Most auto-renewal clauses require 30 days notice. A 45-day window is easy to miss, particularly for annual contracts.',
+        action: 'Note the exact cancellation deadline in your calendar at month 10. If the window is unreasonably short, request a reduction to 30 days.',
+      },
+    ],
+    whoThisIsFor: [
+      { role: 'Anyone reviewing a client contract', description: 'You received a contract from a client or employer and need to understand what you are agreeing to before signing' },
+      { role: 'First-time signers who want clarity', description: 'You have never reviewed a contract closely and want a structured breakdown of what the key clauses actually mean' },
+      { role: 'Anyone who got a contract and does not know where to start', description: 'You have a PDF in your inbox and a deadline to sign. Revealr reads it first — you focus on what matters' },
+    ],
+    whyReviewStat:
+      'Most contract disputes trace back to clauses that were present from the start — just unread. A single asymmetric termination clause, an auto-renewal trap, or an overbroad IP assignment can create obligations that last months or years beyond what you intended.',
+    faqs: [
+      {
+        question: 'What types of contracts can AI review?',
+        answer:
+          'Revealr can review leases, employment contracts, NDAs, freelance and independent contractor agreements, service agreements, consulting agreements, purchase agreements, non-compete agreements, and most other legal documents. The AI identifies the document type and applies the most relevant analysis framework.',
+      },
+      {
+        question: 'How accurate is AI contract analysis?',
+        answer:
+          'AI contract analysis is highly consistent at detecting common risk patterns — asymmetric termination rights, auto-renewal clauses, overbroad IP assignments, arbitration waivers, and similar clause types. It cannot account for jurisdiction-specific statutes or fact-specific circumstances the way a licensed attorney can, and should not be used as a substitute for legal advice in high-stakes situations.',
+      },
+      {
+        question: 'How is this different from tools like LawGeex or Kira?',
+        answer:
+          'LawGeex, Kira, and similar platforms are enterprise tools built for legal teams — they require onboarding, training, and typically cost hundreds or thousands of dollars per month. Revealr is designed for the individual signing a single document. One upload, one price, immediate results.',
+      },
+      {
+        question: "Can I use this for any country's contracts?",
+        answer:
+          "Yes. Revealr detects risk language regardless of jurisdiction. It identifies the governing law and tailors its analysis accordingly. Jurisdiction-specific legal references are most precise for US, UK, and Australian contracts, but the tool flags structural risks in contracts from any country.",
+      },
+      {
+        question: 'What happens to my document after analysis?',
+        answer:
+          'Your document is deleted from our servers immediately after the analysis is complete. We do not store your documents, and we do not use them to train AI models.',
+      },
+    ],
+    relatedPages: [
+      { href: '/contract-red-flags', anchor: 'the most common contract red flags' },
+      { href: '/sign-contract-checklist', anchor: '10-point checklist before signing' },
+      { href: '/review-contract-before-signing', anchor: 'how to review any contract' },
+      { href: '/blog/how-to-read-a-contract-with-ai', anchor: 'guide: how to read a contract with AI' },
+      { href: '/blog/what-to-check-in-an-employment-contract', anchor: 'guide: what to check in an employment contract' },
+    ],
+    ctaPrimary: 'Upload Your Contract — See Your Risk Score',
+    ctaSecondary: 'See how it works',
+    ctaMicrocopy: 'Any contract type · $19 · Results in 60 seconds',
+    disclaimer:
+      'Revealr provides AI-assisted document analysis for informational purposes only. It is not a substitute for legal advice. Consult a licensed attorney for complex or high-stakes agreements.',
+  },
+
+  // ── 23 ─────────────────────────────────────────────────────────────────────
+  {
+    slug: 'contract-red-flags',
+    primaryKeyword: 'contract red flags',
+    secondaryKeywords: [
+      'contract warning signs',
+      'red flags in contracts',
+      'contract clauses to watch',
+      'what to look for in a contract',
+      'contract risk signs',
+      'common bad contract clauses',
+      'contract terms to avoid',
+    ],
+    intent: 'informacional-comercial',
+    difficulty: 'media',
+    monetization: 'medio-alto',
+    priority: 'media-alta',
+    cluster: 'contract-review',
+    hubPage: '/review-contract-before-signing',
+    title: 'Contract Red Flags — Clauses to Watch Before You Sign | Revealr',
+    metaDescription:
+      'Know the contract red flags most people miss until it is too late. Revealr scans for unilateral rights, auto-renewals, IP grabs, and arbitration waivers. $19.',
+    h1: 'Contract Red Flags — The Clauses That Most Commonly Cost People Money',
+    h2s: [
+      'The Six Most Common Contract Red Flags',
+      'How Red Flag Clauses Look in Real Contracts',
+      'Who Should Be Scanning for Contract Red Flags',
+    ],
+    intro:
+      "Every contract is written by the other party's lawyer. The defaults protect them, not you. These are the clauses they include that most people miss — and what they actually mean for you. Revealr scans for all of them automatically and flags any that appear in your contract, in plain English, with a recommended action for each.",
+    checksTitle: 'Red flags Revealr checks for in every contract',
+    checks: [
+      { title: 'Automatic renewal with short notice window', description: 'Contract rolls over for another full term unless you cancel within a specific (often short) window' },
+      { title: 'Unilateral amendment rights', description: 'One party can change the terms with minimal notice — continued use or non-response counts as acceptance' },
+      { title: 'Broad IP assignment language', description: 'Work you create may be assigned to the other party — including work created outside your normal scope' },
+      { title: 'Mandatory arbitration waiving court rights', description: 'You waive your right to sue in court, to a jury trial, and to join class actions' },
+      { title: 'Asymmetric termination rights', description: 'One party can exit with short notice; the other requires long notice or documented cause' },
+      { title: 'Vague "reasonable costs" language', description: '"Reasonable expenses" without defined caps creates open-ended financial exposure' },
+    ],
+    sampleDocumentLabel: 'Service Agreement',
+    sampleFlags: [
+      {
+        severity: 'CRITICAL',
+        section: '§3.1',
+        title: 'Unilateral Right to Amend Terms',
+        body: 'The company can change the terms of this agreement with 14 days notice. You have no right to object — continued use of the service or continued performance constitutes acceptance of the new terms. This clause allows material changes to your obligations without mutual consent.',
+        action: 'Request a mutual amendment clause requiring written consent from both parties before any changes take effect.',
+      },
+      {
+        severity: 'WARNING',
+        section: '§15.2',
+        title: 'Mandatory Arbitration — No Court Access',
+        body: 'All disputes must be resolved through binding private arbitration. You waive your right to a jury trial and to join a class action lawsuit. Arbitration is generally faster but limits discovery rights and appeal options significantly.',
+        action: 'Understand this before signing — it limits your legal options if a dispute arises. Consider requesting mutual opt-out rights from the arbitration clause.',
+      },
+    ],
+    whoThisIsFor: [
+      { role: 'Anyone who received a contract and wants to know what to look for', description: 'You have a contract in hand and want to scan for the most common risks before signing' },
+      { role: 'People who have been burned by contract clauses before', description: 'You have experienced the cost of a clause you did not understand — and want to avoid repeating it' },
+      { role: 'First-time renters, employees, or freelancers', description: 'You are new to a contract type and want to know what the standard risks are before agreeing to anything' },
+    ],
+    whyReviewStat:
+      'The clauses that create the most post-signing disputes — automatic renewal traps, asymmetric termination rights, and overbroad IP assignments — rarely appear in bold type. They are buried in standard-looking boilerplate that most people read once and quickly move past.',
+    faqs: [
+      {
+        question: 'What is a contract red flag?',
+        answer:
+          'A contract red flag is a clause that creates disproportionate risk for one party — typically through asymmetric obligations, hidden financial exposure, or terms that allow the other party to change or exit the agreement unilaterally. Common examples include automatic renewal clauses with short cancellation windows, mandatory arbitration waivers, and overbroad IP assignments.',
+      },
+      {
+        question: 'Are red flags always dealbreakers?',
+        answer:
+          "Not always. Some red flags are standard in certain industries and negotiable with a simple request. Others — like a mandatory arbitration waiver in a high-value agreement — may be worth walking away from if the other party refuses to remove them. The key is to identify them before signing, not after.",
+      },
+      {
+        question: 'What is the most common red flag in lease agreements?',
+        answer:
+          'The most common lease red flag is the automatic renewal clause — specifically a short cancellation window (45–90 days) that is easy to miss. Missing the deadline commits you to another full year at potentially higher rent.',
+      },
+      {
+        question: 'What is the most common red flag in employment contracts?',
+        answer:
+          "Overbroad IP assignment language is the most commonly overlooked employment contract red flag. Many employment agreements assign all work created 'in connection with the company's business' — language that can extend to after-hours personal projects and side businesses.",
+      },
+      {
+        question: 'Can I ask to remove a red flag clause?',
+        answer:
+          'Yes. Most red flag clauses are negotiable, especially in service, freelance, and lease agreements. The key is to identify the specific clause, understand what it means, and make a concrete written request — for example, asking for symmetric termination terms, or requesting a carve-out in an IP assignment clause.',
+      },
+    ],
+    relatedPages: [
+      { href: '/ai-contract-review', anchor: 'scan your contract with AI' },
+      { href: '/review-contract-before-signing', anchor: 'how to review any contract before signing' },
+      { href: '/contract-risk-checker', anchor: 'check your contract risk score' },
+      { href: '/blog/common-lease-red-flags', anchor: 'guide: common lease red flags' },
+      { href: '/blog/common-nda-red-flags', anchor: 'guide: common NDA red flags' },
+    ],
+    ctaPrimary: 'Upload Your Contract — Check for Red Flags',
+    ctaSecondary: 'See a sample report',
+    ctaMicrocopy: 'Any contract type · $19 · Results in 60 seconds',
+    disclaimer:
+      'Revealr provides AI-assisted document analysis for informational purposes only. It is not a substitute for legal advice. Consult a licensed attorney for complex disputes or high-stakes agreements.',
+  },
+
+  // ── 24 ─────────────────────────────────────────────────────────────────────
+  {
+    slug: 'sign-contract-checklist',
+    primaryKeyword: 'what to check before signing a contract',
+    secondaryKeywords: [
+      'contract signing checklist',
+      'before you sign a contract',
+      'contract review checklist',
+      'sign contract checklist',
+      'things to check in a contract',
+      'contract checklist online',
+      'how to review a contract checklist',
+    ],
+    intent: 'informacional-comercial',
+    difficulty: 'baja-media',
+    monetization: 'medio-alto',
+    priority: 'media-alta',
+    cluster: 'contract-review',
+    hubPage: '/review-contract-before-signing',
+    title: 'What to Check Before Signing a Contract — 10-Point Checklist | Revealr',
+    metaDescription:
+      'A plain-English 10-point checklist for reviewing any contract before signing. Upload yours and Revealr checks all 10 automatically in 60 seconds. $19.',
+    h1: 'What to Check Before Signing Any Contract — A Plain-English Checklist',
+    h2s: [
+      'The 10-Point Contract Review Checklist',
+      'Checklist Items as They Appear in Real Contracts',
+      'Who This Checklist Is For',
+    ],
+    intro:
+      'Most contract disputes trace back to clauses that were there from the start — just unread. This checklist covers the 10 things worth checking before you sign anything. Revealr automates all 10 checks in 60 seconds — you review the flags it surfaces and decide what to negotiate.',
+    checksTitle: 'The 10-point checklist Revealr runs on every contract',
+    checks: [
+      { title: 'Who are the parties and are they correctly named?', description: 'Verify legal entity names, addresses, and roles match what you agreed to verbally' },
+      { title: 'What is the start date and end date?', description: 'Confirm the term is what you expect — and whether the agreement is indefinite' },
+      { title: 'Is there an automatic renewal clause?', description: 'Does the contract renew by default, and what notice is required to cancel on time?' },
+      { title: 'What are the termination terms for each party?', description: 'Who can exit, for what reasons, with how much notice — and are those terms the same for both?' },
+      { title: 'What payments are required and when?', description: 'Amounts, due dates, late payment fees, and escalation mechanisms' },
+      { title: 'Who owns any work or IP created?', description: 'Does the agreement include IP assignment, work-for-hire, or license language?' },
+      { title: 'What are the dispute resolution terms?', description: 'Court, arbitration, or mediation — and in which jurisdiction?' },
+      { title: 'Are there any non-compete or non-solicitation clauses?', description: 'Restrictions that limit your work options after the agreement ends' },
+      { title: 'What happens if either party breaches?', description: 'Cure periods, remedies, liquidated damages, and termination consequences' },
+      { title: 'Are there any hidden fees or penalties?', description: 'Early exit fees, administrative fees, clawback provisions, or penalty multipliers' },
+    ],
+    sampleDocumentLabel: 'Service Agreement',
+    sampleFlags: [
+      {
+        severity: 'WARNING',
+        section: '§2.1',
+        title: 'No Defined End Date',
+        body: 'This agreement has no expiration date and continues indefinitely until one party gives written notice to terminate. Without a defined term, you may be bound longer than intended and have no natural exit point built into the contract.',
+        action: 'Request a fixed initial term (e.g. 12 months) with an option to renew, rather than an open-ended agreement.',
+      },
+      {
+        severity: 'WARNING',
+        section: '§5.3',
+        title: 'Payment Terms Undefined',
+        body: 'Payment is due "upon completion of deliverables" with no defined timeline, milestone criteria, or invoice process. Vague payment terms are a common source of disputes about when obligations are triggered.',
+        action: 'Request specific payment dates, milestone definitions, or invoice net terms (e.g. Net 30 from invoice date).',
+      },
+    ],
+    whoThisIsFor: [
+      { role: 'Anyone about to sign any type of contract', description: 'You want a structured process for reviewing a contract so you do not miss anything important' },
+      { role: 'People who want a concrete checklist to follow', description: 'You prefer a step-by-step framework rather than reading an entire document blind' },
+      { role: 'First-time signers who do not know where to start', description: 'You received a contract and are not sure which clauses matter most — this checklist tells you where to focus' },
+    ],
+    whyReviewStat:
+      'The most consequential clauses in most contracts — termination terms, renewal provisions, and payment penalties — are typically in the middle pages, not the beginning. A structured checklist ensures you look for them specifically rather than skimming past them.',
+    faqs: [
+      {
+        question: 'How long should it take to review a contract?',
+        answer:
+          'A standard one-page freelance agreement can be reviewed in 5–10 minutes manually. A full employment contract (10–20 pages) takes 45–90 minutes for a thorough manual read. With Revealr, the AI reads the full document in under 60 seconds and surfaces only the clauses that need your attention.',
+      },
+      {
+        question: 'Should I always have a lawyer review a contract?',
+        answer:
+          "Not for every contract. For routine documents — standard residential leases, typical freelance agreements, basic NDAs — a structured self-review plus AI analysis is usually sufficient. For high-value agreements, complex commercial deals, or documents with unusual terms, a licensed attorney's review is strongly recommended.",
+      },
+      {
+        question: "What if I don't understand a clause?",
+        answer:
+          "Start with Revealr's plain-English explanation of the clause. If still unclear, ask the other party to explain their intent in writing — their answer often clarifies whether the clause is standard or a negotiating point. For high-stakes ambiguity, consult an attorney before signing.",
+      },
+      {
+        question: 'Can I negotiate any contract?',
+        answer:
+          'Most contracts are more negotiable than they appear. Standard residential leases, freelance agreements, and service contracts are routinely amended before signing. The key is identifying which specific clauses you want changed and making concrete, written requests.',
+      },
+      {
+        question: 'What is the most important thing to check in any contract?',
+        answer:
+          'Termination and renewal terms are arguably the most important clauses in most contracts. They define how long you are obligated, how you can exit, and what it costs to leave early. Automatic renewal clauses and asymmetric exit rights are the most common sources of post-signing disputes.',
+      },
+    ],
+    relatedPages: [
+      { href: '/contract-red-flags', anchor: 'the most common contract red flags' },
+      { href: '/ai-contract-review', anchor: 'run an AI review on your contract' },
+      { href: '/review-contract-before-signing', anchor: 'how to review any contract before signing' },
+      { href: '/blog/how-to-read-a-contract-with-ai', anchor: 'guide: how to read a contract with AI' },
+      { href: '/blog/freelance-contract-mistakes', anchor: 'guide: common freelance contract mistakes' },
+    ],
+    ctaPrimary: 'Upload Your Contract — Get a Full Checklist in 60 Seconds',
+    ctaSecondary: 'See contract red flags',
+    ctaMicrocopy: 'Any contract type · $19 · Results in 60 seconds',
+    disclaimer:
+      'Revealr provides AI-assisted document analysis for informational purposes only. It is not a substitute for legal advice. For high-value or complex agreements, consult a licensed attorney.',
+  },
+
+  // ── 25 ─────────────────────────────────────────────────────────────────────
+  {
+    slug: 'job-offer-letter-review',
+    primaryKeyword: 'job offer letter review',
+    secondaryKeywords: [
+      'review job offer letter',
+      'what to check in a job offer',
+      'job offer letter analysis',
+      'job offer clause checker',
+      'signing bonus clawback review',
+      'offer letter non-compete check',
+      'ai job offer review',
+    ],
+    intent: 'comercial',
+    difficulty: 'media',
+    monetization: 'alto',
+    priority: 'media-alta',
+    cluster: 'employment-job',
+    hubPage: '/employment-contract-review',
+    title: 'Job Offer Letter Review — What to Check Before You Accept | Revealr',
+    metaDescription:
+      'Review your job offer letter before you accept. Revealr checks for clawbacks, non-competes, IP terms, and at-will clauses in plain English. $19 one-time.',
+    h1: 'Job Offer Letter Review — What to Check Before You Accept the Role',
+    h2s: [
+      'What a Job Offer Letter Review Checks',
+      'Clauses Most People Miss in Offer Letters',
+      'Who Should Review Their Offer Letter Before Accepting',
+    ],
+    intro:
+      "A job offer letter is not just a formality. It can include at-will clauses, signing bonus clawbacks, hidden non-competes, and IP terms that affect your career long after you leave. Revealr reads every clause before you sign — so you accept the role knowing exactly what you are agreeing to.",
+    checksTitle: 'What Revealr checks in job offer letters',
+    checks: [
+      { title: 'At-will employment language', description: 'Whether employment can be terminated at any time for any reason — and whether that applies to both parties equally' },
+      { title: 'Signing bonus repayment terms', description: 'Clawback conditions, repayment timelines, and whether involuntary termination triggers repayment' },
+      { title: 'Non-compete and non-solicitation clauses', description: 'Geographic scope, duration, and industry restrictions — many candidates do not notice these in offer letters' },
+      { title: 'IP assignment scope', description: 'What intellectual property you assign to the company — and whether it extends to personal projects and side work' },
+      { title: 'Start date and probationary period terms', description: 'Trial period conditions, different termination rights during probation, and review thresholds' },
+      { title: 'Benefits and equity vesting conditions', description: 'Cliff vesting dates, acceleration provisions, and what happens to unvested equity if you leave' },
+    ],
+    sampleDocumentLabel: 'Job Offer Letter',
+    sampleFlags: [
+      {
+        severity: 'CRITICAL',
+        section: '§4.2',
+        title: 'Signing Bonus Clawback — 24 Months',
+        body: 'If you leave within 24 months of your start date for any reason — including layoff — you must repay the full signing bonus. This clawback applies equally to voluntary resignation and involuntary termination without cause, creating financial risk in an unstable employment market.',
+        action: 'Request that the clawback obligation not apply in cases of involuntary termination, layoff, or company-initiated role elimination.',
+      },
+      {
+        severity: 'WARNING',
+        section: '§7.1',
+        title: 'Non-Compete Included in Offer Letter',
+        body: 'This offer letter includes a non-compete clause restricting you from working for competitors or starting a competing business for 12 months after employment ends. Non-competes are frequently included in offer letters without being separately highlighted — and are enforceable depending on jurisdiction.',
+        action: 'Review the geographic scope and definition of "competitor" carefully. Request a narrower definition or shorter duration if the scope is broad.',
+      },
+    ],
+    whoThisIsFor: [
+      { role: 'Candidates who received a job offer and want to understand it', description: 'You want to know exactly what you are agreeing to before accepting — including the clauses that are easy to miss' },
+      { role: 'People switching jobs who want to compare terms', description: 'You want to check non-compete and IP terms in your new offer against your current contract before resigning' },
+      { role: 'Anyone who received an offer with a signing bonus or equity', description: 'Signing bonuses and equity vesting have detailed conditions — clawbacks, cliff dates, and forfeiture terms — worth reviewing carefully' },
+    ],
+    whyReviewStat:
+      'Job offer letters often include the same legally binding clauses as full employment contracts — including non-compete restrictions, IP assignments, and clawback provisions — but are formatted to look like simple welcome documents, which reduces the scrutiny most candidates give them.',
+    faqs: [
+      {
+        question: "What's the difference between a job offer letter and an employment contract?",
+        answer:
+          "A job offer letter outlines the key terms of employment — role, start date, salary, and benefits — and is typically shorter and less formal than a full employment contract. However, it is legally binding and often includes clauses like at-will employment, non-compete restrictions, IP assignments, and signing bonus clawbacks that have significant legal consequences.",
+      },
+      {
+        question: 'Is a job offer letter legally binding?',
+        answer:
+          "Yes, in most jurisdictions a signed job offer letter is a legally enforceable contract. The specific terms — including at-will clauses, signing bonus conditions, and non-compete restrictions — are binding once you sign. This is why reviewing it before accepting matters.",
+      },
+      {
+        question: 'What should I negotiate in a job offer letter?',
+        answer:
+          "Start with the terms most likely to create future obligations: signing bonus clawback timeline (does it exclude layoffs?), non-compete scope (is the geography or duration too broad?), and IP assignment language (does it cover personal projects?). Salary and start date are also negotiable but tend to get the most attention at the expense of the legal terms.",
+      },
+      {
+        question: 'Can an offer letter include a non-compete?',
+        answer:
+          "Yes. Non-compete clauses are frequently included in offer letters, often in the final pages where candidates are less likely to read carefully. They are just as enforceable as non-competes in full employment contracts — and in some jurisdictions, the consideration for the non-compete is the job offer itself.",
+      },
+      {
+        question: 'What is a signing bonus clawback?',
+        answer:
+          "A signing bonus clawback is a clause that requires you to repay some or all of your signing bonus if you leave the company within a defined period — typically 12–24 months. The riskiest clawbacks apply equally to voluntary resignation and involuntary termination, meaning you could owe money back even if the company lays you off.",
+      },
+    ],
+    relatedPages: [
+      { href: '/employment-contract-review', anchor: 'full employment contract review' },
+      { href: '/non-compete-agreement-review', anchor: 'check your non-compete clause' },
+      { href: '/termination-clause-review', anchor: 'review your termination clause' },
+      { href: '/blog/job-offer-letter-vs-employment-contract', anchor: 'guide: offer letter vs employment contract' },
+      { href: '/blog/non-compete-clause-explained', anchor: 'guide: non-compete clauses explained' },
+    ],
+    ctaPrimary: "Upload Your Offer Letter — See What's In It",
+    ctaSecondary: 'Full employment contract review',
+    ctaMicrocopy: 'Any offer letter · $19 · Results in 60 seconds',
+    disclaimer:
+      'Revealr provides AI-assisted document analysis for informational purposes only. Employment law varies significantly by jurisdiction. Consult a licensed employment attorney for complex situations.',
+  },
+
+  // ── 26 ─────────────────────────────────────────────────────────────────────
+  {
+    slug: 'rental-agreement-review',
+    primaryKeyword: 'rental agreement review',
+    secondaryKeywords: [
+      'review rental agreement',
+      'rental agreement checker',
+      'review my rental contract',
+      'rental lease review tool',
+      'ai rental agreement analysis',
+      'check rental agreement clauses',
+      'rental contract analysis online',
+    ],
+    intent: 'transaccional',
+    difficulty: 'baja-media',
+    monetization: 'alto',
+    priority: 'alta',
+    cluster: 'lease-rental',
+    hubPage: '/lease-agreement-analyzer',
+    title: 'Rental Agreement Review — Check Your Lease Before You Sign | Revealr',
+    metaDescription:
+      'Upload your rental agreement for a full AI review. Revealr flags deposit clauses, auto-renewal traps, entry rights, and early exit costs. $19 one-time.',
+    h1: "Rental Agreement Review — Know What You're Agreeing To Before You Move In",
+    h2s: [
+      'What a Rental Agreement Review Actually Checks',
+      'Clauses Revealr Flags in Real Rental Agreements',
+      'Who Should Review Their Rental Agreement Before Signing',
+    ],
+    intro:
+      "Rental agreements are written by landlords and property managers. The defaults protect them, not you. Revealr reads every clause and flags what could cost you your deposit, lock you into an unwanted renewal, or limit your rights as a tenant — all in under 60 seconds.",
+    checksTitle: 'What Revealr checks in your rental agreement',
+    checks: [
+      { title: 'Security deposit refund conditions', description: 'Non-refundable language, deduction rights, and return deadlines — and whether they comply with standard tenant protections' },
+      { title: 'Early termination costs', description: 'Exact penalty if you need to leave before the end of the term — and whether that penalty is above the standard' },
+      { title: 'Automatic renewal notice window', description: 'When you must give notice to avoid rolling over into another full term' },
+      { title: 'Landlord entry rights and notice', description: 'How much notice the landlord must give before entering your unit and under what circumstances' },
+      { title: 'Maintenance and repair responsibilities', description: 'Who pays for what — appliances, HVAC, minor repairs — and what counts as normal wear and tear' },
+      { title: 'Subletting and occupancy restrictions', description: 'Whether you can sublet, have additional occupants, or use the space for purposes beyond personal residence' },
+    ],
+    sampleDocumentLabel: 'Rental Agreement',
+    sampleFlags: [
+      {
+        severity: 'CRITICAL',
+        section: '§5.1',
+        title: 'Security Deposit Designated Non-Refundable',
+        body: 'This rental agreement designates the full security deposit as non-refundable regardless of property condition at move-out. In most US states, security deposits are required by law to be refundable minus documented damage. A blanket non-refundable clause is generally unenforceable — but having it in writing may still complicate a dispute.',
+        action: 'Request that this clause be replaced with standard refundable deposit language, specifying permitted deductions and a return deadline.',
+      },
+      {
+        severity: 'WARNING',
+        section: '§3.2',
+        title: '60-Day Notice Required to Avoid Auto-Renewal',
+        body: 'This rental agreement auto-renews for 12 months unless you provide 60 days written notice before the expiry date. Most standard leases require 30 days notice. A 60-day window is easy to miss — missing it commits you to another full year at potentially higher rent.',
+        action: 'Note the exact cancellation deadline in your calendar immediately. If the notice window is unreasonably long, request a reduction to 30 days.',
+      },
+    ],
+    whoThisIsFor: [
+      { role: 'Renters who just received a rental agreement', description: 'You have a lease in hand and want to review it before the deadline to sign' },
+      { role: 'First-time renters who do not know what to look for', description: 'You have never signed a rental agreement and want to understand what the standard risks are' },
+      { role: 'Anyone moving to a new city and signing remotely', description: "You are not familiar with local norms and cannot easily negotiate in person — a structured review helps you identify what to push back on" },
+    ],
+    whyReviewStat:
+      "Rental agreements vary widely in how landlord-friendly their terms are. Security deposit deductions, automatic renewal traps, and maintenance responsibility shifts are the most common sources of tenant disputes — and all are typically established in the original lease agreement.",
+    faqs: [
+      {
+        question: "What's the difference between a rental agreement and a lease?",
+        answer:
+          "A rental agreement is typically month-to-month, while a lease is for a fixed term (usually 12 months). Both are legally binding contracts that define deposit terms, maintenance obligations, entry rights, and termination conditions. Both should be reviewed before signing.",
+      },
+      {
+        question: 'Can a landlord keep my entire security deposit?',
+        answer:
+          "In most US states, landlords can only deduct from a security deposit for documented damage beyond normal wear and tear, unpaid rent, and costs explicitly allowed under the lease. A blanket non-refundable deposit clause is generally unenforceable, but disputing it after the fact is time-consuming. Revealr flags these clauses so you can request the correct language before signing.",
+      },
+      {
+        question: 'What happens if I break a rental agreement early?',
+        answer:
+          "This depends entirely on your early termination clause. Some agreements require you to pay 1–3 months' rent as a penalty. Others require you to pay through the end of the lease minus any rent recovered from a new tenant. Revealr identifies the specific early termination terms in your agreement and flags anything above standard.",
+      },
+      {
+        question: 'What is a holdover clause?',
+        answer:
+          "A holdover clause defines what happens if you stay in the rental unit beyond the end of your lease term without signing a renewal. Many holdover clauses convert the tenancy to month-to-month, but some allow the landlord to charge significantly higher rent for the holdover period. Revealr flags these terms.",
+      },
+      {
+        question: 'Should I sign a rental agreement without reviewing it?',
+        answer:
+          "No. Rental agreements contain legally binding clauses about deposit deductions, early exit penalties, and maintenance responsibilities that can cost you money if you do not understand them before signing. A quick AI review before signing is significantly less expensive than a dispute after.",
+      },
+    ],
+    relatedPages: [
+      { href: '/lease-agreement-analyzer', anchor: 'use the full lease agreement analyzer' },
+      { href: '/security-deposit-clause-checker', anchor: 'check your security deposit clause' },
+      { href: '/lease-red-flags-before-signing', anchor: 'lease red flags to watch for' },
+      { href: '/blog/how-to-review-a-lease-before-signing', anchor: 'guide: how to review a lease before signing' },
+      { href: '/blog/common-lease-red-flags', anchor: 'guide: common lease red flags' },
+    ],
+    ctaPrimary: 'Upload Your Rental Agreement — See Your Risk Score',
+    ctaSecondary: 'Full lease agreement analyzer',
+    ctaMicrocopy: 'Any rental agreement · $19 · Results in 60 seconds',
+    disclaimer:
+      'Revealr provides AI-assisted document analysis for informational purposes only. Tenant rights and rental regulations vary by state and locality. Consult a licensed attorney or tenant rights organization for jurisdiction-specific guidance.',
+  },
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────

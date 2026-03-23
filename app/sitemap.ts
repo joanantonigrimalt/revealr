@@ -37,6 +37,11 @@ const SEO_PAGE_DATES: Record<string, string> = {
   'review-contract-before-signing':       '2025-03-01',
   'contract-risk-checker':                '2025-03-01',
   'purchase-agreement-review':            '2025-03-05',
+  'ai-contract-review':                   '2026-03-23',
+  'contract-red-flags':                   '2026-03-23',
+  'sign-contract-checklist':              '2026-03-23',
+  'job-offer-letter-review':              '2026-03-23',
+  'rental-agreement-review':              '2026-03-23',
 };
 
 export default function sitemap(): MetadataRoute.Sitemap {
