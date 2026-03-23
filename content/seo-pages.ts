@@ -338,6 +338,13 @@ export const seoPages: SEOPage[] = [
         title: 'Non-Refundable Security Deposit',
         body: 'This clause states the $2,500 security deposit is non-refundable under any circumstances. This language is unenforceable in most states and violates tenant protection statutes. Do not sign without negotiating this clause.',
       },
+      {
+        severity: 'WARNING',
+        section: '§5.6',
+        title: 'No Deposit Return Timeline Specified',
+        body: "This lease does not specify when your security deposit will be returned after move-out. Most states require return within 14–30 days with an itemized statement of any deductions. Without a stated deadline, there is no contractual basis to enforce timely return.",
+        action: 'Request a specific return deadline — 21 days after move-out is standard and reasonable to ask for.',
+      },
     ],
     whoThisIsFor: [
       { role: 'Tenants reviewing a new lease', description: "You want to make sure your deposit is legally protected before handing it over" },
@@ -740,6 +747,13 @@ export const seoPages: SEOPage[] = [
         title: 'Overbroad Definition of Confidential Information',
         body: "This NDA defines confidential information as 'any and all information disclosed in any form, whether oral, written, or by any other means.' This definition is so broad it could include information you already knew, information that is publicly available, or conversations that have nothing to do with the business relationship. Request a narrower definition with explicit exclusions.",
       },
+      {
+        severity: 'WARNING',
+        section: '§6.1',
+        title: 'No Expiration Date — Obligations May Be Perpetual',
+        body: "This NDA does not specify a duration. Without a stated end date, your confidentiality obligations could be interpreted as indefinite. Industry standard is 2–3 years for general business information. Trade secret protections can legitimately last longer, but should be limited to specifically identified trade secrets.",
+        action: 'Request a specific termination date or duration clause — 2–3 years from execution is standard for most business contexts.',
+      },
     ],
     whoThisIsFor: [
       { role: 'Employees signing NDAs before starting', description: "You received an NDA as part of your onboarding package" },
@@ -840,6 +854,13 @@ export const seoPages: SEOPage[] = [
         title: 'Early Termination Fee',
         body: "If you terminate this lease before month 10, you owe rent for all remaining months plus a $1,500 administrative fee. This is significantly above market standard and may be challengeable in your jurisdiction. Revealr recommends asking for a 2-month buyout cap.",
       },
+      {
+        severity: 'WARNING',
+        section: '§16.3',
+        title: 'Asymmetric Notice Period',
+        body: "You are required to provide 60 days written notice before terminating this agreement. The other party has no equivalent obligation and may exit on 14 days notice. This asymmetry means you bear the full cost of planning around the relationship's end while the other party does not.",
+        action: 'Request that notice requirements be made mutual — 30 days for both parties is standard and reasonable.',
+      },
     ],
     whoThisIsFor: [
       { role: 'Tenants who may need to break a lease', description: "You are signing a lease but unsure if you will stay the full term" },
@@ -879,6 +900,7 @@ export const seoPages: SEOPage[] = [
       { href: '/lease-agreement-analyzer', anchor: 'analyze your full lease' },
       { href: '/employment-contract-review', anchor: 'review your full employment contract' },
       { href: '/review-contract-before-signing', anchor: 'what else to check before signing any contract' },
+      { href: '/blog/early-termination-fee-clause', anchor: 'guide: early termination fee clauses explained' },
     ],
     ctaPrimary: 'Review My Termination Clause',
     ctaSecondary: 'Analyze My Full Contract',
@@ -933,6 +955,13 @@ export const seoPages: SEOPage[] = [
         title: 'Annual Rent Increase Provision Added',
         body: "This renewal adds a clause allowing your landlord to increase rent by up to 8% on any anniversary date with 30 days notice. This provision was not in your original lease. In rent-stabilized markets, this may require local review.",
       },
+      {
+        severity: 'WARNING',
+        section: '§7.2',
+        title: 'Landlord Entry Notice Reduced from 48 to 24 Hours',
+        body: "Your original lease required 48 hours written notice before landlord entry. This renewal reduces that window to 24 hours — the legal minimum in many states, but a meaningful reduction in practice. This is worth flagging before you re-sign.",
+        action: 'Request that the original 48-hour written notice provision be reinstated. Most landlords will agree to this without pushback.',
+      },
     ],
     whoThisIsFor: [
       { role: 'Tenants who received a renewal notice', description: "Your landlord sent you renewal paperwork and you want to check it" },
@@ -974,6 +1003,7 @@ export const seoPages: SEOPage[] = [
       { href: '/maintenance-responsibility-in-lease', anchor: 'check maintenance terms in your renewal' },
     ],
     ctaPrimary: 'Review My Lease Renewal',
+    ctaSecondary: 'See a Sample Renewal Analysis',
     ctaMicrocopy: 'Upload your renewal document · $19 · Instant results',
     disclaimer:
       'Revealr provides AI-assisted document analysis for informational purposes only. Lease renewal rights vary by state and locality. Consult a tenant rights organization for specific guidance.',
@@ -1129,6 +1159,13 @@ export const seoPages: SEOPage[] = [
         title: 'Overbroad Restricted Territory',
         body: "This non-compete applies to any geographic region where the company conducts or plans to conduct business — effectively making it national or global in scope. Courts in most states would view this as overbroad. Request a specific state or regional limitation.",
       },
+      {
+        severity: 'WARNING',
+        section: '§4.3',
+        title: '24-Month Restriction Period — Above Standard',
+        body: "This non-compete restricts you for 24 months after leaving the company. Courts in most states view 6–12 months as the enforceable standard. A 24-month restriction, particularly combined with the broad geographic scope, may be difficult to enforce in full — but challenging it requires legal action and creates uncertainty during your job search.",
+        action: 'Request a reduction to 12 months, which is more defensible and reflects the typical industry standard.',
+      },
     ],
     whoThisIsFor: [
       { role: 'Employees receiving a non-compete', description: "You are being asked to sign before starting a new role" },
@@ -1168,6 +1205,7 @@ export const seoPages: SEOPage[] = [
       { href: '/nda-review', anchor: 'review the NDA that came with your non-compete' },
       { href: '/employment-contract-review', anchor: 'review your full employment contract' },
       { href: '/ip-assignment-agreement-review', anchor: 'check your IP assignment too' },
+      { href: '/blog/non-compete-clause-explained', anchor: 'guide: non-compete clauses explained' },
     ],
     ctaPrimary: 'Review My Non-Compete Agreement',
     ctaSecondary: 'See a Sample Non-Compete Analysis',
@@ -1323,6 +1361,13 @@ export const seoPages: SEOPage[] = [
         title: 'Asymmetric Termination for Convenience',
         body: "The client may terminate this agreement at any time with 7 days written notice, with no obligation to pay for work in progress or future contracted periods. You have no equivalent right to exit. This is significantly asymmetric and should be made mutual.",
       },
+      {
+        severity: 'WARNING',
+        section: '§2.1',
+        title: 'Scope of Work Defined by Reference to Proposal — Version Unspecified',
+        body: "Your service obligations are defined by reference to an attached 'proposal document,' without specifying which version applies or what governs in case of conflict between the proposal and this agreement. Vague scope definitions are the primary enabler of scope creep — the client can point to any proposal version to justify expanded work.",
+        action: 'Attach the specific agreed proposal as Exhibit A and add language stating that in case of conflict, this agreement controls.',
+      },
     ],
     whoThisIsFor: [
       { role: 'Service providers and agencies', description: "You provide services under a formal agreement and want to check the terms" },
@@ -1362,8 +1407,10 @@ export const seoPages: SEOPage[] = [
       { href: '/freelance-contract-review', anchor: 'review your freelance contract' },
       { href: '/consulting-agreement-review', anchor: 'consulting-specific agreement review' },
       { href: '/termination-clause-review', anchor: 'check the termination clause in detail' },
+      { href: '/blog/service-agreement-vs-employment-contract', anchor: 'guide: service agreement vs employment contract' },
     ],
     ctaPrimary: 'Review My Service Agreement',
+    ctaSecondary: 'See a Sample Service Agreement Analysis',
     ctaMicrocopy: '$19 · Works for any service contract type · 60 seconds',
     disclaimer:
       'Revealr provides AI-assisted document analysis for informational purposes only. Service agreement law varies by jurisdiction and industry. Consult a contracts attorney for high-value engagements.',
@@ -1415,6 +1462,13 @@ export const seoPages: SEOPage[] = [
         title: 'Exclusivity Plus Set Hours — Misclassification Risk',
         body: "This agreement prohibits you from performing services for any other client in the same industry sector without written approval. Combined with §2.1 (required availability during business hours), this raises potential employee misclassification risk under IRS guidelines.",
       },
+      {
+        severity: 'WARNING',
+        section: '§6.2',
+        title: 'Payment Conditional on Client Approval — No Dispute Process',
+        body: "Payment is due within 30 days of the client's approval of deliverables. This agreement does not define what 'approval' means, what happens if the client does not respond, or what dispute process applies if payment is withheld. Without a defined approval mechanism, your invoice timeline is effectively at the client's discretion.",
+        action: 'Request a deemed-approval clause: if the client does not approve or raise objections within 7 business days of delivery, the work is considered accepted and payment becomes due.',
+      },
     ],
     whoThisIsFor: [
       { role: '1099 contractors', description: "You work as an independent contractor and want to review your agreement" },
@@ -1454,8 +1508,10 @@ export const seoPages: SEOPage[] = [
       { href: '/freelance-contract-review', anchor: 'also applies to freelance contracts' },
       { href: '/ip-assignment-agreement-review', anchor: 'understand the IP assignment in your agreement' },
       { href: '/non-compete-agreement-review', anchor: 'check any non-compete provisions' },
+      { href: '/blog/independent-contractor-misclassification', anchor: 'guide: independent contractor misclassification risks' },
     ],
     ctaPrimary: 'Review My Contractor Agreement',
+    ctaSecondary: 'See a Sample IC Agreement Analysis',
     ctaMicrocopy: '$19 · For 1099 contractors and IC professionals · 60 seconds',
     disclaimer:
       'Revealr provides AI-assisted document analysis for informational purposes only. Independent contractor classification is a complex legal and tax issue. Consult a tax or employment attorney for specific guidance.',
@@ -1506,6 +1562,13 @@ export const seoPages: SEOPage[] = [
         section: '§3.2',
         title: 'Overbroad Pre-Invention Assignment',
         body: "This clause assigns to the company all inventions, works, and developments conceived by you during the employment period that 'relate to or are useful in connection with the company's current or reasonably anticipated business.' This language is broad enough to potentially cover work you create on weekends using personal equipment.",
+      },
+      {
+        severity: 'WARNING',
+        section: '§3.5',
+        title: 'No Carve-Out for Pre-Existing Personal Projects',
+        body: "This agreement does not include a schedule or exhibit listing pre-existing IP you wish to retain. Without an explicit exclusion, prior work that 'relates to' the company's business could be captured by the assignment clause in §3.2. Documenting your pre-existing work before signing is the most reliable way to protect it.",
+        action: 'Before signing, prepare a written list of personal projects, side work, or prior IP you want to retain. Ask to attach it as Exhibit A with language stating those items are excluded from the assignment.',
       },
     ],
     whoThisIsFor: [
@@ -1595,6 +1658,13 @@ export const seoPages: SEOPage[] = [
     sampleDocumentLabel: 'Consulting Agreement',
     sampleFlags: [
       {
+        severity: 'CRITICAL',
+        section: '§7.1',
+        title: 'IP Assignment Covers Consulting Methodology',
+        body: "This agreement assigns to the client all work product 'and related materials, processes, and methodologies developed or used in connection with this engagement.' This language is broad enough to capture your consulting frameworks, templates, and processes — not just the deliverables specific to this project. If these are core to your practice, this clause could restrict how you serve future clients.",
+        action: 'Request that the IP assignment be limited to deliverables created specifically for this client, with an explicit carve-out for pre-existing methodologies and frameworks.',
+      },
+      {
         severity: 'WARNING',
         section: '§4.2',
         title: 'Subjective Deliverable Acceptance',
@@ -1639,8 +1709,10 @@ export const seoPages: SEOPage[] = [
       { href: '/service-agreement-review', anchor: 'also review your service agreement' },
       { href: '/ip-assignment-agreement-review', anchor: 'check how the IP clause affects your methodology' },
       { href: '/non-compete-agreement-review', anchor: 'review any non-compete in the agreement' },
+      { href: '/blog/consulting-agreement-red-flags', anchor: 'guide: consulting agreement red flags' },
     ],
     ctaPrimary: 'Review My Consulting Agreement',
+    ctaSecondary: 'See a Sample Consulting Agreement Analysis',
     ctaMicrocopy: 'For independent consultants and consulting firms · $19 · 60 seconds',
     disclaimer:
       'Revealr provides AI-assisted document analysis for informational purposes only. Consulting agreement law varies by jurisdiction. For high-value engagements, consult a contracts attorney.',
@@ -1951,6 +2023,7 @@ export const seoPages: SEOPage[] = [
       { href: '/contract-risk-checker', anchor: 'check your contract risk score' },
       { href: '/lease-agreement-analyzer', anchor: 'analyzing a lease specifically' },
       { href: '/employment-contract-review', anchor: 'reviewing an employment contract' },
+      { href: '/blog/how-to-read-a-contract-with-ai', anchor: 'guide: how to read any contract with AI' },
     ],
     ctaPrimary: 'Upload My Contract for Review',
     ctaSecondary: 'See What a Contract Review Looks Like',
@@ -1980,8 +2053,8 @@ export const seoPages: SEOPage[] = [
     hubPage: '/review-contract-before-signing',
     title: "Contract Risk Checker — Get a Risk Score for Any Contract in 60 Seconds | Revealr",
     metaDescription:
-      "Upload any contract and Revealr gives you a 0–100 risk score, flags risky clauses by severity, and tells you what to renegotiate — instantly. Try it free.",
-    h1: "Contract Risk Checker — Get a Risk Score for Any Contract in Minutes",
+      "Upload any contract and Revealr gives you a 0–100 risk score, flags risky clauses by severity, and tells you what to renegotiate — instantly. $19, no subscription.",
+    h1: "Contract Risk Checker — Get a Risk Score for Any Contract in 60 Seconds",
     h2s: [
       "How Does a Contract Risk Score Work?",
       "What Revealr Assesses in Your Contract Risk Report",
@@ -2050,6 +2123,7 @@ export const seoPages: SEOPage[] = [
       { href: '/review-contract-before-signing', anchor: 'learn what to look for in any contract' },
       { href: '/lease-agreement-analyzer', anchor: 'risk check a lease specifically' },
       { href: '/employment-contract-review', anchor: 'employment contract risk check' },
+      { href: '/blog/ai-vs-lawyer-contract-review', anchor: 'guide: AI vs lawyer contract review' },
     ],
     ctaPrimary: "Check My Contract's Risk Score",
     ctaSecondary: 'See a Sample Risk Report',
