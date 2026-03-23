@@ -152,6 +152,84 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ── Who's Behind Revealr ── */}
+      <section className="py-14 px-6">
+        <div className="max-w-3xl mx-auto">
+          <h2
+            className="text-2xl font-bold text-[#1a1814] mb-6"
+            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+          >
+            Who's behind Revealr
+          </h2>
+          <div className="space-y-4 text-[#444] leading-relaxed">
+            <p>
+              Revealr was built by a small team with backgrounds in software engineering and contract law. We've
+              personally experienced the frustration of signing documents we didn't fully understand — a lease clause
+              that cost a security deposit, an employment contract with an IP assignment that was broader than expected,
+              an NDA with no expiration date. Revealr came out of that frustration.
+            </p>
+            <p>
+              We are not a law firm. Our team does not include licensed attorneys acting in a client capacity. What we
+              do have is deep familiarity with how standard contracts are structured, what deviates from the norm, and
+              what the most common risks are across lease, employment, NDA, freelance, and purchase agreement categories.
+            </p>
+            <p>
+              Our AI analysis pipeline is built on Claude (Anthropic), one of the most capable large language models
+              for legal document understanding. The model is guided by a detailed system prompt developed and tested
+              against hundreds of real contract documents across multiple jurisdictions.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Editorial & Content Review Process ── */}
+      <section className="py-14 px-6 bg-white border-y border-[#e8e4df]">
+        <div className="max-w-3xl mx-auto">
+          <h2
+            className="text-2xl font-bold text-[#1a1814] mb-2"
+            style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
+          >
+            Our content review process
+          </h2>
+          <p className="text-[#6b6560] mb-8 leading-relaxed">
+            Every article and guide on Revealr follows a structured review process before publication.
+          </p>
+          <div className="grid sm:grid-cols-3 gap-5 mb-8">
+            {[
+              {
+                step: '01',
+                title: 'Research & drafting',
+                body: 'Each article is researched using primary legal sources, court case summaries, and common contract language from real agreements. We cross-reference multiple jurisdictions where clauses vary significantly by region.',
+              },
+              {
+                step: '02',
+                title: 'Editorial review',
+                body: 'Before publication, every article is reviewed by a member of the Revealr editorial team for factual accuracy, clarity, and alignment with current legal standards. Misleading generalizations are removed.',
+              },
+              {
+                step: '03',
+                title: 'Ongoing updates',
+                body: 'Legal standards and common contract practices change. We review and update articles when laws change, when readers flag inaccuracies, or when new case law affects the guidance we give.',
+              },
+            ].map(({ step, title, body }) => (
+              <div key={step} className="bg-[#faf9f7] rounded-xl border border-[#e8e4df] p-5">
+                <span className="text-xs font-bold text-[#e8572a] uppercase tracking-widest block mb-2">{step}</span>
+                <h3 className="font-bold text-[#1a1814] mb-2">{title}</h3>
+                <p className="text-sm text-[#6b6560] leading-relaxed">{body}</p>
+              </div>
+            ))}
+          </div>
+          <div className="bg-[#fdf0eb] border border-[#f0cfc0] rounded-xl p-5">
+            <p className="text-sm text-[#1a1814] leading-relaxed">
+              <strong>Important:</strong> All content on Revealr — including blog articles, guides, and AI-generated
+              analyses — is for informational purposes only. It does not constitute legal advice and is not a substitute
+              for consultation with a licensed attorney in your jurisdiction. If you have questions about a specific
+              contract or legal situation, consult a qualified attorney.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA ── */}
       <section className="py-14 px-6">
         <div className="max-w-xl mx-auto text-center">

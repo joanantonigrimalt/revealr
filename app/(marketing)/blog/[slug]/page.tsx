@@ -177,8 +177,28 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               </div>
             ))}
 
+            {/* Author / editorial box */}
+            <div className="mt-10 flex items-start gap-4 bg-white border border-[#e8e4df] rounded-xl p-5">
+              <div className="w-10 h-10 rounded-full bg-[#fdf0eb] border border-[#f0cfc0] flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e8572a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+              <div>
+                <p className="text-xs font-semibold text-[#1a1814] mb-0.5">Revealr Editorial Team</p>
+                <p className="text-xs text-[#6b6560] leading-relaxed">
+                  Reviewed for accuracy by the Revealr editorial team. Our articles are written and reviewed by
+                  contract specialists to ensure the information reflects common legal standards and current practice.
+                  This article is for informational purposes only.
+                </p>
+              </div>
+            </div>
+
             {/* Legal disclaimer */}
-            <div className="bg-[#faf9f7] border border-[#e8e4df] rounded-xl p-5 mt-10">
+            <div className="bg-[#faf9f7] border border-[#e8e4df] rounded-xl p-5 mt-4">
               <p className="text-xs text-[#9c9590] leading-relaxed">
                 <strong className="text-[#6b6560]">Not legal advice.</strong> This article is for informational
                 purposes only. It does not constitute legal advice and is not a substitute for consultation with a
