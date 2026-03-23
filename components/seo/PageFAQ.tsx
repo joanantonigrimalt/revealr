@@ -47,11 +47,17 @@ export default function PageFAQ({ h2, faqs }: Props) {
                   <polyline points="6 9 12 15 18 9" />
                 </svg>
               </button>
-              {open === i && (
+              <div
+                style={{
+                  maxHeight: open === i ? '600px' : '0',
+                  overflow: 'hidden',
+                  transition: 'max-height 0.25s ease',
+                }}
+              >
                 <div className="px-5 pb-5 bg-white border-t border-[#f0ece8]">
                   <p className="text-sm text-[#6b6560] leading-relaxed pt-4">{faq.answer}</p>
                 </div>
-              )}
+              </div>
             </div>
           ))}
         </div>

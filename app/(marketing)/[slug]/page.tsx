@@ -6,6 +6,7 @@ import {
   buildFAQSchema,
   buildBreadcrumbSchema,
   buildSoftwareAppSchema,
+  buildProductSchema,
   TOOL_PAGE_SLUGS,
 } from '@/lib/seo';
 import PageHero from '@/components/seo/PageHero';
@@ -58,10 +59,16 @@ export default function SEOPage({ params }: { params: { slug: string } }) {
         dangerouslySetInnerHTML={{ __html: buildBreadcrumbSchema(page) }}
       />
       {isToolPage && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: buildSoftwareAppSchema() }}
-        />
+        <>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: buildSoftwareAppSchema() }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: buildProductSchema() }}
+          />
+        </>
       )}
 
       <main>

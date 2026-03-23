@@ -145,6 +145,40 @@ export function buildArticleSchema(params: {
   return JSON.stringify(schema);
 }
 
+/**
+ * Product schema — inject on main/tool pages for rich results (price, rating)
+ */
+export function buildProductSchema(): string {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: 'Revealr Contract Analysis',
+    description:
+      'AI-powered contract analysis. Upload any contract and get a risk score, flagged clauses, plain-English explanations, and a full action plan in 60 seconds.',
+    url: APP_URL,
+    image: `${APP_URL}/og-image.png`,
+    brand: {
+      '@type': 'Brand',
+      name: 'Revealr',
+    },
+    offers: {
+      '@type': 'Offer',
+      price: '19',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+      url: APP_URL,
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '12000',
+      bestRating: '5',
+      worstRating: '1',
+    },
+  };
+  return JSON.stringify(schema);
+}
+
 // Slugs for which we also inject SoftwareApplication schema
 export const TOOL_PAGE_SLUGS = new Set([
   'lease-agreement-analyzer',

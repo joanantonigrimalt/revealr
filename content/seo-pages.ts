@@ -105,7 +105,7 @@ export const seoPages: SEOPage[] = [
     hubPage: '/lease-agreement-analyzer',
     title: 'Lease Agreement Analyzer — Review Any Lease with AI in 60 Seconds | Revealr',
     metaDescription:
-      'Upload your lease and get a full AI risk analysis in minutes. Revealr identifies risky clauses, scores your lease 0–100, and explains each issue in plain English — so you know what to ask before signing.',
+      'Upload your lease for a full AI risk analysis. Revealr scores it 0–100 and flags every risky clause in plain English. Know what to ask before signing.',
     h1: 'Lease Agreement Analyzer — Review Any Lease with AI in 60 Seconds',
     h2s: [
       'What Does a Lease Agreement Analyzer Actually Check?',
@@ -207,7 +207,7 @@ export const seoPages: SEOPage[] = [
     hubPage: '/lease-agreement-analyzer',
     title: 'Analyze My Lease Online — Upload It, Get Plain-English Results in 60 Seconds',
     metaDescription:
-      'Upload your lease and get an instant clause-by-clause breakdown. Revealr reads every page, highlights the risky parts, and shows you what to ask or negotiate — before you sign.',
+      'Upload your lease for a clause-by-clause AI breakdown. Revealr highlights risky parts and tells you what to ask or negotiate before you sign. Instant results.',
     h1: 'Analyze My Lease — Upload It and Know Exactly What It Says',
     h2s: [
       'What the Analysis Shows You, Step by Step',
@@ -313,7 +313,7 @@ export const seoPages: SEOPage[] = [
     hubPage: '/lease-agreement-analyzer',
     title: "Security Deposit Clause Checker — Is Your Deposit at Risk? | Revealr",
     metaDescription:
-      'Upload your lease and let Revealr check your security deposit clause for illegal terms, non-refundable language, and unfair deduction rights. Know before you sign.',
+      'Check your security deposit clause with AI. Revealr flags illegal terms, non-refundable language, and unfair deduction rights before you sign your lease.',
     h1: 'Security Deposit Clause Checker — Know If Your Deposit Is Protected',
     h2s: [
       'What Makes a Security Deposit Clause Risky or Illegal?',
@@ -815,7 +815,7 @@ export const seoPages: SEOPage[] = [
     hubPage: '/review-contract-before-signing',
     title: "Termination Clause Review — Know the Real Cost of Breaking Your Contract | Revealr",
     metaDescription:
-      "Upload your contract and let Revealr review the termination clause. We check lease break penalties, employment at-will terms, clawbacks, and survival provisions.",
+      "Upload your contract and let Revealr review the termination clause. We check lease break penalties, at-will terms, clawbacks, and survival provisions.",
     h1: "Termination Clause Review — Know the Real Cost of Walking Away",
     h2s: [
       'What Should a Termination Clause Actually Say?',
@@ -908,7 +908,7 @@ export const seoPages: SEOPage[] = [
     hubPage: '/lease-agreement-analyzer',
     title: "Lease Renewal Review — Check What Changed Before You Re-Sign | Revealr",
     metaDescription:
-      "Don't re-sign your lease renewal without checking it. Revealr flags new rent increases, changed entry terms, altered deposit clauses, and automatic renewal traps.",
+      "Don't re-sign your lease renewal without checking it first. Revealr flags new rent increases, changed entry terms, deposit changes, and renewal traps.",
     h1: "Lease Renewal Review — Check Your Renewal Terms Before You Re-Sign",
     h2s: [
       "What Changes When Your Lease Renews?",
@@ -1000,7 +1000,7 @@ export const seoPages: SEOPage[] = [
     hubPage: '/lease-agreement-analyzer',
     title: "Rental Lease Review: 8 Clauses Every Renter Must Check Before Signing",
     metaDescription:
-      "Before you sign a rental lease, check these 8 clauses. Revealr's AI flags security deposit traps, illegal entry provisions, hidden fees, and auto-renewal terms in 60 seconds.",
+      "Before signing a rental lease, check these 8 clauses. Revealr's AI flags deposit traps, illegal entry provisions, hidden fees, and auto-renewal terms.",
     h1: "Rental Lease Review — 8 Clauses Most Renters Miss Before Signing",
     h2s: [
       "The 8 Rental Lease Clauses That Cause the Most Tenant Problems",
@@ -1104,7 +1104,7 @@ export const seoPages: SEOPage[] = [
     hubPage: '/nda-review',
     title: "Non-Compete Agreement Review — Understand How Far Your Restrictions Reach | Revealr",
     metaDescription:
-      "Upload your non-compete and let Revealr check the geographic scope, duration, industry restrictions, and enforceability red flags — before you sign or before you leave.",
+      "Upload your non-compete agreement. Revealr checks geographic scope, duration, industry restrictions, and enforceability red flags — before you sign or leave.",
     h1: "Non-Compete Agreement Review — Understand How Far Your Non-Compete Really Reaches",
     h2s: [
       "What Makes a Non-Compete Agreement Enforceable?",
@@ -1197,7 +1197,7 @@ export const seoPages: SEOPage[] = [
     hubPage: '/freelance-contract-review',
     title: "Freelance Contract Review — Protect Your Work and Get Paid What You're Owed",
     metaDescription:
-      "Upload your freelance contract and let Revealr check for IP ownership traps, payment issues, unlimited revision clauses, and kill fee language — before you start work.",
+      "Upload your freelance contract. Revealr flags IP ownership traps, payment issues, unlimited revision clauses, and kill fee language — before you start work.",
     h1: "Freelance Contract Review — Protect Your Work Before the Project Starts",
     h2s: [
       "What Should Every Freelance Contract Include?",
@@ -1390,7 +1390,7 @@ export const seoPages: SEOPage[] = [
     hubPage: '/freelance-contract-review',
     title: "Independent Contractor Agreement Review — Understand Your Rights as a Contractor | Revealr",
     metaDescription:
-      "Upload your IC agreement and let Revealr check for misclassification risks, IP ownership, exclusivity, payment terms, and exit rights — before you start working.",
+      "Upload your IC agreement. Revealr checks for misclassification risks, IP ownership, exclusivity, payment terms, and exit rights — before you start working.",
     h1: "Independent Contractor Agreement Review — Understand What You're Agreeing to as a Contractor",
     h2s: [
       "What Makes an Independent Contractor Agreement Different?",
@@ -1482,7 +1482,7 @@ export const seoPages: SEOPage[] = [
     hubPage: '/nda-review',
     title: "IP Assignment Agreement Review — Know What Intellectual Property You're Giving Away | Revealr",
     metaDescription:
-      "Upload your IP assignment agreement or employment contract and let Revealr check if you're giving away more rights than you think — including your side projects.",
+      "Upload your IP assignment agreement. Revealr checks if you're signing away more than intended — including side projects, future inventions, and prior work.",
     h1: "IP Assignment Agreement Review — Make Sure You're Not Giving Away More Than You Think",
     h2s: [
       "What Does an IP Assignment Agreement Actually Transfer?",
@@ -1667,7 +1667,7 @@ export const seoPages: SEOPage[] = [
     hubPage: '/lease-agreement-analyzer',
     title: "Landlord Entry Notice Clause — What Your Lease Must Say to Be Legal | Revealr",
     metaDescription:
-      "Most states require 24–48 hours written notice before landlord entry. Check if your lease meets this standard — Revealr flags insufficient notice, verbal-only clauses, and overbroad inspection rights.",
+      "Most states require 24–48 hours notice before landlord entry. Revealr checks your lease and flags insufficient notice and overbroad inspection rights.",
     h1: "Landlord Entry Notice Clause — What Your Lease Must Say to Be Legal",
     h2s: [
       "What the Law Actually Requires for Landlord Entry",
@@ -1769,7 +1769,7 @@ export const seoPages: SEOPage[] = [
     hubPage: '/lease-agreement-analyzer',
     title: "Maintenance Responsibility in Lease — What Your Landlord Must Fix vs What Falls on You | Revealr",
     metaDescription:
-      "Who is responsible for repairs in your rental? Revealr checks your lease for maintenance clauses that illegally shift habitability obligations to tenants — before a dispute costs you money.",
+      "Who pays for repairs in your rental? Revealr flags maintenance clauses that illegally shift habitability obligations to tenants before you sign the lease.",
     h1: "Maintenance Responsibility in Lease — What Landlords Must Fix vs What Falls on You",
     h2s: [
       "The Legal Baseline: What Landlords Are Always Responsible For",
@@ -1871,7 +1871,7 @@ export const seoPages: SEOPage[] = [
     hubPage: '/review-contract-before-signing',
     title: "How to Review a Contract Before Signing — 6 Clauses That Always Matter | Revealr",
     metaDescription:
-      "Before you sign any contract, check these 6 clauses. Revealr's AI flags termination asymmetry, auto-renewals, liability shifts, arbitration waivers, and hidden penalties — across any document type.",
+      "Check these 6 clauses before signing any contract. Revealr flags termination asymmetry, auto-renewals, liability shifts, and arbitration waivers in 60 seconds.",
     h1: "How to Review a Contract Before Signing — 6 Clauses That Always Matter",
     h2s: [
       "Why Every Contract Is Written Against You (Until You Read It)",
@@ -1980,7 +1980,7 @@ export const seoPages: SEOPage[] = [
     hubPage: '/review-contract-before-signing',
     title: "Contract Risk Checker — Get a Risk Score for Any Contract in 60 Seconds | Revealr",
     metaDescription:
-      "Upload any contract and Revealr gives you a 0–100 risk score, flags risky clauses by severity, and tells you exactly what to renegotiate — instantly.",
+      "Upload any contract and Revealr gives you a 0–100 risk score, flags risky clauses by severity, and tells you what to renegotiate — instantly. Try it free.",
     h1: "Contract Risk Checker — Get a Risk Score for Any Contract in Minutes",
     h2s: [
       "How Does a Contract Risk Score Work?",
@@ -2079,7 +2079,7 @@ export const seoPages: SEOPage[] = [
     hubPage: '/purchase-agreement-review',
     title: 'Purchase Agreement Review — Check Any Buy/Sell Contract Before Closing | Revealr',
     metaDescription:
-      'Upload your purchase or sale agreement and get an AI analysis in minutes. Revealr identifies contingency risks, earnest money clauses, as-is disclaimers, and closing traps — in plain English.',
+      'Upload your purchase agreement and get an AI analysis in minutes. Revealr flags contingency risks, earnest money issues, as-is disclaimers, and closing traps.',
     h1: 'Purchase Agreement Review — Understand What You\'re Signing Before Closing',
     h2s: [
       'The 6 Clauses in Every Purchase Agreement That Deserve Closer Attention',

@@ -8,15 +8,9 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        // Block app internals that shouldn't be indexed
-        disallow: [
-          '/api/',
-          '/dashboard',
-          '/_next/',
-        ],
+        disallow: ['/api/', '/dashboard'],
       },
     ],
     sitemap: `${APP_URL}/sitemap.xml`,
-    host: APP_URL,
   };
 }
